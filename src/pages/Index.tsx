@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ScrollAnimation from '@/components/ScrollAnimation';
 import { 
   Calendar, 
   MapPin, 
@@ -162,7 +163,7 @@ const Index = () => {
                 size="lg" 
                 variant="outline" 
                 asChild
-                className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-black/20"
               >
                 <Link href="/about">
                   Learn Our Mission
@@ -188,7 +189,7 @@ const Index = () => {
       {/* Mission Statement */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-up">
+          <ScrollAnimation>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Our Mission
             </h2>
@@ -204,38 +205,39 @@ const Index = () => {
               </p>
             </div>
             <div className="mt-8">
-              <Button asChild variant="outline" size="lg" className="rounded-xl">
+              <Button asChild variant="outline" size="lg" className="rounded-xl border-foreground/20 text-foreground hover:bg-foreground/5 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <Link href="/about">
                   Learn More About Our Values
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Core Objectives */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Our Core Objectives
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Six pillars that guide our mission to develop ethical healthcare professionals
-            </p>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Our Core Objectives
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Six pillars that guide our mission to develop ethical healthcare professionals
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreObjectives.map((objective, index) => (
-              <Card 
-                key={objective.title} 
-                className="card-gradient p-6 text-center animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${objective.color} flex items-center justify-center mx-auto mb-4`}>
-                  <objective.icon className="w-8 h-8 text-white" />
+              <ScrollAnimation key={objective.title} delay={index * 0.1}>
+                <Card 
+                  className="card-gradient p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 cursor-pointer group"
+                >
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${objective.color} flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                  <objective.icon className="w-8 h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                   {objective.title}
@@ -244,6 +246,7 @@ const Index = () => {
                   {objective.description}
                 </p>
               </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -252,27 +255,28 @@ const Index = () => {
       {/* Upcoming Events */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Upcoming Events
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Free workshops, volunteering opportunities, and networking events - open to all students
-            </p>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Upcoming Events
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Free workshops, volunteering opportunities, and networking events - open to all students
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event, index) => (
-              <Card 
-                key={event.id} 
-                className="card-gradient overflow-hidden animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+              <ScrollAnimation key={event.id} delay={index * 0.1}>
+                <Card 
+                  className="card-gradient overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 cursor-pointer group"
+                >
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={event.image} 
                     alt={event.title}
-                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-6">
@@ -312,44 +316,49 @@ const Index = () => {
                     </div>
                   </div>
                   
-                  <Button className="w-full" asChild>
+                  <Button className="w-full transition-all duration-300 hover:scale-105 hover:shadow-lg" asChild>
                     <Link href="/events">
                       Join Event - Free!
                     </Link>
                   </Button>
                 </div>
               </Card>
+              </ScrollAnimation>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg" className="rounded-xl">
-              <Link href="/events">
-                View All Events
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
+          <ScrollAnimation delay={0.3}>
+            <div className="text-center mt-12">
+              <Button asChild variant="outline" size="lg" className="rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <Link href="/events">
+                  View All Events
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Get Involved Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Get Involved
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Join our free, open community of healthcare-passionate students
-            </p>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Get Involved
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Join our free, open community of healthcare-passionate students
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="card-gradient p-6 text-center group cursor-pointer">
+            <Card className="card-gradient p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2">
               <Link href="/membership" className="block">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <UserPlus className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <UserPlus className="w-8 h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   Join IHSAN
@@ -360,10 +369,10 @@ const Index = () => {
               </Link>
             </Card>
 
-            <Card className="card-gradient p-6 text-center group cursor-pointer">
+            <Card className="card-gradient p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2">
               <Link href="/events" className="block">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Calendar className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Calendar className="w-8 h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   Attend Events
@@ -374,10 +383,10 @@ const Index = () => {
               </Link>
             </Card>
 
-            <Card className="card-gradient p-6 text-center group cursor-pointer">
+            <Card className="card-gradient p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2">
               <Link href="/blog" className="block">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <BookOpen className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <BookOpen className="w-8 h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   Read Stories
@@ -388,10 +397,10 @@ const Index = () => {
               </Link>
             </Card>
 
-            <Card className="card-gradient p-6 text-center group cursor-pointer">
+            <Card className="card-gradient p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2">
               <Link href="/donate" className="block">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Globe className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Globe className="w-8 h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   Global Aid
@@ -408,35 +417,39 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Begin Your Healthcare Journey?
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Join our free, open community and connect with like-minded students pursuing healthcare careers
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              asChild 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 rounded-xl"
-            >
-              <Link href="/membership">
-                <UserPlus className="mr-2 h-5 w-5" />
-                Join Free Today
-              </Link>
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              asChild
-              className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10"
-            >
-              <Link href="/contact">
-                <Handshake className="mr-2 h-5 w-5" />
-                Get in Touch
-              </Link>
-            </Button>
-          </div>
+          <ScrollAnimation>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Begin Your Healthcare Journey?
+            </h2>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+              Join our free, open community and connect with like-minded students pursuing healthcare careers
+            </p>
+          </ScrollAnimation>
+                      <ScrollAnimation delay={0.2}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <Link href="/membership">
+                    <UserPlus className="mr-2 h-5 w-5" />
+                    Join Free Today
+                  </Link>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  asChild
+                  className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 bg-black/20 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <Link href="/contact">
+                    <Handshake className="mr-2 h-5 w-5" />
+                    Get in Touch
+                  </Link>
+                </Button>
+              </div>
+            </ScrollAnimation>
         </div>
       </section>
     </main>

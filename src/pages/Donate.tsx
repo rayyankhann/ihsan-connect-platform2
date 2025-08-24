@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import FundraisingProgress from '@/components/FundraisingProgress';
 import { 
   Heart, 
   Users, 
@@ -94,9 +97,17 @@ const Donate = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Support Our Mission
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Help us continue building the next generation of healthcare professionals
           </p>
+          
+          {/* Fundraising Progress Bar */}
+          <div className="max-w-2xl mx-auto">
+            <FundraisingProgress 
+              currentAmount={15000} 
+              goalAmount={30000} 
+            />
+          </div>
         </div>
       </section>
 
@@ -343,7 +354,7 @@ const Donate = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10"
+              className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 bg-black/20"
             >
               Learn More About Impact
             </Button>
