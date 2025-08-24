@@ -1,73 +1,194 @@
-# Welcome to your Lovable project
+# IHSAN Healthcare Association - UT Dallas
 
-## Project info
+A modern, responsive website for the IHSAN Healthcare Association at the University of Texas at Dallas. Built with Next.js, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/2447774a-2771-4248-ad29-a52435e495c1
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern UI/UX**: Beautiful, responsive design with blue/white theme
+- **Content Management**: Sanity CMS integration for blog posts, events, and content
+- **Blog System**: User-submitted posts with moderation workflow
+- **Event Management**: Calendar integration and RSVP forms
+- **Membership System**: Google Forms integration for member registration
+- **Donation System**: Stripe integration with Zelle/Venmo options
+- **Media Management**: Cloudinary integration for images and videos
+- **SEO Optimized**: Built with Next.js for excellent performance
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **CMS**: Sanity
+- **Media**: Cloudinary
+- **Forms**: Google Forms + Sheets
+- **Payments**: Stripe
+- **Deployment**: Vercel (recommended)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2447774a-2771-4248-ad29-a52435e495c1) and start prompting.
+## 📋 Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js 18+ 
+- npm or yarn
+- Git
 
-**Use your preferred IDE**
+## 🚀 Quick Start
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 1. Clone the Repository
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+git clone <your-repo-url>
+cd ihsan-connect-platform
+```
 
-Follow these steps:
+### 2. Install Dependencies
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 3. Set Up Environment Variables
 
-# Step 3: Install the necessary dependencies.
-npm i
+Copy the example environment file and fill in your values:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+cp env.local.example .env.local
+```
+
+Required environment variables:
+
+```env
+# Sanity CMS Configuration
+SANITY_PROJECT_ID=your_sanity_project_id
+SANITY_DATASET=production
+SANITY_API_TOKEN=your_sanity_api_token
+
+# Cloudinary Configuration
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
+
+# Google Services
+NEXT_PUBLIC_GOOGLE_CALENDAR_SRC=your_google_calendar_embed_url
+
+# Stripe Configuration
+NEXT_PUBLIC_STRIPE_DONATE_URL=your_stripe_checkout_link
+
+# reCAPTCHA Configuration
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
+
+# Next.js Revalidation
+REVALIDATE_SECRET=your_revalidation_secret
+```
+
+### 4. Run the Development Server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   ├── about/             # About page
+│   ├── blog/              # Blog page
+│   ├── contact/           # Contact page
+│   ├── donate/            # Donate page
+│   ├── events/            # Events page
+│   ├── membership/        # Membership page
+│   └── past-events/       # Past events page
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   └── Navigation.tsx    # Main navigation
+├── pages/                # Page components (legacy)
+├── lib/                  # Utility functions
+└── hooks/                # Custom React hooks
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔧 Available Scripts
 
-## What technologies are used for this project?
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-This project is built with:
+## 🌐 External Services Setup
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Sanity CMS
+1. Create a Sanity project at [sanity.io](https://sanity.io)
+2. Get your project ID and API token
+3. Set up schemas for Post, Author, Event, Gallery, Leader
 
-## How can I deploy this project?
+### Cloudinary
+1. Create a Cloudinary account at [cloudinary.com](https://cloudinary.com)
+2. Get your cloud name and upload preset
+3. Configure upload widget for media management
 
-Simply open [Lovable](https://lovable.dev/projects/2447774a-2771-4248-ad29-a52435e495c1) and click on Share -> Publish.
+### Google Forms
+1. Create Google Forms for membership and RSVP
+2. Get the embed URLs for integration
 
-## Can I connect a custom domain to my Lovable project?
+### Stripe
+1. Create a Stripe account at [stripe.com](https://stripe.com)
+2. Create a checkout link for donations
+3. Add Zelle/Venmo information as alternatives
 
-Yes, you can!
+### reCAPTCHA
+1. Register at [google.com/recaptcha](https://google.com/recaptcha)
+2. Get site key and secret key for form protection
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📝 Content Management
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Blog Posts
+- Users can submit posts via `/api/submit-post`
+- Posts are created with `status: "submitted"`
+- Officers approve posts in Sanity Studio
+- Only `status: "published"` posts appear on the blog
+
+### Events
+- Events are managed in Sanity CMS
+- Google Calendar integration for display
+- RSVP forms link to Google Forms
+
+### Media
+- Officers can upload media via `/admin/media`
+- Cloudinary Upload Widget for easy management
+- Media URLs stored in Sanity for content
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Other Platforms
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is for the IHSAN Healthcare Association at UT Dallas.
+
+## 🆘 Support
+
+For technical support or questions about the website, please contact the development team.
+
+---
+
+**IHSAN Healthcare Association** - Connecting healthcare professionals and students at UT Dallas

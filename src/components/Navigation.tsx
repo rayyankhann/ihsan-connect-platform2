@@ -1,5 +1,8 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Heart, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -17,7 +20,7 @@ const navigationItems = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,9 +33,9 @@ export function Navigation() {
 
   const isActive = (href: string) => {
     if (href === '/') {
-      return location.pathname === '/';
+      return pathname === '/';
     }
-    return location.pathname.startsWith(href);
+    return pathname.startsWith(href);
   };
 
   return (
@@ -46,7 +49,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link 
-            to="/" 
+            href="/" 
             className="flex items-center space-x-2 group"
             aria-label="IHSAN Healthcare Association Home"
           >
@@ -64,7 +67,7 @@ export function Navigation() {
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.href}
+                href={item.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative group",
                   isActive(item.href)
@@ -89,7 +92,7 @@ export function Navigation() {
               size="sm"
               className="hover:bg-primary hover:text-primary-foreground transition-colors"
             >
-              <Link to="/donate">
+              <Link href="/donate">
                 <Heart className="w-4 h-4 mr-2" />
                 Donate
               </Link>
@@ -99,7 +102,7 @@ export function Navigation() {
               size="sm"
               className="bg-gradient-to-r from-primary to-accent hover:from-primary-hover hover:to-accent-hover shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <Link to="/membership">
+              <Link href="/membership">
                 <UserPlus className="w-4 h-4 mr-2" />
                 Join Now
               </Link>
@@ -126,7 +129,7 @@ export function Navigation() {
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-3 py-2 rounded-md text-base font-medium transition-colors",
@@ -147,7 +150,7 @@ export function Navigation() {
                   className="w-full hover:bg-primary hover:text-primary-foreground"
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link to="/donate">
+                  <Link href="/donate">
                     <Heart className="w-4 h-4 mr-2" />
                     Donate
                   </Link>
@@ -157,7 +160,7 @@ export function Navigation() {
                   className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-hover hover:to-accent-hover"
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link to="/membership">
+                  <Link href="/membership">
                     <UserPlus className="w-4 h-4 mr-2" />
                     Join Now
                   </Link>

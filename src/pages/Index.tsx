@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -125,7 +125,7 @@ const Index = () => {
                   </p>
                 </div>
                 <Button size="sm" variant="secondary" asChild>
-                  <Link to="/events">
+                  <Link href="/events">
                     Join Event
                   </Link>
                 </Button>
@@ -153,7 +153,7 @@ const Index = () => {
                 asChild 
                 className="btn-hero text-lg px-8 py-4 rounded-xl"
               >
-                <Link to="/membership">
+                <Link href="/membership">
                   Join IHSAN - It's Free!
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -164,7 +164,7 @@ const Index = () => {
                 asChild
                 className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
               >
-                <Link to="/about">
+                <Link href="/about">
                   Learn Our Mission
                 </Link>
               </Button>
@@ -205,7 +205,7 @@ const Index = () => {
             </div>
             <div className="mt-8">
               <Button asChild variant="outline" size="lg" className="rounded-xl">
-                <Link to="/about">
+                <Link href="/about">
                   Learn More About Our Values
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -313,7 +313,7 @@ const Index = () => {
                   </div>
                   
                   <Button className="w-full" asChild>
-                    <Link to="/events">
+                    <Link href="/events">
                       Join Event - Free!
                     </Link>
                   </Button>
@@ -324,7 +324,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button asChild variant="outline" size="lg" className="rounded-xl">
-              <Link to="/events">
+              <Link href="/events">
                 View All Events
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -347,7 +347,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="card-gradient p-6 text-center group cursor-pointer">
-              <Link to="/membership" className="block">
+              <Link href="/membership" className="block">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <UserPlus className="w-8 h-8 text-white" />
                 </div>
@@ -361,7 +361,7 @@ const Index = () => {
             </Card>
 
             <Card className="card-gradient p-6 text-center group cursor-pointer">
-              <Link to="/events" className="block">
+              <Link href="/events" className="block">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
@@ -375,7 +375,7 @@ const Index = () => {
             </Card>
 
             <Card className="card-gradient p-6 text-center group cursor-pointer">
-              <Link to="/blog" className="block">
+              <Link href="/blog" className="block">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <BookOpen className="w-8 h-8 text-white" />
                 </div>
@@ -389,7 +389,7 @@ const Index = () => {
             </Card>
 
             <Card className="card-gradient p-6 text-center group cursor-pointer">
-              <Link to="/donate" className="block">
+              <Link href="/donate" className="block">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
@@ -420,7 +420,7 @@ const Index = () => {
               asChild 
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 rounded-xl"
             >
-              <Link to="/membership">
+              <Link href="/membership">
                 <UserPlus className="mr-2 h-5 w-5" />
                 Join Free Today
               </Link>
@@ -431,7 +431,7 @@ const Index = () => {
               asChild
               className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10"
             >
-              <Link to="/contact">
+              <Link href="/contact">
                 <Handshake className="mr-2 h-5 w-5" />
                 Get in Touch
               </Link>
