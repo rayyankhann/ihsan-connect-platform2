@@ -3,58 +3,58 @@
 @tailwind utilities;
 
 /* IHSAN Healthcare Association Design System
-Modern blue and white theme with professional medical aesthetics
+Modern vibrant blue and white theme with professional aesthetics
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* Core colors - Professional healthcare theme */
-    --background: 210 25% 98%;
-    --foreground: 215 25% 15%;
+    /* Core colors - Modern vibrant blue theme */
+    --background: 210 40% 98%;
+    --foreground: 220 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 220 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 220 25% 15%;
 
-    /* Primary - Deep medical blue */
-    --primary: 210 85% 35%;
+    /* Primary - Vibrant modern blue */
+    --primary: 220 90% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 210 85% 30%;
+    --primary-hover: 220 90% 45%;
 
-    /* Secondary - Light professional blue */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 215 25% 20%;
+    /* Secondary - Light vibrant blue */
+    --secondary: 220 50% 96%;
+    --secondary-foreground: 220 25% 20%;
 
     /* Muted - Subtle grays */
-    --muted: 210 15% 95%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 15% 50%;
 
-    /* Accent - Healthcare teal */
-    --accent: 185 60% 45%;
+    /* Accent - Bright cyan blue */
+    --accent: 195 85% 55%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 185 60% 40%;
+    --accent-hover: 195 85% 50%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 90%;
-    --input: 215 20% 95%;
-    --ring: 210 85% 35%;
+    --border: 220 20% 90%;
+    --input: 220 20% 95%;
+    --ring: 220 90% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom IHSAN gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 85% 35%) 0%, hsl(210 90% 25%) 50%, hsl(215 95% 20%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(185 60% 45%) 0%, hsl(210 85% 35%) 100%);
+    /* Custom IHSAN gradients - Vibrant blue theme */
+    --gradient-hero: linear-gradient(135deg, hsl(220 90% 50%) 0%, hsl(220 95% 40%) 50%, hsl(225 100% 35%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 40% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(195 85% 55%) 0%, hsl(220 90% 50%) 100%);
     
     /* Custom shadows */
-    --shadow-card: 0 4px 20px -2px hsl(215 25% 15% / 0.08);
-    --shadow-hover: 0 8px 30px -4px hsl(210 85% 35% / 0.15);
-    --shadow-accent: 0 4px 20px -2px hsl(185 60% 45% / 0.20);
+    --shadow-card: 0 4px 20px -2px hsl(220 25% 15% / 0.08);
+    --shadow-hover: 0 8px 30px -4px hsl(220 90% 50% / 0.15);
+    --shadow-accent: 0 4px 20px -2px hsl(195 85% 55% / 0.20);
 
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -78,46 +78,46 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode - Professional dark healthcare theme */
-    --background: 215 30% 8%;
-    --foreground: 210 25% 92%;
+    /* Dark mode - Modern dark blue theme */
+    --background: 220 30% 8%;
+    --foreground: 220 25% 92%;
 
-    --card: 215 25% 12%;
-    --card-foreground: 210 25% 92%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 25% 92%;
 
-    --popover: 215 25% 12%;
-    --popover-foreground: 210 25% 92%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 25% 92%;
 
-    --primary: 210 80% 55%;
-    --primary-foreground: 215 30% 8%;
-    --primary-hover: 210 80% 50%;
+    --primary: 220 85% 60%;
+    --primary-foreground: 220 30% 8%;
+    --primary-hover: 220 85% 55%;
 
-    --secondary: 215 20% 18%;
-    --secondary-foreground: 210 25% 85%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 25% 85%;
 
-    --muted: 215 20% 15%;
-    --muted-foreground: 215 15% 60%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 60%;
 
-    --accent: 185 60% 50%;
-    --accent-foreground: 215 30% 8%;
-    --accent-hover: 185 60% 45%;
+    --accent: 195 85% 60%;
+    --accent-foreground: 220 30% 8%;
+    --accent-hover: 195 85% 55%;
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 20%;
-    --input: 215 20% 18%;
-    --ring: 210 80% 55%;
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 220 85% 60%;
 
     /* Dark mode gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(215 30% 8%) 0%, hsl(210 80% 25%) 50%, hsl(210 85% 35%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(215 25% 12%) 0%, hsl(215 20% 15%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(185 60% 50%) 0%, hsl(210 80% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(220 85% 30%) 50%, hsl(220 90% 40%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 25% 12%) 0%, hsl(220 20% 15%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(195 85% 60%) 0%, hsl(220 85% 60%) 100%);
     
     /* Dark mode shadows */
     --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.25);
-    --shadow-hover: 0 8px 30px -4px hsl(210 80% 55% / 0.25);
-    --shadow-accent: 0 4px 20px -2px hsl(185 60% 50% / 0.30);
+    --shadow-hover: 0 8px 30px -4px hsl(220 85% 60% / 0.25);
+    --shadow-accent: 0 4px 20px -2px hsl(195 85% 60% / 0.30);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -183,6 +183,33 @@ All colors MUST be HSL.
     background-clip: text;
   }
 
+  /* Animated IHSAN title */
+  .ihsan-title {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 25%, #e0f2fe 50%, #bae6fd 75%, #7dd3fc 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+    font-weight: 800;
+  }
+
+  /* Continuous glow animation for hero title */
+  .hero-title-glow {
+    animation: heroGlow 2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Pulsing background for hero section */
+  .hero-pulse-bg {
+    animation: heroPulse 4s ease-in-out infinite;
+  }
+
+  /* Floating animation for hero content */
+  .hero-float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+
   /* Animations */
   .animate-float {
     animation: float 3s ease-in-out infinite;
@@ -198,6 +225,14 @@ All colors MUST be HSL.
     animation: scaleIn 0.4s ease-out forwards;
     opacity: 0;
     transform: scale(0.95);
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
   }
 }
 
@@ -217,5 +252,51 @@ All colors MUST be HSL.
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes heroGlow {
+  0%, 100% { 
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes heroPulse {
+  0%, 100% { 
+    background: linear-gradient(135deg, hsl(220 90% 50%) 0%, hsl(220 95% 40%) 50%, hsl(225 100% 35%) 100%);
+  }
+  50% { 
+    background: linear-gradient(135deg, hsl(220 95% 45%) 0%, hsl(220 90% 35%) 50%, hsl(225 95% 30%) 100%);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-10px);
   }
 }

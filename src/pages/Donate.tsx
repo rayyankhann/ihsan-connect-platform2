@@ -79,7 +79,7 @@ const impactStats = [
   },
   {
     icon: Heart,
-    number: "$15K+",
+    number: "$35K+",
     label: "Funds Raised",
     description: "Invested directly into student and community programs"
   }
@@ -104,8 +104,8 @@ const Donate = () => {
           {/* Fundraising Progress Bar */}
           <div className="max-w-2xl mx-auto">
             <FundraisingProgress 
-              currentAmount={15000} 
-              goalAmount={30000} 
+              currentAmount={35000} 
+              goalAmount={50000} 
             />
           </div>
         </div>

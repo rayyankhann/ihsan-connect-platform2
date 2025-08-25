@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
+import ScrollAnimation from '@/components/ScrollAnimation';
 import { 
   Mail, 
   MapPin, 
@@ -20,7 +21,10 @@ import {
   MessageCircle,
   Users,
   Calendar,
-  Heart
+  Heart,
+  ArrowRight,
+  Award,
+  Globe
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -30,28 +34,32 @@ const contactMethods = [
     title: "Email Us",
     description: "Primary contact for all inquiries",
     contact: "ihsanhealthcareutd@gmail.com",
-    href: "mailto:ihsanhealthcareutd@gmail.com"
+    href: "mailto:ihsanhealthcareutd@gmail.com",
+    color: "from-blue-500 to-cyan-500"
   },
   {
     icon: Instagram,
     title: "Follow Us",
     description: "Stay updated with our latest activities",
     contact: "@ihsanhealthcareutd",
-    href: "https://www.instagram.com/ihsanhealthcareutd/"
+    href: "https://www.instagram.com/ihsanhealthcareutd/",
+    color: "from-pink-500 to-purple-500"
   },
   {
     icon: MapPin,
     title: "Visit Us",
     description: "Find us on campus",
     contact: "UT Dallas Campus",
-    href: "#"
+    href: "#",
+    color: "from-green-500 to-emerald-500"
   },
   {
     icon: Clock,
     title: "Office Hours",
     description: "When our leadership is available",
     contact: "Mon-Fri: 2:00 PM - 5:00 PM",
-    href: "#"
+    href: "#",
+    color: "from-orange-500 to-red-500"
   }
 ];
 
@@ -97,22 +105,29 @@ const quickActions = [
     title: "Join IHSAN",
     description: "Become a member",
     href: "/membership",
-    color: "from-primary to-accent"
+    color: "from-blue-500 to-cyan-500"
   },
   {
     icon: Calendar,
     title: "Event RSVP",
     description: "Register for events",
     href: "/events",
-    color: "from-accent to-primary"
+    color: "from-green-500 to-emerald-500"
   },
   {
     icon: Heart,
     title: "Volunteer",
     description: "Get involved",
     href: "/events",
-    color: "from-primary to-primary-hover"
+    color: "from-purple-500 to-pink-500"
   }
+];
+
+const stats = [
+  { number: "24-48h", label: "Response Time", icon: Clock },
+  { number: "300+", label: "Active Members", icon: Users },
+  { number: "50+", label: "Events This Year", icon: Calendar },
+  { number: "100%", label: "Free Support", icon: Heart }
 ];
 
 const Contact = () => {
@@ -152,309 +167,378 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Get in Touch
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-          </p>
+      <section className="py-20 hero-gradient relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
+          </div>
+          
+          <div className="mb-8">
+            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+              📞 Get In Touch
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Contact Us
+            </h1>
+            <div className="w-24 h-1 bg-[#2563eb] mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Contact Methods */}
-      <section className="py-16 bg-background">
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Ways to Reach Us
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Choose the method that works best for you
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => (
-              <Card 
-                key={method.title}
-                className="card-gradient p-6 text-center cursor-pointer hover:scale-105 transition-transform animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => method.href !== "#" && window.open(method.href, '_blank')}
-              >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4">
-                  <method.icon className="w-6 h-6 text-white" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <ScrollAnimation key={stat.label} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
+                    <stat.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {method.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  {method.description}
-                </p>
-                <p className="text-sm font-medium text-primary">
-                  {method.contact}
-                </p>
-              </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Quick Actions */}
-      <section className="py-16 bg-muted/30">
+      {/* Enhanced Contact Methods */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+                Ways to Reach Us
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Choose the method that works best for you
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {contactMethods.map((method, index) => (
+              <ScrollAnimation key={method.title} delay={index * 0.1}>
+                <Card 
+                  className="card-gradient p-8 text-center cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group"
+                  onClick={() => method.href !== "#" && window.open(method.href, '_blank')}
+                >
+                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${method.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <method.icon className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-900 mb-4">
+                    {method.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {method.description}
+                  </p>
+                  <p className="text-blue-600 font-semibold text-lg">
+                    {method.contact}
+                  </p>
+                </Card>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Contact Form & Quick Actions */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="card-gradient p-8">
-                <div className="mb-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-4">
-                    Send Us a Message
-                  </h2>
-                  <p className="text-muted-foreground">
-                    Fill out the form below and we'll get back to you as soon as possible.
-                  </p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        placeholder="Enter your full name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="your.email@example.com"
-                        required
-                      />
-                    </div>
+              <ScrollAnimation>
+                <Card className="card-gradient p-10 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="mb-10">
+                    <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                      Send Us a Message
+                    </h2>
+                    <p className="text-gray-600 text-lg">
+                      Fill out the form below and we'll get back to you as soon as possible.
+                    </p>
                   </div>
 
-                  <div>
-                    <Label htmlFor="inquiryType">Inquiry Type</Label>
-                    <Select value={formData.inquiryType} onValueChange={(value) => handleInputChange('inquiryType', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select inquiry type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {inquiryTypes.map((type) => (
-                          <SelectItem key={type.value} value={type.value}>
-                            {type.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="subject">Subject *</Label>
-                    <Input
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) => handleInputChange('subject', e.target.value)}
-                      placeholder="Brief description of your inquiry"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
-                      placeholder="Tell us more about your inquiry..."
-                      rows={6}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent text-lg py-6">
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
-                  </Button>
-                </form>
-              </Card>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Quick Actions */}
-              <Card className="card-gradient p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Quick Actions
-                </h3>
-                <div className="space-y-4">
-                  {quickActions.map((action) => (
-                    <a
-                      key={action.title}
-                      href={action.href}
-                      className="flex items-center p-3 rounded-lg hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center mr-3 group-hover:scale-110 transition-transform`}>
-                        <action.icon className="w-5 h-5 text-white" />
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="name" className="text-gray-700 font-semibold mb-2 block">
+                          Full Name *
+                        </Label>
+                        <Input
+                          id="name"
+                          value={formData.name}
+                          onChange={(e) => handleInputChange('name', e.target.value)}
+                          placeholder="Enter your full name"
+                          className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          required
+                        />
                       </div>
                       <div>
-                        <p className="font-medium text-foreground">{action.title}</p>
-                        <p className="text-sm text-muted-foreground">{action.description}</p>
+                        <Label htmlFor="email" className="text-gray-700 font-semibold mb-2 block">
+                          Email Address *
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          placeholder="your.email@example.com"
+                          className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          required
+                        />
                       </div>
-                    </a>
-                  ))}
-                </div>
-              </Card>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="inquiryType" className="text-gray-700 font-semibold mb-2 block">
+                        Inquiry Type
+                      </Label>
+                      <Select value={formData.inquiryType} onValueChange={(value) => handleInputChange('inquiryType', value)}>
+                        <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                          <SelectValue placeholder="Select inquiry type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {inquiryTypes.map((type) => (
+                            <SelectItem key={type.value} value={type.value}>
+                              {type.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="subject" className="text-gray-700 font-semibold mb-2 block">
+                        Subject *
+                      </Label>
+                      <Input
+                        id="subject"
+                        value={formData.subject}
+                        onChange={(e) => handleInputChange('subject', e.target.value)}
+                        placeholder="Brief description of your inquiry"
+                        className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="message" className="text-gray-700 font-semibold mb-2 block">
+                        Message *
+                      </Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        placeholder="Tell us more about your inquiry..."
+                        rows={6}
+                        className="text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        required
+                      />
+                    </div>
+
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xl py-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                      <Send className="mr-3 h-6 w-6" />
+                      Send Message
+                    </Button>
+                  </form>
+                </Card>
+              </ScrollAnimation>
+            </div>
+
+            {/* Enhanced Sidebar */}
+            <div className="space-y-8">
+              {/* Quick Actions */}
+              <ScrollAnimation delay={0.2}>
+                <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <h3 className="text-2xl font-bold text-blue-900 mb-6">
+                    Quick Actions
+                  </h3>
+                  <div className="space-y-4">
+                    {quickActions.map((action) => (
+                      <a
+                        key={action.title}
+                        href={action.href}
+                        className="flex items-center p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 group"
+                      >
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${action.color} flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300`}>
+                          <action.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-blue-900">{action.title}</p>
+                          <p className="text-gray-600">{action.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </Card>
+              </ScrollAnimation>
 
               {/* Social Media */}
-              <Card className="card-gradient p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Follow Us
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center p-3 rounded-lg hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${social.color} flex items-center justify-center mr-2 group-hover:scale-110 transition-transform`}>
-                        <social.icon className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-sm font-medium text-foreground">{social.name}</span>
-                    </a>
-                  ))}
-                </div>
-              </Card>
+              <ScrollAnimation delay={0.3}>
+                <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <h3 className="text-2xl font-bold text-blue-900 mb-6">
+                    Follow Us
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.name}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 group"
+                      >
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${social.color} flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300`}>
+                          <social.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-sm font-semibold text-blue-900">{social.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </Card>
+              </ScrollAnimation>
 
               {/* Response Time */}
-              <Card className="card-gradient p-6">
-                <div className="flex items-center mb-3">
-                  <MessageCircle className="w-5 h-5 text-primary mr-2" />
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Response Time
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-sm mb-3">
-                  We typically respond to inquiries within:
-                </p>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">General Inquiries</span>
-                    <Badge variant="secondary">24-48 hours</Badge>
+              <ScrollAnimation delay={0.4}>
+                <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mr-4">
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-blue-900">
+                      Response Time
+                    </h3>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Membership</span>
-                    <Badge variant="secondary">Same day</Badge>
+                  <p className="text-gray-600 mb-6">
+                    We typically respond to inquiries within:
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium">General Inquiries</span>
+                      <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">
+                        24-48 hours
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium">Membership</span>
+                      <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0">
+                        Same day
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium">Urgent Matters</span>
+                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0">
+                        2-4 hours
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Urgent Matters</span>
-                    <Badge variant="secondary">2-4 hours</Badge>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </ScrollAnimation>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-background">
+      {/* Enhanced FAQ Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Quick answers to common questions
-            </p>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Quick answers to common questions
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="space-y-6">
-            <Card className="card-gradient p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                How can I join IHSAN?
-              </h3>
-              <p className="text-muted-foreground">
-                You can join by filling out our membership form on the Membership page. 
-                We welcome all UT Dallas students interested in healthcare careers.
-              </p>
-            </Card>
-
-            <Card className="card-gradient p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                Are there membership fees?
-              </h3>
-              <p className="text-muted-foreground">
-                We offer both free Student Membership and Active Membership ($25/semester) 
-                with additional benefits. Choose what works best for you.
-              </p>
-            </Card>
-
-            <Card className="card-gradient p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                Can non-pre-health students join?
-              </h3>
-              <p className="text-muted-foreground">
-                While our focus is on pre-health students, we welcome anyone interested 
-                in healthcare, community service, and professional development.
-              </p>
-            </Card>
-
-            <Card className="card-gradient p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                How often do you meet?
-              </h3>
-              <p className="text-muted-foreground">
-                We have general meetings twice a month, plus various workshops, 
-                volunteering opportunities, and social events throughout the semester.
-              </p>
-            </Card>
+            {[
+              {
+                question: "How can I join IHSAN?",
+                answer: "You can join by filling out our membership form on the Membership page. We welcome all UT Dallas students interested in healthcare careers."
+              },
+              {
+                question: "Are there membership fees?",
+                answer: "We offer both free Student Membership and Active Membership ($25/semester) with additional benefits. Choose what works best for you."
+              },
+              {
+                question: "Can non-pre-health students join?",
+                answer: "While our focus is on pre-health students, we welcome anyone interested in healthcare, community service, and professional development."
+              },
+              {
+                question: "How often do you meet?",
+                answer: "We have general meetings twice a month, plus various workshops, volunteering opportunities, and social events throughout the semester."
+              }
+            ].map((faq, index) => (
+              <ScrollAnimation key={faq.question} delay={index * 0.1}>
+                <Card className="card-gradient p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-blue-900 mb-4">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </Card>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 hero-gradient">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Ready to Connect?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            We're here to help and answer any questions you might have.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 rounded-xl"
-              onClick={() => window.location.href = 'mailto:ihsanhealthcareutd@gmail.com'}
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Email Us Now
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10"
-              onClick={() => window.open('https://www.instagram.com/ihsanhealthcareutd/', '_blank')}
-            >
-              <Instagram className="mr-2 h-5 w-5" />
-              Follow on Instagram
-            </Button>
-          </div>
+      {/* Enhanced CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollAnimation>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Connect?
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+              We're here to help and answer any questions you might have.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                onClick={() => window.location.href = 'mailto:ihsanhealthcareutd@gmail.com'}
+              >
+                <Mail className="mr-3 h-6 w-6" />
+                Email Us Now
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-10 py-5 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold hover:scale-105 transition-all duration-300"
+                onClick={() => window.open('https://www.instagram.com/ihsanhealthcareutd/', '_blank')}
+              >
+                <Instagram className="mr-3 h-6 w-6" />
+                Follow on Instagram
+              </Button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
     </div>

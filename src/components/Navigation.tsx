@@ -11,7 +11,7 @@ const navigationItems = [
   { name: 'Home', href: '/' },
   { name: 'Events', href: '/events' },
   { name: 'Membership', href: '/membership' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Testimonials', href: '/blog' },
   { name: 'Past Events', href: '/past-events' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -40,25 +40,25 @@ export function Navigation() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200",
       isScrolled 
-        ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-white/30" 
-        : "bg-transparent/10 backdrop-blur-sm"
+        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300" 
+        : "bg-white/90 backdrop-blur-sm"
     )}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-4 group"
             aria-label="IHSAN Healthcare Association Home"
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center transition-transform group-hover:scale-105">
-              <Heart className="w-5 h-5 text-white" fill="currentColor" />
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform group-hover:scale-105 animate-pulse-glow">
+              <Heart className="w-6 h-6 text-white" fill="currentColor" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg text-foreground leading-none">IHSAN</span>
-              <span className="text-xs text-muted-foreground leading-none">Healthcare Association</span>
+              <span className="font-bold text-xl text-gray-900 leading-none">IHSAN</span>
+              <span className="text-sm text-gray-600 leading-none">Healthcare Association</span>
             </div>
           </Link>
 
@@ -69,15 +69,15 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative group",
+                  "text-base font-medium transition-colors hover:text-blue-600 relative group",
                   isActive(item.href)
-                    ? "text-primary"
-                    : "text-foreground/80"
+                    ? "text-blue-600"
+                    : "text-gray-700"
                 )}
               >
                 {item.name}
                 <span className={cn(
-                  "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
+                  "absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300",
                   isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
                 )} />
               </Link>
@@ -89,11 +89,11 @@ export function Navigation() {
             <Button 
               asChild 
               variant="outline" 
-              size="sm"
-              className="hover:bg-primary hover:text-primary-foreground transition-colors"
+              size="lg"
+              className="hover:bg-blue-600 hover:text-white transition-colors border-gray-300 text-gray-700 px-6 py-2"
             >
               <Link href="/donate">
-                <Heart className="w-4 h-4 mr-2" />
+                <Heart className="w-5 h-5 mr-2" />
                 Donate
               </Link>
             </Button>

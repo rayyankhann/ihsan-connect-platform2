@@ -3,65 +3,67 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import ScrollAnimation from '@/components/ScrollAnimation';
 import { 
   User, 
   Calendar, 
   ArrowRight,
   BookOpen,
   Heart,
-  MessageCircle
+  MessageCircle,
+  Award,
+  Globe,
+  PenTool,
+  Star,
+  Quote
 } from 'lucide-react';
 
-const blogPosts = [
+const testimonials = [
   {
     id: 1,
-    title: "My Journey to Medical School: From Pre-Med to Acceptance",
-    excerpt: "A comprehensive guide on navigating the medical school application process, including MCAT prep, volunteering, and interviews.",
-    author: "Sarah Johnson",
+    name: "Sarah Johnson",
     role: "IHSAN Alumni, Medical Student",
     date: "2024-12-15",
-    readTime: "8 min read",
+    rating: 5,
     category: "Medical School",
     tags: ["Pre-Med", "MCAT", "Applications"],
+    testimonial: "IHSAN was instrumental in my journey to medical school. The workshops, networking opportunities, and mentorship I received here gave me the confidence and skills I needed to succeed. The community is incredibly supportive and the hands-on experiences were invaluable.",
     likes: 42,
     comments: 12
   },
   {
     id: 2,
-    title: "Volunteering at Dallas Community Health Fair: A Rewarding Experience",
-    excerpt: "Reflecting on the impact of community service and how volunteering shaped my perspective on healthcare accessibility.",
-    author: "Michael Chen",
+    name: "Michael Chen",
     role: "IHSAN Member, Senior",
     date: "2024-12-10",
-    readTime: "5 min read",
+    rating: 5,
     category: "Volunteering",
     tags: ["Community Service", "Healthcare Access"],
+    testimonial: "Volunteering through IHSAN has been one of the most rewarding experiences of my college career. I've learned so much about healthcare accessibility and the impact we can make in our community. The leadership opportunities have helped me grow both personally and professionally.",
     likes: 28,
     comments: 8
   },
   {
     id: 3,
-    title: "Research Opportunities for Pre-Health Students at UTD",
-    excerpt: "Discover the various research programs available on campus and how to get involved in healthcare-related projects.",
-    author: "Dr. Amanda Rodriguez",
+    name: "Dr. Amanda Rodriguez",
     role: "Faculty Advisor",
     date: "2024-12-05",
-    readTime: "6 min read",
+    rating: 5,
     category: "Research",
     tags: ["Research", "Academic", "Opportunities"],
+    testimonial: "As a faculty advisor, I've seen firsthand how IHSAN transforms students' academic and professional trajectories. The organization provides exceptional opportunities for research, networking, and skill development that are crucial for healthcare careers.",
     likes: 35,
     comments: 15
   },
   {
     id: 4,
-    title: "Networking Tips: Building Professional Relationships in Healthcare",
-    excerpt: "How to effectively network with healthcare professionals and make meaningful connections for your career.",
-    author: "Jennifer Park",
+    name: "Jennifer Park",
     role: "IHSAN Alumni, Physician",
     date: "2024-11-28",
-    readTime: "7 min read",
+    rating: 5,
     category: "Career",
     tags: ["Networking", "Professional Development"],
+    testimonial: "The networking skills I developed through IHSAN have been essential in my medical career. The organization taught me how to build meaningful professional relationships and gave me access to mentors who guided my path to becoming a physician.",
     likes: 31,
     comments: 9
   }
@@ -69,204 +71,275 @@ const blogPosts = [
 
 const categories = ["All", "Medical School", "Volunteering", "Research", "Career"];
 
-const Blog = () => {
+const stats = [
+  { number: "50+", label: "Member Testimonials", icon: Quote },
+  { number: "1,200+", label: "Total Views", icon: Heart },
+  { number: "25+", label: "Community Members", icon: User },
+  { number: "4.9", label: "Average Rating", icon: Star }
+];
+
+const Testimonials = () => {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Community Stories
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Real experiences, insights, and advice from our IHSAN community members
-          </p>
+      <section className="py-20 hero-gradient relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
+          </div>
+          
+          <div className="mb-8">
+            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+              💬 Member Stories
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              IHSAN Testimonials
+            </h1>
+            <div className="w-24 h-1 bg-[#2563eb] mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Real experiences and success stories from our IHSAN community members
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Featured Post */}
-      <section className="py-16 bg-background">
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <Badge className="mb-4">Featured Story</Badge>
-            <Card className="card-gradient overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <ScrollAnimation key={stat.label} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
+                    <stat.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Featured Testimonial */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="mb-8">
+              <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-4 py-2 text-base">
+                Featured Story
+              </Badge>
+            </div>
+            <Card className="card-gradient overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-8 lg:p-12">
-                  <Badge variant="secondary" className="mb-4">
-                    {blogPosts[0].category}
+                <div className="p-10 lg:p-12">
+                  <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0 mb-6">
+                    {testimonials[0].category}
                   </Badge>
-                  <h2 className="text-3xl font-bold text-foreground mb-4">
-                    {blogPosts[0].title}
-                  </h2>
-                  <p className="text-muted-foreground mb-6 text-lg">
-                    {blogPosts[0].excerpt}
-                  </p>
-                  
                   <div className="flex items-center mb-6">
-                    <Avatar className="mr-3">
-                      <AvatarFallback>
-                        {blogPosts[0].author.split(' ').map(n => n[0]).join('')}
+                    {[...Array(testimonials[0].rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
+                    "{testimonials[0].testimonial}"
+                  </h2>
+                  
+                  <div className="flex items-center mb-8">
+                    <Avatar className="mr-4 w-12 h-12">
+                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white font-bold">
+                        {testimonials[0].name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-medium text-foreground">{blogPosts[0].author}</p>
-                      <p className="text-sm text-muted-foreground">{blogPosts[0].role}</p>
+                      <p className="font-semibold text-blue-900">{testimonials[0].name}</p>
+                      <p className="text-gray-600">{testimonials[0].role}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center space-x-6 text-sm text-gray-600">
                       <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(blogPosts[0].date).toLocaleDateString()}
+                        <Calendar className="w-4 h-4 mr-2 text-blue-500" />
+                        {new Date(testimonials[0].date).toLocaleDateString()}
                       </div>
-                      <span>•</span>
-                      <span>{blogPosts[0].readTime}</span>
                     </div>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                    <div className="flex items-center space-x-6 text-sm text-gray-600">
                       <div className="flex items-center">
-                        <Heart className="w-4 h-4 mr-1" />
-                        {blogPosts[0].likes}
+                        <Heart className="w-4 h-4 mr-2 text-red-500" />
+                        {testimonials[0].likes}
                       </div>
                       <div className="flex items-center">
-                        <MessageCircle className="w-4 h-4 mr-1" />
-                        {blogPosts[0].comments}
+                        <MessageCircle className="w-4 h-4 mr-2 text-blue-500" />
+                        {testimonials[0].comments}
                       </div>
                     </div>
                   </div>
 
-                  <Button>
+                  <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:scale-105 transition-all duration-300 shadow-lg">
                     Read Full Story
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
-                <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <BookOpen className="w-24 h-24 text-primary/50" />
+                <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                  <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                    <Quote className="w-16 h-16 text-white" />
+                  </div>
                 </div>
               </div>
             </Card>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
-      {/* All Posts */}
-      <section className="py-16 bg-muted/30">
+      {/* Enhanced All Testimonials */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
-              Recent Stories
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover insights and experiences from our community
-            </p>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+                More Member Stories
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Discover more experiences and insights from our community
+              </p>
+            </div>
+          </ScrollAnimation>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={category === "All" ? "default" : "outline"}
-                size="sm"
-                className="rounded-full"
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+          {/* Enhanced Category Filter */}
+          <ScrollAnimation>
+            <div className="flex flex-wrap justify-center gap-3 mb-16">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={category === "All" ? "default" : "outline"}
+                  size="sm"
+                  className={`rounded-full ${category === "All" ? 'bg-blue-600 hover:bg-blue-700' : 'hover:bg-blue-50 hover:border-blue-300'}`}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </ScrollAnimation>
 
-          {/* Posts Grid */}
+          {/* Enhanced Testimonials Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.slice(1).map((post, index) => (
-              <Card 
-                key={post.id}
-                className="card-gradient overflow-hidden animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <BookOpen className="w-12 h-12 text-primary/50" />
-                </div>
-                
-                <div className="p-6">
-                  <Badge variant="secondary" className="mb-3">
-                    {post.category}
-                  </Badge>
-                  
-                  <h3 className="text-lg font-semibold text-foreground mb-3 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center mb-4">
-                    <Avatar className="mr-3 w-8 h-8">
-                      <AvatarFallback className="text-xs">
-                        {post.author.split(' ').map(n => n[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-medium text-foreground text-sm">{post.author}</p>
-                      <p className="text-xs text-muted-foreground">{post.role}</p>
+            {testimonials.slice(1).map((testimonial, index) => (
+              <ScrollAnimation key={testimonial.id} delay={index * 0.1}>
+                <Card 
+                  className="card-gradient overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-xl group"
+                >
+                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                      <Quote className="w-8 h-8 text-white" />
                     </div>
                   </div>
-
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      {new Date(post.date).toLocaleDateString()}
+                  
+                  <div className="p-8">
+                    <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0 mb-4">
+                      {testimonial.category}
+                    </Badge>
+                    
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                      ))}
                     </div>
-                    <span>{post.readTime}</span>
-                  </div>
+                    
+                    <p className="text-gray-600 text-sm mb-6 line-clamp-4 leading-relaxed italic">
+                      "{testimonial.testimonial}"
+                    </p>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3 text-xs text-muted-foreground">
-                      <div className="flex items-center">
-                        <Heart className="w-3 h-3 mr-1" />
-                        {post.likes}
-                      </div>
-                      <div className="flex items-center">
-                        <MessageCircle className="w-3 h-3 mr-1" />
-                        {post.comments}
+                    <div className="flex items-center mb-6">
+                      <Avatar className="mr-4 w-10 h-10">
+                        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white font-bold text-sm">
+                          {testimonial.name.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold text-blue-900 text-sm">{testimonial.name}</p>
+                        <p className="text-gray-600 text-xs">{testimonial.role}</p>
                       </div>
                     </div>
-                    <Button size="sm" variant="ghost">
-                      Read More
-                    </Button>
+
+                    <div className="flex items-center justify-between text-sm text-gray-600 mb-6">
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-2 text-blue-500" />
+                        {new Date(testimonial.date).toLocaleDateString()}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4 text-sm text-gray-600">
+                        <div className="flex items-center">
+                          <Heart className="w-4 h-4 mr-1 text-red-500" />
+                          {testimonial.likes}
+                        </div>
+                        <div className="flex items-center">
+                          <MessageCircle className="w-4 h-4 mr-1 text-blue-500" />
+                          {testimonial.comments}
+                        </div>
+                      </div>
+                      <Button size="sm" variant="ghost" className="hover:bg-blue-50 hover:text-blue-700">
+                        Read More
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="rounded-xl">
-              Load More Stories
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mt-16">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-xl hover:bg-blue-50 hover:border-blue-300 hover:scale-105 transition-all duration-300"
+              >
+                Load More Stories
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Share Your Story
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Have an experience, insight, or advice to share with the IHSAN community? 
-            We'd love to feature your story on our blog.
-          </p>
-          <Button size="lg" className="rounded-xl">
-            <User className="mr-2 h-5 w-5" />
-            Submit Your Story
-          </Button>
+      {/* Enhanced CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollAnimation>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Share Your Story
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+              Have an experience to share with the IHSAN community? 
+              We'd love to feature your testimonial and inspire others.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              <PenTool className="mr-3 h-6 w-6" />
+              Submit Your Testimonial
+            </Button>
+          </ScrollAnimation>
         </div>
       </section>
     </div>
   );
 };
 
-export default Blog;
+export default Testimonials;

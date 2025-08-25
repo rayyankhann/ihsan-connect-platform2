@@ -5,13 +5,17 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ScrollAnimation from '@/components/ScrollAnimation';
 import { 
   Calendar, 
   MapPin, 
   Users, 
   Clock,
   ArrowRight,
-  Star
+  Star,
+  Award,
+  Heart,
+  Globe
 } from 'lucide-react';
 import volunteeringImage from '@/assets/volunteering-event.jpg';
 import networkingImage from '@/assets/networking-event.jpg';
@@ -23,7 +27,7 @@ const pastEvents = [
     date: "2024-11-15",
     time: "7:00 PM",
     location: "Natural Science Building, Room 1.124",
-    type: "Career",
+    type: "Guest Speakers",
     semester: "Fall 2024",
     image: networkingImage,
     attendees: 85,
@@ -41,7 +45,7 @@ const pastEvents = [
     date: "2024-10-28",
     time: "8:00 AM",
     location: "Richardson Community Center",
-    type: "Volunteering",
+    type: "Service",
     semester: "Fall 2024",
     image: volunteeringImage,
     attendees: 32,
@@ -59,7 +63,7 @@ const pastEvents = [
     date: "2024-10-12",
     time: "6:30 PM",
     location: "Student Union Building, Room 2.304",
-    type: "Workshop",
+    type: "Workshops",
     semester: "Fall 2024",
     image: volunteeringImage,
     attendees: 28,
@@ -77,7 +81,7 @@ const pastEvents = [
     date: "2024-09-20",
     time: "6:00 PM",
     location: "Alumni Center",
-    type: "Career",
+    type: "Guest Speakers",
     semester: "Fall 2024",
     image: networkingImage,
     attendees: 65,
@@ -95,7 +99,7 @@ const pastEvents = [
     date: "2024-09-05",
     time: "5:00 PM",
     location: "McDermott Library, Room 2.102",
-    type: "Academic",
+    type: "Workshops",
     semester: "Fall 2024",
     image: networkingImage,
     attendees: 22,
@@ -128,7 +132,14 @@ const pastEvents = [
 ];
 
 const semesters = ["All", "Fall 2024", "Spring 2024", "Fall 2023"];
-const eventTypes = ["All", "Workshop", "Volunteering", "Career", "Academic", "Fundraising"];
+const eventTypes = ["All", "Workshops", "Guest Speakers", "Service", "Fundraising", "Research"];
+
+const stats = [
+  { number: "50+", label: "Events Hosted", icon: Calendar },
+  { number: "1,200+", label: "Total Attendees", icon: Users },
+  { number: "25+", label: "Workshop Sessions", icon: Award },
+  { number: "500+", label: "Community Members Served", icon: Heart }
+];
 
 const PastEvents = () => {
   const [selectedSemester, setSelectedSemester] = React.useState("All");
@@ -141,186 +152,222 @@ const PastEvents = () => {
   });
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Past Events
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Celebrating our community's achievements and memorable experiences
-          </p>
-        </div>
-      </section>
-
-      {/* Statistics */}
-      <section className="py-12 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <Card className="card-gradient p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">50+</div>
-              <div className="text-muted-foreground">Events Hosted</div>
-            </Card>
-            <Card className="card-gradient p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">1,200+</div>
-              <div className="text-muted-foreground">Total Attendees</div>
-            </Card>
-            <Card className="card-gradient p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">25+</div>
-              <div className="text-muted-foreground">Workshop Sessions</div>
-            </Card>
-            <Card className="card-gradient p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Community Members Served</div>
-            </Card>
+      <section className="py-20 hero-gradient relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
+          </div>
+          
+          <div className="mb-8">
+            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+              📅 Past Events
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Our Event History
+            </h1>
+            <div className="w-24 h-1 bg-[#2563eb] mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Explore our past events and see the impact we've made in our community
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Event Filters */}
-      <section className="py-8 bg-muted/30">
+      {/* Enhanced Statistics */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={selectedSemester} onValueChange={setSelectedSemester} className="w-full mb-6">
-            <TabsList className="grid grid-cols-4 lg:w-1/2 mx-auto">
-              {semesters.map((semester) => (
-                <TabsTrigger key={semester} value={semester}>
-                  {semester}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            {eventTypes.map((type) => (
-              <Button
-                key={type}
-                variant={type === selectedType ? "default" : "outline"}
-                size="sm"
-                className="rounded-full"
-                onClick={() => setSelectedType(type)}
-              >
-                {type}
-              </Button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <ScrollAnimation key={stat.label} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
+                    <stat.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Events Grid */}
-      <section className="py-16 bg-muted/30">
+      {/* Enhanced Event Filters */}
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <Tabs value={selectedSemester} onValueChange={setSelectedSemester} className="w-full mb-8">
+              <TabsList className="grid grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg">
+                {semesters.map((semester) => (
+                  <TabsTrigger key={semester} value={semester} className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                    {semester}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+
+            <div className="flex flex-wrap justify-center gap-3">
+              {eventTypes.map((type) => (
+                <Button
+                  key={type}
+                  variant={type === selectedType ? "default" : "outline"}
+                  size="sm"
+                  className={`rounded-full ${type === selectedType ? 'bg-blue-600 hover:bg-blue-700' : 'hover:bg-blue-50 hover:border-blue-300'}`}
+                  onClick={() => setSelectedType(type)}
+                >
+                  {type}
+                </Button>
+              ))}
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* Enhanced Events Grid */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEvents.map((event, index) => (
-              <Card 
-                key={event.id}
-                className="card-gradient overflow-hidden animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="aspect-video overflow-hidden relative">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" />
-                    <span className="text-white text-sm font-medium">{event.rating}</span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge variant="secondary" className="font-medium">
-                      {event.type}
-                    </Badge>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Users className="w-4 h-4 mr-1" />
-                      {event.attendees}
+              <ScrollAnimation key={event.id} delay={index * 0.1}>
+                <Card 
+                  className="card-gradient overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-xl group"
+                >
+                  <div className="aspect-video overflow-hidden relative">
+                    <img 
+                      src={event.image} 
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
+                      <Star className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" />
+                      <span className="text-white text-sm font-medium">{event.rating}</span>
+                    </div>
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">
+                        {event.type}
+                      </Badge>
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {event.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {event.description}
-                  </p>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-muted-foreground">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span className="text-sm">
-                        {new Date(event.date).toLocaleDateString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </span>
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <Users className="w-4 h-4 mr-2" />
+                        {event.attendees} attendees
+                      </div>
                     </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <Clock className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{event.time}</span>
+                    
+                    <h3 className="text-xl font-bold text-blue-900 mb-4 leading-tight">
+                      {event.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                      {event.description}
+                    </p>
+                    
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center text-gray-600">
+                        <Calendar className="w-4 h-4 mr-3 text-blue-500" />
+                        <span className="text-sm">
+                          {new Date(event.date).toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </span>
+                      </div>
+                      <div className="flex items-center text-gray-600">
+                        <Clock className="w-4 h-4 mr-3 text-blue-500" />
+                        <span className="text-sm">{event.time}</span>
+                      </div>
+                      <div className="flex items-center text-gray-600">
+                        <MapPin className="w-4 h-4 mr-3 text-blue-500" />
+                        <span className="text-sm">{event.location}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{event.location}</span>
-                    </div>
-                  </div>
 
-                  {/* Event Highlights */}
-                  <div className="mb-4">
-                    <h4 className="font-medium text-foreground mb-2 text-sm">Highlights:</h4>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      {event.highlights.slice(0, 2).map((highlight, idx) => (
-                        <li key={idx}>• {highlight}</li>
-                      ))}
-                    </ul>
+                    {/* Event Highlights */}
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-blue-900 mb-3 text-sm">Highlights:</h4>
+                      <ul className="text-xs text-gray-600 space-y-2">
+                        {event.highlights.slice(0, 2).map((highlight, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <Button variant="outline" className="w-full hover:bg-blue-50 hover:border-blue-300 group-hover:scale-105 transition-all duration-300">
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
                   </div>
-                  
-                  <Button variant="outline" className="w-full">
-                    View Details
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </Card>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
 
           {filteredEvents.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
-                No events found for the selected filters.
-              </p>
-            </div>
+            <ScrollAnimation>
+              <div className="text-center py-16">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-6">
+                  <Calendar className="w-12 h-12 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">No Events Found</h3>
+                <p className="text-gray-600 text-lg max-w-md mx-auto">
+                  No events found for the selected filters. Try adjusting your search criteria.
+                </p>
+              </div>
+            </ScrollAnimation>
           )}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Don't Miss Future Events
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Stay updated on our upcoming workshops, volunteering opportunities, and networking events.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="rounded-xl">
-              <a href="/events">
+      {/* Enhanced CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollAnimation>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Don't Miss Future Events
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+              Stay updated on our upcoming workshops, volunteering opportunities, and networking events.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+              >
+                <Calendar className="mr-3 h-6 w-6" />
                 View Upcoming Events
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="rounded-xl">
-              <a href="/membership">
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-10 py-5 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold hover:scale-105 transition-all duration-300"
+              >
+                <Heart className="mr-3 h-6 w-6" />
                 Join IHSAN
-              </a>
-            </Button>
-          </div>
+              </Button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
     </div>
