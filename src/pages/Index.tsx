@@ -127,7 +127,7 @@ const Index = () => {
             <div className="flex items-center justify-center gap-8 mb-8 text-white/80">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-base">$10 Membership</span>
+                <span className="text-base">$15 Membership</span>
               </div>
               <div className="w-px h-6 bg-white/30"></div>
               <div className="flex items-center gap-3">
@@ -259,129 +259,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Core Objectives */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-20">
-              <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8">
-                Our Core Objectives
-              </h2>
-              <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-                Six pillars that guide our mission to develop ethical healthcare professionals
-              </p>
-            </div>
-          </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {coreObjectives.map((objective, index) => (
-              <ScrollAnimation key={objective.title} delay={index * 0.1}>
-                <Card 
-                  className="card-gradient p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 cursor-pointer group shadow-lg"
-                >
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${objective.color} flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg`}>
-                  <objective.icon className="w-10 h-10 text-white transition-all duration-300 group-hover:scale-110" />
-                </div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-4">
-                  {objective.title}
-                </h3>
-                <p className="text-gray-600 text-base leading-relaxed">
-                  {objective.description}
-                </p>
-              </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Upcoming Events */}
-      <section className="py-12 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                Upcoming Events
-              </h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                Workshops, volunteering opportunities, and networking events - open to all students
-              </p>
-            </div>
-          </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {upcomingEvents.map((event, index) => (
-              <ScrollAnimation key={event.id} delay={index * 0.1}>
-                <Card 
-                  className="card-gradient overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 cursor-pointer group"
-                >
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge variant="secondary" className="font-medium">
-                      {event.type}
-                    </Badge>
-                    <div className="flex items-center text-sm text-accent font-medium">
-                      <Users className="w-4 h-4 mr-1" />
-                      {event.spots}
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold text-foreground mb-3">
-                    {event.title}
-                  </h3>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-muted-foreground">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span className="text-sm">
-                        {new Date(event.date).toLocaleDateString("en-US", {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric"
-                        })}
-                      </span>
-                    </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <Clock className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{event.time}</span>
-                    </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{event.location}</span>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full transition-all duration-300 hover:scale-105 hover:shadow-lg" asChild>
-                    <Link href="/events">
-                      Join Event
-                    </Link>
-                  </Button>
-                </div>
-              </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-
-          <ScrollAnimation delay={0.3}>
-            <div className="text-center mt-12">
-              <Button asChild variant="outline" size="lg" className="rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <Link href="/events">
-                  View All Events
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
 
       {/* Get Involved Section */}
       <section className="py-12 bg-muted/30">
@@ -407,7 +287,7 @@ const Index = () => {
                   Join IHSAN
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  $10 membership - supports charity initiatives
+                  $15 membership - supports charity initiatives
                 </p>
               </Link>
             </Card>

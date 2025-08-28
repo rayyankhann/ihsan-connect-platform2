@@ -65,7 +65,7 @@ const benefits = [
 
 const membershipInfo = {
   name: "IHSAN Member",
-  price: "$10",
+        price: "$15",
   period: "Open to All UT Dallas Students",
   features: [
     "Access to all workshops and events",
@@ -79,13 +79,13 @@ const membershipInfo = {
     "Community service projects",
     "Pre-health academic support"
   ],
-  description: "Join our college club for all healthcare-interested students. Your $10 membership fee directly supports our charity initiatives and community health programs."
+      description: "Join our college club for all healthcare-interested students. Your $15 membership fee directly supports our charity initiatives and community health programs."
 };
 
 const stats = [
   { number: "300+", label: "Active Members", icon: Users },
   { number: "50+", label: "Events This Year", icon: Calendar },
-  { number: "$10", label: "Membership Fee", icon: Star },
+          { number: "$15", label: "Membership Fee", icon: Star },
   { number: "25+", label: "Healthcare Partners", icon: Stethoscope }
 ];
 
@@ -178,7 +178,7 @@ const Membership = () => {
           <ScrollAnimation>
             <div className="text-center mb-20">
               <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
-                $10 Membership - Open to All
+                $15 Membership - Open to All
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 No barriers - just passionate students pursuing healthcare careers together
@@ -237,7 +237,7 @@ const Membership = () => {
                 Ready to Join Our Community?
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Fill out the form below to join IHSAN - $10 registration fee supports charity initiatives!
+                Fill out the form below to join IHSAN - $15 registration fee supports charity initiatives!
               </p>
             </div>
           </ScrollAnimation>
