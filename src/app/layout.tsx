@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import MobileOptimizer from '@/components/MobileOptimizer'
+import MobileViewportFix from '@/components/mobile-viewport-fix'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export const viewport = {
   maximumScale: 5,
   userScalable: true,
   viewportFit: 'cover',
+  themeColor: '#1e40af',
 }
 
 export default function RootLayout({
@@ -40,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
         <meta name="format-detection" content="telephone=no" />
@@ -63,7 +65,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e40af" />
         <meta name="msapplication-TileColor" content="#1e40af" />
       </head>
-      <body className={`${inter.className} browser-compat`}>
+      <body className={`${inter.className} browser-compat min-h-full antialiased`}>
+        <MobileViewportFix />
         <MobileOptimizer />
         <Providers>
           {children}

@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile viewport fixes */
+:root {
+  --vh: 1vh;
+}
+
+.fullscreen {
+  min-height: calc(var(--vh) * 100);
+}
+
+@supports (height: 100dvh) {
+  .fullscreen {
+    min-height: 100dvh;
+  }
+}
+
+.safe-padded {
+  padding-top: calc(env(safe-area-inset-top) + 1rem);
+  padding-right: calc(env(safe-area-inset-right) + 1rem);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+  padding-left: calc(env(safe-area-inset-left) + 1rem);
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+/* Prevent layout shifts */
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Optimize scrolling performance */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Cross-browser compatibility and mobile responsiveness */
 @layer base {
   html {
@@ -38,13 +77,28 @@
     padding: 0;
     /* Ensure proper scrolling on mobile */
     -webkit-overflow-scrolling: touch;
-    overflow-y: auto;
+    overflow-y: scroll;
+    touch-action: manipulation;
   }
   
   * {
     box-sizing: border-box;
     /* Reset any browser-specific styles */
     -webkit-tap-highlight-color: transparent;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Prevent iOS input zoom */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Ensure 44px touch targets */
+  button, [role="button"], a.btn {
+    min-height: 44px;
   }
   
   /* Fix for Firefox and other browsers */
@@ -294,9 +348,7 @@ All colors MUST be HSL.
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Smooth scrolling handled above */
 }
 
 @layer components {
@@ -737,47 +789,17 @@ All colors MUST be HSL.
   }
 }
 
-/* Fix scrolling issues on mobile */
+/* Mobile scrolling optimization */
 @media screen and (max-width: 768px) {
-  main {
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-    min-height: 100vh !important;
-    position: relative !important;
+  /* Ensure proper scrolling on mobile */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
-  section {
-    overflow: visible !important;
-    position: relative !important;
-  }
-  
-  /* Ensure all content is scrollable - mobile only */
-  .hero-mobile.min-h-\[80vh\] {
-    min-height: 60vh !important;
-  }
-  
-  .hero-mobile.min-h-\[70vh\] {
-    min-height: 50vh !important;
-  }
-}
-
-/* iPhone 16 Pro Max and latest devices support */
-@media screen and (min-width: 430px) and (max-width: 500px) {
-  /* iPhone 16 Pro Max specific optimizations */
-  .hero-mobile {
-    min-height: 55vh !important;
-  }
-  
-  main {
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-  }
-}
-
-/* Latest Android devices support */
-@media screen and (min-width: 360px) and (max-width: 430px) {
-  /* Android devices optimization */
-  .hero-mobile {
-    min-height: 50vh !important;
+  /* Remove conflicting overflow rules */
+  main, section {
+    overflow: visible;
   }
 }

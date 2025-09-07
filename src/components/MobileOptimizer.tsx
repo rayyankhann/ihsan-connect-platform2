@@ -1,57 +1,28 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { isMobileDevice, getDeviceType, isIPhone, getIPhoneModel } from '@/lib/device-detection'
+import { useEffect } from 'react'
 
 export default function MobileOptimizer() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop')
-  const [isIPhoneDevice, setIsIPhoneDevice] = useState(false)
-  const [iPhoneModel, setIPhoneModel] = useState<string | null>(null)
-
   useEffect(() => {
-    const mobile = isMobileDevice()
-    const type = getDeviceType()
-    const iPhone = isIPhone()
-    const model = getIPhoneModel()
-
-    setIsMobile(mobile)
-    setDeviceType(type)
-    setIsIPhoneDevice(iPhone)
-    setIPhoneModel(model)
-
-    // Add device-specific classes to body
-    document.body.classList.add(`device-${type}`)
-    if (mobile) {
+    // Simplified mobile detection for better performance
+    const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    
+    if (isMobile) {
+      // Add mobile class to body
       document.body.classList.add('mobile-device')
-    }
-    if (iPhone) {
-      document.body.classList.add('iphone-device')
-      if (model) {
-        document.body.classList.add(`iphone-${model.toLowerCase().replace(/\s+/g, '-')}`)
+      
+      // Load mobile CSS only if needed
+      if (!document.getElementById('mobile-styles')) {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = '/mobile.css'
+        link.id = 'mobile-styles'
+        document.head.appendChild(link)
       }
-    }
-
-    // Load mobile CSS if mobile device
-    if (mobile) {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = '/mobile.css'
-      link.id = 'mobile-styles'
-      document.head.appendChild(link)
     }
 
     return () => {
-      // Cleanup
-      document.body.classList.remove(`device-${type}`, 'mobile-device', 'iphone-device')
-      if (model) {
-        document.body.classList.remove(`iphone-${model.toLowerCase().replace(/\s+/g, '-')}`)
-      }
-      
-      const mobileStyles = document.getElementById('mobile-styles')
-      if (mobileStyles) {
-        mobileStyles.remove()
-      }
+      document.body.classList.remove('mobile-device')
     }
   }, [])
 

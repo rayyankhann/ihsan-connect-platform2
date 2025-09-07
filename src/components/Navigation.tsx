@@ -44,7 +44,8 @@ export function Navigation() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix nav-mobile safe-area-top",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix nav-mobile",
+      "pt-[env(safe-area-inset-top)]",
       isScrolled
         ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300"
         : "bg-white/90 backdrop-blur-sm"
@@ -135,7 +136,8 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40 safe-area-top">
+          <div className="md:hidden absolute top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40"
+               style={{ top: `calc(4rem + env(safe-area-inset-top))` }}>
             <div className="px-4 py-4 space-y-3">
               {navigationItems.map((item) => (
                 <Link

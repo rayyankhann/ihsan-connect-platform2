@@ -100,13 +100,20 @@ const Index = () => {
   const nextEvent = upcomingEvents[0];
 
   return (
-    <main className="flex-1 w-full max-w-full overflow-x-hidden browser-compat firefox-fix ios-fix">
+    <div className="min-h-screen pt-20 browser-compat firefox-fix ios-fix"
+         style={{ paddingTop: 'calc(5rem + env(safe-area-inset-top))' }}>
       {/* Hero Section */}
-      <section className="min-h-[60vh] hero-gradient flex items-center justify-center relative overflow-visible w-full browser-compat hero-mobile safe-area-top">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
+      <section className="py-20 hero-gradient relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           {/* Decorative Elements */}
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
             <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
+          </div>
+          
+          <div className="mb-8">
+            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+              🏥 Healthcare Excellence
+            </span>
           </div>
           
           {/* Title with decorative underline */}
@@ -375,7 +382,7 @@ const Index = () => {
             </ScrollAnimation>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
