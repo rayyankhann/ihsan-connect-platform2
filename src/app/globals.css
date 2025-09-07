@@ -14,6 +14,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
+    /* Mobile-specific optimizations */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
   body {
@@ -361,5 +369,247 @@ All colors MUST be HSL.
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS & DEVICE OPTIMIZATION
+   ======================================== */
+
+/* Mobile-first responsive typography */
+@layer utilities {
+  /* iPhone-specific breakpoints */
+  @media screen and (max-width: 320px) {
+    /* iPhone SE and smaller */
+    .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .mobile-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .mobile-text-5xl { font-size: 2.5rem; line-height: 2.75rem; }
+  }
+  
+  @media screen and (min-width: 321px) and (max-width: 375px) {
+    /* iPhone 12/13/14 standard */
+    .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .mobile-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .mobile-text-5xl { font-size: 2.75rem; line-height: 3rem; }
+  }
+  
+  @media screen and (min-width: 376px) and (max-width: 414px) {
+    /* iPhone 12/13/14 Pro Max */
+    .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .mobile-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .mobile-text-5xl { font-size: 3rem; line-height: 3.25rem; }
+  }
+  
+  @media screen and (min-width: 415px) and (max-width: 430px) {
+    /* iPhone 15 Pro Max */
+    .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .mobile-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .mobile-text-5xl { font-size: 3.25rem; line-height: 3.5rem; }
+  }
+}
+
+/* Mobile-specific layout fixes */
+@layer components {
+  /* Hero section mobile optimization */
+  @media screen and (max-width: 768px) {
+    .hero-mobile {
+      min-height: 70vh !important;
+      padding: 1rem !important;
+    }
+    
+    .hero-mobile h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    .hero-mobile p {
+      font-size: clamp(0.875rem, 4vw, 1.125rem) !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .hero-mobile .flex {
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+      align-items: center !important;
+    }
+    
+    .hero-mobile .flex > div {
+      margin: 0 !important;
+    }
+    
+    .hero-mobile .w-px {
+      display: none !important;
+    }
+  }
+  
+  /* Card mobile optimization */
+  @media screen and (max-width: 768px) {
+    .card-mobile {
+      padding: 1rem !important;
+      margin: 0.5rem !important;
+    }
+    
+    .card-mobile h3 {
+      font-size: 1.125rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    .card-mobile p {
+      font-size: 0.875rem !important;
+      line-height: 1.3 !important;
+    }
+  }
+  
+  /* Button mobile optimization */
+  @media screen and (max-width: 768px) {
+    .btn-mobile {
+      min-height: 44px !important;
+      padding: 0.75rem 1.5rem !important;
+      font-size: 1rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    .btn-mobile-lg {
+      min-height: 48px !important;
+      padding: 1rem 2rem !important;
+      font-size: 1.125rem !important;
+      line-height: 1.4 !important;
+    }
+  }
+  
+  /* Navigation mobile optimization */
+  @media screen and (max-width: 768px) {
+    .nav-mobile {
+      padding: 0.75rem 1rem !important;
+    }
+    
+    .nav-mobile .logo {
+      height: 2rem !important;
+      width: auto !important;
+    }
+    
+    .nav-mobile .text {
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Section mobile optimization */
+  @media screen and (max-width: 768px) {
+    .section-mobile {
+      padding: 2rem 1rem !important;
+    }
+    
+    .section-mobile h2 {
+      font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    .section-mobile p {
+      font-size: clamp(0.875rem, 4vw, 1.125rem) !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.75rem !important;
+    }
+  }
+  
+  /* Grid mobile optimization */
+  @media screen and (max-width: 768px) {
+    .grid-mobile {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+    
+    .grid-mobile-2 {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.75rem !important;
+    }
+  }
+}
+
+/* Safe area insets for iPhone notches */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  
+  .safe-area-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-friendly:hover {
+    transform: none !important;
+  }
+  
+  .touch-friendly:active {
+    transform: scale(0.95) !important;
+  }
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Android-specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .android-fix {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .ios-fix {
+    -webkit-overflow-scrolling: touch;
   }
 }

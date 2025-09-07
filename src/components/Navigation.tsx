@@ -44,20 +44,20 @@ export function Navigation() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix nav-mobile safe-area-top",
       isScrolled
         ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300"
         : "bg-white/90 backdrop-blur-sm"
     )}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link 
             href="/" 
             className="flex items-center space-x-4 group"
             aria-label="IHSAN Healthcare Association Home"
           >
-            <div className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center transition-transform group-hover:scale-105 overflow-hidden">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center transition-transform group-hover:scale-105 overflow-hidden">
               <Image 
                 src="/ihsan-logo.png" 
                 alt="IHSAN Logo" 
@@ -68,8 +68,8 @@ export function Navigation() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-gray-900 leading-none">IHSAN</span>
-              <span className="text-sm text-gray-600 leading-none">Healthcare Association</span>
+              <span className="font-bold text-lg sm:text-xl text-gray-900 leading-none">IHSAN</span>
+              <span className="text-xs sm:text-sm text-gray-600 leading-none">Healthcare Association</span>
             </div>
           </Link>
 
@@ -135,7 +135,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40">
+          <div className="md:hidden absolute top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40 safe-area-top">
             <div className="px-4 py-4 space-y-3">
               {navigationItems.map((item) => (
                 <Link
