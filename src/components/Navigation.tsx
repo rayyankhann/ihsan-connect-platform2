@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Heart, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const navigationItems = [
   { name: 'Home', href: '/' },
@@ -24,10 +25,13 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Cross-browser scroll position detection
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setIsScrolled(scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Add scroll listener with passive option for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,14 +39,14 @@ export function Navigation() {
     if (href === '/') {
       return pathname === '/';
     }
-    return pathname.startsWith(href);
+    return pathname?.startsWith(href) || false;
   };
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200",
-      isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300" 
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix",
+      isScrolled
+        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300"
         : "bg-white/90 backdrop-blur-sm"
     )}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
@@ -53,8 +57,15 @@ export function Navigation() {
             className="flex items-center space-x-4 group"
             aria-label="IHSAN Healthcare Association Home"
           >
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform group-hover:scale-105 animate-pulse-glow">
-              <Heart className="w-6 h-6 text-white" fill="currentColor" />
+            <div className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center transition-transform group-hover:scale-105 overflow-hidden">
+              <Image 
+                src="/ihsan-logo.png" 
+                alt="IHSAN Logo" 
+                width={48} 
+                height={48} 
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-xl text-gray-900 leading-none">IHSAN</span>
@@ -124,7 +135,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg">
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40">
             <div className="px-4 py-4 space-y-3">
               {navigationItems.map((item) => (
                 <Link
