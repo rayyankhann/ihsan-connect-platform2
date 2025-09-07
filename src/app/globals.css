@@ -36,6 +36,9 @@
     /* Ensure consistent box model */
     margin: 0;
     padding: 0;
+    /* Ensure proper scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
   }
   
   * {
@@ -430,6 +433,19 @@ All colors MUST be HSL.
     .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
     .mobile-text-5xl { font-size: 3.25rem; line-height: 3.5rem; }
   }
+  
+  @media screen and (min-width: 431px) and (max-width: 500px) {
+    /* iPhone 16 and newer models */
+    .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .mobile-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .mobile-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .mobile-text-5xl { font-size: 3.5rem; line-height: 3.75rem; }
+  }
 }
 
 /* Mobile-specific layout fixes */
@@ -437,25 +453,30 @@ All colors MUST be HSL.
   /* Hero section mobile optimization */
   @media screen and (max-width: 768px) {
     .hero-mobile {
-      min-height: 70vh !important;
-      padding: 1rem !important;
+      min-height: 60vh !important;
+      padding: 0.5rem !important;
+      overflow: visible !important;
     }
     
     .hero-mobile h1 {
-      font-size: clamp(2rem, 8vw, 3.5rem) !important;
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
       line-height: 1.1 !important;
-      margin-bottom: 1rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .hero-mobile h1 span {
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
     }
     
     .hero-mobile p {
-      font-size: clamp(0.875rem, 4vw, 1.125rem) !important;
-      line-height: 1.4 !important;
-      margin-bottom: 0.75rem !important;
+      font-size: clamp(0.75rem, 3vw, 0.875rem) !important;
+      line-height: 1.3 !important;
+      margin-bottom: 0.25rem !important;
     }
     
     .hero-mobile .flex {
       flex-direction: column !important;
-      gap: 0.5rem !important;
+      gap: 0.25rem !important;
       align-items: center !important;
     }
     
@@ -465,6 +486,108 @@ All colors MUST be HSL.
     
     .hero-mobile .w-px {
       display: none !important;
+    }
+    
+    .hero-mobile .mb-8 {
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .hero-mobile .mb-4 {
+      margin-bottom: 0.25rem !important;
+    }
+  }
+  
+  /* iPhone 16 Pro Max specific (430px width) */
+  @media screen and (min-width: 430px) and (max-width: 500px) {
+    .hero-mobile h1 {
+      font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important;
+    }
+    
+    .hero-mobile h1 span {
+      font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important;
+    }
+    
+    .hero-mobile p {
+      font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+    }
+  }
+  
+  /* Mobile-specific text overrides - only for mobile classes */
+  @media screen and (max-width: 768px) {
+    .mobile-h1 {
+      font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+      line-height: 1.1 !important;
+    }
+    
+    .mobile-h2 {
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
+      line-height: 1.2 !important;
+    }
+    
+    .mobile-h3 {
+      font-size: clamp(1.125rem, 4vw, 1.5rem) !important;
+      line-height: 1.3 !important;
+    }
+    
+    .mobile-p {
+      font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+      line-height: 1.4 !important;
+    }
+    
+    .mobile-text-5xl {
+      font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    }
+    
+    .mobile-text-4xl {
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
+    }
+    
+    .mobile-text-3xl {
+      font-size: clamp(1.125rem, 4vw, 1.5rem) !important;
+    }
+    
+    .mobile-text-2xl {
+      font-size: clamp(1rem, 3.5vw, 1.25rem) !important;
+    }
+    
+    .mobile-text-xl {
+      font-size: clamp(0.875rem, 3vw, 1.125rem) !important;
+    }
+    
+    .mobile-text-lg {
+      font-size: clamp(0.75rem, 2.5vw, 1rem) !important;
+    }
+  }
+  
+  /* Specific overrides for Index page elements - mobile only */
+  @media screen and (max-width: 768px) {
+    /* Hero section specific overrides */
+    .hero-mobile h1 span {
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
+    }
+    
+    /* Mission section overrides */
+    .section-mobile h2 {
+      font-size: clamp(1.25rem, 5vw, 2rem) !important;
+    }
+    
+    .section-mobile p {
+      font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+    }
+    
+    /* Button overrides */
+    .btn-mobile-lg {
+      font-size: clamp(0.875rem, 3vw, 1rem) !important;
+      padding: 0.75rem 1.5rem !important;
+    }
+    
+    /* Card overrides */
+    .card-mobile h3 {
+      font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+    }
+    
+    .card-mobile p {
+      font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
     }
   }
   
@@ -611,5 +734,50 @@ All colors MUST be HSL.
 @supports (-webkit-touch-callout: none) {
   .ios-fix {
     -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix scrolling issues on mobile */
+@media screen and (max-width: 768px) {
+  main {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    min-height: 100vh !important;
+    position: relative !important;
+  }
+  
+  section {
+    overflow: visible !important;
+    position: relative !important;
+  }
+  
+  /* Ensure all content is scrollable - mobile only */
+  .hero-mobile.min-h-\[80vh\] {
+    min-height: 60vh !important;
+  }
+  
+  .hero-mobile.min-h-\[70vh\] {
+    min-height: 50vh !important;
+  }
+}
+
+/* iPhone 16 Pro Max and latest devices support */
+@media screen and (min-width: 430px) and (max-width: 500px) {
+  /* iPhone 16 Pro Max specific optimizations */
+  .hero-mobile {
+    min-height: 55vh !important;
+  }
+  
+  main {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+}
+
+/* Latest Android devices support */
+@media screen and (min-width: 360px) and (max-width: 430px) {
+  /* Android devices optimization */
+  .hero-mobile {
+    min-height: 50vh !important;
   }
 }

@@ -100,9 +100,9 @@ const Index = () => {
   const nextEvent = upcomingEvents[0];
 
   return (
-    <main className="flex-1 w-full max-w-full overflow-x-hidden browser-compat firefox-fix">
+    <main className="flex-1 w-full max-w-full overflow-x-hidden browser-compat firefox-fix ios-fix">
       {/* Hero Section */}
-      <section className="min-h-[80vh] hero-gradient flex items-center justify-center relative overflow-hidden w-full browser-compat hero-mobile safe-area-top">
+      <section className="min-h-[60vh] hero-gradient flex items-center justify-center relative overflow-visible w-full browser-compat hero-mobile safe-area-top">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
           {/* Decorative Elements */}
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
@@ -110,16 +110,16 @@ const Index = () => {
           </div>
           
           {/* Title with decorative underline */}
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+          <div className="mb-4 sm:mb-8">
+            <h1 className="text-2xl sm:text-5xl md:text-7xl font-bold mb-2 sm:mb-4 mobile-h1">
               <span className="text-white">Welcome to </span>
               <span className="text-white">IHSAN</span>
             </h1>
-            <div className="w-24 h-1 bg-[#2563eb] mx-auto rounded-full mb-4"></div>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            <div className="w-16 sm:w-24 h-1 bg-[#2563eb] mx-auto rounded-full mb-2 sm:mb-4"></div>
+            <p className="text-sm sm:text-xl text-white/90 max-w-2xl mx-auto mobile-p">
               IHSAN Healthcare Association at the University of Texas at Dallas
             </p>
-            <p className="text-lg text-white/80 mt-2">
+            <p className="text-xs sm:text-lg text-white/80 mt-1 sm:mt-2 mobile-p">
               Open to All Healthcare-Interested Students
             </p>
           </div>
@@ -183,16 +183,16 @@ const Index = () => {
       <section className="py-12 sm:py-24 bg-gradient-to-br from-blue-50 to-white section-mobile">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
-            <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8 mobile-h2">
               Our Mission
             </h2>
             <div className="max-w-5xl mx-auto space-y-4 sm:space-y-8">
-              <p className="text-lg sm:text-2xl text-gray-700 leading-relaxed">
+              <p className="text-lg sm:text-2xl text-gray-700 leading-relaxed mobile-p">
                 <strong className="text-blue-900">IHSAN for Healthcare</strong> was created to uplift students with plans to pursue healthcare post-graduation. 
                 Our primary purpose is to provide students with job, volunteering, and leadership opportunities 
                 meant to educate them in their field, increase their involvement, and promote their applications.
               </p>
-              <p className="text-base sm:text-xl text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-xl text-gray-600 leading-relaxed mobile-p">
                 Our secondary purpose is to aid the healthcare system in third-world countries by raising 
                 awareness and fundraising money to provide them with necessary supplies and aid as needed.
               </p>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
+import MobileOptimizer from '@/components/MobileOptimizer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -63,6 +64,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#1e40af" />
       </head>
       <body className={`${inter.className} browser-compat`}>
+        <MobileOptimizer />
         <Providers>
           {children}
         </Providers>
