@@ -40,7 +40,15 @@ If you need environment variables for local development:
 2. Add the following content to `.env.local`:
    ```env
    # Firebase Configuration
+   NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDTlInn9m2KhUFXxCsOCPo-G6U6dg0ExSg
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=ihsanhealthcare-ea7de.firebaseapp.com
    NEXT_PUBLIC_FIREBASE_PROJECT_ID=ihsanhealthcare-ea7de
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=ihsanhealthcare-ea7de.firebasestorage.app
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=383997141550
+   NEXT_PUBLIC_FIREBASE_APP_ID=1:383997141550:web:10304837bf54dc2792b5bf
+   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-7CZ7LEEXVN
+   
+   # Firebase Hosting Configuration
    FIREBASE_PROJECT_ID=ihsanhealthcare-ea7de
    FIREBASE_SITE_ID=ihsanhealthcare-ea7de
    
