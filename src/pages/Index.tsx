@@ -100,10 +100,10 @@ const Index = () => {
   const nextEvent = upcomingEvents[0];
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 w-full max-w-full overflow-x-hidden browser-compat firefox-fix">
       {/* Hero Section */}
-      <section className="min-h-[80vh] hero-gradient flex items-center justify-center relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="min-h-[80vh] hero-gradient flex items-center justify-center relative overflow-hidden w-full browser-compat">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
           {/* Decorative Elements */}
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
             <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>

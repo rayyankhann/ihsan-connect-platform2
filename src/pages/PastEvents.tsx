@@ -241,7 +241,7 @@ const PastEvents = () => {
                 >
                   <div className="aspect-video overflow-hidden relative">
                     <img 
-                      src={event.image} 
+                      src={event.image.src} 
                       alt={event.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />

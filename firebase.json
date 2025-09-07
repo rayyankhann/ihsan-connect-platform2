@@ -1,0 +1,73 @@
+{
+  "hosting": {
+    "public": "out",
+    "site": "ihsanhealthcare-ea7de",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/events",
+        "destination": "/Events/index.html"
+      },
+      {
+        "source": "/events/**",
+        "destination": "/Events/index.html"
+      },
+      {
+        "source": "/about",
+        "destination": "/About/index.html"
+      },
+      {
+        "source": "/about/**",
+        "destination": "/About/index.html"
+      },
+      {
+        "source": "/membership",
+        "destination": "/Membership/index.html"
+      },
+      {
+        "source": "/membership/**",
+        "destination": "/Membership/index.html"
+      },
+      {
+        "source": "/blog",
+        "destination": "/Blog/index.html"
+      },
+      {
+        "source": "/blog/**",
+        "destination": "/Blog/index.html"
+      },
+      {
+        "source": "/past-events",
+        "destination": "/past-events/index.html"
+      },
+      {
+        "source": "/past-events/**",
+        "destination": "/past-events/index.html"
+      },
+      {
+        "source": "/contact",
+        "destination": "/Contact/index.html"
+      },
+      {
+        "source": "/contact/**",
+        "destination": "/Contact/index.html"
+      },
+      {
+        "source": "/donate",
+        "destination": "/Donate/index.html"
+      },
+      {
+        "source": "/donate/**",
+        "destination": "/Donate/index.html"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

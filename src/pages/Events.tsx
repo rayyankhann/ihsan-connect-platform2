@@ -6,7 +6,6 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import Link from 'next/link';
 import { 
   Calendar, 
   MapPin, 
@@ -344,16 +343,15 @@ const Events = () => {
           <div className="text-sm font-medium text-gray-900 mb-1">{day}</div>
           <div className="space-y-1 max-h-24 overflow-y-auto">
             {dayEvents.map(event => (
-              <Link 
+              <div 
                 key={event.id}
-                href={`/events/${event.id}`}
-                className={`text-xs p-1 rounded cursor-pointer transition-colors border-l-2 ${getEventTypeColor(event.type)} hover:opacity-80 block`}
+                className={`text-xs p-1 rounded transition-colors border-l-2 ${getEventTypeColor(event.type)} block`}
                 title={`${event.title} - ${event.time} - ${event.location}`}
               >
                 <div className="font-medium truncate">{event.title}</div>
                 <div className="text-xs opacity-80">{event.time}</div>
                 <div className="text-xs truncate font-semibold">{event.type}</div>
-              </Link>
+              </div>
             ))}
             {dayEvents.length === 0 && (
               <div className="text-xs text-gray-400 text-center py-2">

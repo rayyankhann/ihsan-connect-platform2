@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -136,9 +136,16 @@ const stats = [
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("mission");
+  const [isFirefox, setIsFirefox] = useState(false);
+
+  useEffect(() => {
+    // Detect Firefox
+    const isFirefoxBrowser = /Firefox/.test(navigator.userAgent);
+    setIsFirefox(isFirefoxBrowser);
+  }, []);
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 browser-compat firefox-fix">
       {/* Header */}
       <section className="py-20 hero-gradient relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -190,24 +197,75 @@ const About = () => {
       <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg mb-16">
-                <TabsTrigger value="mission" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  Mission & Vision
-                </TabsTrigger>
-                <TabsTrigger value="leadership" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  Leadership
-                </TabsTrigger>
-                <TabsTrigger value="journey" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  Our Journey
-                </TabsTrigger>
-                <TabsTrigger value="values" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  Core Values
-                </TabsTrigger>
-              </TabsList>
+            {isFirefox ? (
+              // Firefox fallback - simple button navigation
+              <div className="w-full">
+                <div className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 lg:w-1/2 mx-auto bg-white shadow-lg mb-16 p-1 rounded-lg">
+                  <button 
+                    onClick={() => setActiveTab("mission")}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeTab === "mission" 
+                        ? "bg-blue-600 text-white" 
+                        : "text-gray-600 hover:text-blue-600"
+                    }`}
+                  >
+                    Mission & Vision
+                  </button>
+                  <button 
+                    onClick={() => setActiveTab("leadership")}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeTab === "leadership" 
+                        ? "bg-blue-600 text-white" 
+                        : "text-gray-600 hover:text-blue-600"
+                    }`}
+                  >
+                    Leadership
+                  </button>
+                  <button 
+                    onClick={() => setActiveTab("journey")}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeTab === "journey" 
+                        ? "bg-blue-600 text-white" 
+                        : "text-gray-600 hover:text-blue-600"
+                    }`}
+                  >
+                    Our Journey
+                  </button>
+                  <button 
+                    onClick={() => setActiveTab("values")}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeTab === "values" 
+                        ? "bg-blue-600 text-white" 
+                        : "text-gray-600 hover:text-blue-600"
+                    }`}
+                  >
+                    Core Values
+                  </button>
+                </div>
+              </div>
+            ) : (
+              // Normal tabs for other browsers
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="grid w-full grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg mb-16">
+                  <TabsTrigger value="mission" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                    Mission & Vision
+                  </TabsTrigger>
+                  <TabsTrigger value="leadership" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                    Leadership
+                  </TabsTrigger>
+                  <TabsTrigger value="journey" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                    Our Journey
+                  </TabsTrigger>
+                  <TabsTrigger value="values" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                    Core Values
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
+            )}
 
-              {/* Mission & Vision Tab */}
-              <TabsContent value="mission">
+            {/* Tab Content */}
+            {activeTab === "mission" && (
+              <div className="tab-content">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
                   <div>
                     <div className="flex items-center mb-8">
@@ -270,10 +328,12 @@ const About = () => {
                     </p>
                   </div>
                 </div>
-              </TabsContent>
+              </div>
+            )}
 
-              {/* Core Values Tab */}
-              <TabsContent value="values">
+            {/* Core Values Tab */}
+            {activeTab === "values" && (
+              <div className="tab-content">
                 <div className="text-center mb-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
                     Our Core Values
@@ -337,10 +397,12 @@ const About = () => {
                     </ScrollAnimation>
                   ))}
                 </div>
-              </TabsContent>
+              </div>
+            )}
 
-              {/* Leadership Tab */}
-              <TabsContent value="leadership">
+            {/* Leadership Tab */}
+            {activeTab === "leadership" && (
+              <div className="tab-content">
                 <div className="text-center mb-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
                     Leadership Team
@@ -390,10 +452,12 @@ const About = () => {
                     </ScrollAnimation>
                   ))}
                 </div>
-              </TabsContent>
+              </div>
+            )}
 
-              {/* Journey Tab */}
-              <TabsContent value="journey">
+            {/* Journey Tab */}
+            {activeTab === "journey" && (
+              <div className="tab-content">
                 <div className="text-center mb-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
                     Our Journey
@@ -436,8 +500,8 @@ const About = () => {
                     ))}
                   </div>
                 </div>
-              </TabsContent>
-            </Tabs>
+              </div>
+            )}
           </ScrollAnimation>
         </div>
       </section>

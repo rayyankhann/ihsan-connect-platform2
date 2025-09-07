@@ -2,6 +2,148 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cross-browser compatibility and mobile responsiveness */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+    /* Ensure consistent rendering across browsers */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    /* Prevent horizontal scroll on all browsers */
+    position: relative;
+    /* Ensure consistent box model */
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+    /* Reset any browser-specific styles */
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Fix for Firefox and other browsers */
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+}
+
+/* Additional mobile and browser compatibility fixes */
+@layer utilities {
+  .mobile-fix {
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Cross-browser compatibility utilities */
+  .browser-compat {
+    /* Ensure consistent rendering */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    
+    /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Fix for Firefox flexbox issues */
+  .firefox-fix {
+    min-height: 0;
+    min-width: 0;
+  }
+  
+  /* Firefox-specific fixes */
+  @-moz-document url-prefix() {
+    .firefox-fix {
+      /* Fix Firefox backdrop-filter issues */
+      background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+    
+    /* Fix Firefox gradient rendering */
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #1d4ed8 100%) !important;
+    }
+    
+    /* Fix Firefox button rendering */
+    button {
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+    /* Fix Firefox tabs component issues */
+    [role="tablist"] {
+      display: flex !important;
+      flex-direction: row !important;
+    }
+    
+    [role="tab"] {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    [role="tabpanel"] {
+      display: block !important;
+      width: 100% !important;
+    }
+    
+    /* Fix Firefox card rendering */
+    .card-gradient {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%) !important;
+    }
+    
+    /* Fix Firefox scroll animation issues */
+    [data-scroll-animation] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    /* Fix Firefox flexbox issues */
+    .flex {
+      display: -moz-box !important;
+      display: -webkit-flex !important;
+      display: flex !important;
+    }
+    
+    /* Fix Firefox grid issues */
+    .grid {
+      display: -moz-grid !important;
+      display: grid !important;
+    }
+  }
+  
+  /* Ensure consistent button behavior */
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
 /* IHSAN Healthcare Association Design System
 Modern blue and white theme with professional medical aesthetics
 All colors MUST be HSL.
@@ -45,6 +187,8 @@ All colors MUST be HSL.
     --ring: 210 85% 35%;
 
     --radius: 0.75rem;
+  
+  
 
     /* Custom IHSAN gradients */
     --gradient-hero: linear-gradient(135deg, hsl(210 85% 35%) 0%, hsl(210 90% 25%) 50%, hsl(215 95% 20%) 100%);
