@@ -1,11 +1,15 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import ScrollAnimation from '@/components/ScrollAnimation';
+import Link from 'next/link';
+import { listUpcomingEvents, listEventsInRange } from '@/lib/events-data';
+import type { EventDoc } from '@/types/events';
+import { formatEventDateRange } from '@/types/events';
 import { 
   Calendar, 
   MapPin, 
@@ -21,228 +25,17 @@ import {
   Plus
 } from 'lucide-react';
 
-// Sample events data with dates
-const events = [
-  // January 2025 Events
-  {
-    id: 1,
-    title: "Medical Skills Workshop",
-    date: "2025-01-15",
-    time: "6:00 PM",
-    location: "Student Union Building, Room 2.304",
-    type: "Workshop",
-    spots: 25,
-    description: "Learn essential medical skills including vital signs, basic suturing, and patient communication."
-  },
-  {
-    id: 2,
-    title: "Healthcare Career Fair",
-    date: "2025-01-22",
-    time: "10:00 AM",
-    location: "Activities Center",
-    type: "Career",
-    spots: 100,
-    description: "Meet with healthcare professionals and learn about different career paths in medicine."
-  },
-  {
-    id: 3,
-    title: "Community Health Screening",
-    date: "2025-01-29",
-    time: "9:00 AM",
-    location: "Dallas Community Center",
-    type: "Service",
-    spots: 15,
-    description: "Volunteer at a community health screening event serving underserved populations."
-  },
-  
-  // February 2025 Events
-  {
-    id: 4,
-    title: "Guest Speaker: Dr. Sarah Johnson",
-    date: "2025-02-05",
-    time: "7:00 PM",
-    location: "Science Building Auditorium",
-    type: "Guest Speaker",
-    spots: 50,
-    description: "Join us for an inspiring talk on pediatric medicine and career development."
-  },
-  {
-    id: 5,
-    title: "Research Symposium",
-    date: "2025-02-12",
-    time: "2:00 PM",
-    location: "Research Center",
-    type: "Research",
-    spots: 30,
-    description: "Present and discuss healthcare research projects with peers and faculty."
-  },
-  {
-    id: 6,
-    title: "Fundraising Gala",
-    date: "2025-02-20",
-    time: "6:30 PM",
-    location: "UT Dallas Ballroom",
-    type: "Fundraising",
-    spots: 200,
-    description: "Annual fundraising event supporting our healthcare initiatives and scholarships."
-  },
-  {
-    id: 7,
-    title: "CPR Certification Workshop",
-    date: "2025-02-25",
-    time: "5:00 PM",
-    location: "Health Sciences Building",
-    type: "Workshop",
-    spots: 20,
-    description: "Get certified in CPR and basic life support techniques."
-  },
-  
-  // March 2025 Events
-  {
-    id: 8,
-    title: "Medical Ethics Seminar",
-    date: "2025-03-03",
-    time: "6:30 PM",
-    location: "Philosophy Department",
-    type: "Workshop",
-    spots: 40,
-    description: "Explore ethical dilemmas in healthcare and medical decision-making."
-  },
-  {
-    id: 9,
-    title: "Guest Speaker: Dr. Michael Chen",
-    date: "2025-03-10",
-    time: "7:00 PM",
-    location: "Engineering Building",
-    type: "Guest Speaker",
-    spots: 75,
-    description: "Innovations in medical technology and future of healthcare."
-  },
-  {
-    id: 10,
-    title: "Blood Drive",
-    date: "2025-03-15",
-    time: "10:00 AM",
-    location: "Student Union Plaza",
-    type: "Service",
-    spots: 50,
-    description: "Donate blood and help save lives in our community."
-  },
-  {
-    id: 11,
-    title: "Healthcare Innovation Hackathon",
-    date: "2025-03-22",
-    time: "9:00 AM",
-    location: "Computer Science Building",
-    type: "Workshop",
-    spots: 60,
-    description: "Collaborate on innovative healthcare solutions and technology."
-  },
-  {
-    id: 12,
-    title: "Spring Fundraising Walk",
-    date: "2025-03-29",
-    time: "8:00 AM",
-    location: "UT Dallas Campus",
-    type: "Fundraising",
-    spots: 150,
-    description: "Join our annual walkathon to raise funds for healthcare scholarships."
-  },
-  
-  // April 2025 Events
-  {
-    id: 13,
-    title: "Medical School Application Workshop",
-    date: "2025-04-05",
-    time: "2:00 PM",
-    location: "Career Center",
-    type: "Career",
-    spots: 35,
-    description: "Learn about medical school applications, interviews, and requirements."
-  },
-  {
-    id: 14,
-    title: "Guest Speaker: Dr. Emily Rodriguez",
-    date: "2025-04-12",
-    time: "6:00 PM",
-    location: "Natural Science Building",
-    type: "Guest Speaker",
-    spots: 80,
-    description: "Global health initiatives and international medical missions."
-  },
-  {
-    id: 15,
-    title: "Community Garden Volunteering",
-    date: "2025-04-19",
-    time: "9:00 AM",
-    location: "Community Garden",
-    type: "Service",
-    spots: 25,
-    description: "Help maintain our community garden and learn about nutrition."
-  },
-  {
-    id: 16,
-    title: "Healthcare Policy Research Forum",
-    date: "2025-04-26",
-    time: "3:00 PM",
-    location: "Political Science Building",
-    type: "Research",
-    spots: 45,
-    description: "Discuss current healthcare policies and their impact on communities."
-  },
-  
-  // May 2025 Events
-  {
-    id: 17,
-    title: "Pre-Med Student Networking",
-    date: "2025-05-03",
-    time: "5:30 PM",
-    location: "Business School",
-    type: "Career",
-    spots: 100,
-    description: "Network with current medical students and healthcare professionals."
-  },
-  {
-    id: 18,
-    title: "Guest Speaker: Dr. James Wilson",
-    date: "2025-05-10",
-    time: "7:00 PM",
-    location: "Auditorium",
-    type: "Guest Speaker",
-    spots: 120,
-    description: "Emergency medicine and trauma care in urban settings."
-  },
-  {
-    id: 19,
-    title: "Mental Health Awareness Workshop",
-    date: "2025-05-17",
-    time: "4:00 PM",
-    location: "Psychology Building",
-    type: "Workshop",
-    spots: 30,
-    description: "Learn about mental health first aid and supporting others."
-  },
-  {
-    id: 20,
-    title: "Healthcare Technology Research",
-    date: "2025-05-24",
-    time: "1:00 PM",
-    location: "Engineering Research Center",
-    type: "Research",
-    spots: 40,
-    description: "Present research on healthcare technology and digital health solutions."
-  },
-  {
-    id: 21,
-    title: "End of Year Fundraising Dinner",
-    date: "2025-05-31",
-    time: "6:30 PM",
-    location: "Dallas Convention Center",
-    type: "Fundraising",
-    spots: 300,
-    description: "Celebrate our achievements and raise funds for next year's programs."
-  }
-];
+// Events are now loaded from Firestore; keeping calendar rendering unchanged
+type CalendarEvent = {
+  id: string;
+  title: string;
+  date: string; // YYYY-MM-DD
+  time: string; // localized time
+  location: string;
+  type: string;
+  description: string;
+  rsvpURL?: string;
+};
 
 const eventTypes = [
   "All Events",
@@ -264,11 +57,77 @@ const stats = [
 const Events = () => {
   const [selectedType, setSelectedType] = useState("All Events");
   const [currentMonth, setCurrentMonth] = useState(new Date(2025, 0, 1)); // Start with January 2025
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const formatLocalIsoWithOffset = (d: Date) => {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const year = d.getFullYear();
+    const month = pad(d.getMonth() + 1);
+    const day = pad(d.getDate());
+    const hours = pad(d.getHours());
+    const minutes = pad(d.getMinutes());
+    const seconds = pad(d.getSeconds());
+    const tzOffsetMin = -d.getTimezoneOffset();
+    const sign = tzOffsetMin >= 0 ? '+' : '-';
+    const absMin = Math.abs(tzOffsetMin);
+    const offH = pad(Math.floor(absMin / 60));
+    const offM = pad(absMin % 60);
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${sign}${offH}:${offM}`;
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setError(null);
+    const monthStartLocal = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1, 0, 0, 0);
+    const monthEndLocal = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1, 0, 0, 0);
+    const startIso = formatLocalIsoWithOffset(monthStartLocal);
+    const endIso = formatLocalIsoWithOffset(monthEndLocal);
+    // Dev sanity log
+    console.debug('Calendar month range', { startIso, endIso });
+
+    listEventsInRange(startIso, endIso)
+      .then((items: EventDoc[]) => {
+        if (!isMounted) return;
+        const timeFmt = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' });
+        const transformed: CalendarEvent[] = items.map((e) => {
+          const start = new Date(e.start);
+          const yyyy = start.getFullYear();
+          const mm = String(start.getMonth() + 1).padStart(2, '0');
+          const dd = String(start.getDate()).padStart(2, '0');
+          return {
+            id: e.id,
+            title: e.title,
+            date: `${yyyy}-${mm}-${dd}`,
+            time: timeFmt.format(start),
+            location: e.location,
+            type: e.type,
+            description: e.description,
+            rsvpURL: (e as any).rsvpURL,
+          };
+        });
+        console.debug('Month events fetched:', transformed.length);
+        setEvents(transformed);
+      })
+      .catch((err) => {
+        console.error(err);
+        if (isMounted) setError('Failed to load events');
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+    return () => { isMounted = false };
+  }, [currentMonth]);
 
   // Get events for the selected type
-  const filteredEvents = selectedType === "All Events" 
-    ? events 
-    : events.filter(event => event.type === selectedType);
+  const filteredEvents = useMemo(() => {
+    const base = selectedType === "All Events" 
+      ? events 
+      : events.filter(event => event.type === selectedType);
+    return base;
+  }, [events, selectedType]);
 
   // Event type colors
   const getEventTypeColor = (type: string) => {
@@ -343,14 +202,23 @@ const Events = () => {
           <div className="text-sm font-medium text-gray-900 mb-1">{day}</div>
           <div className="space-y-1 max-h-24 overflow-y-auto">
             {dayEvents.map(event => (
-              <div 
-                key={event.id}
-                className={`text-xs p-1 rounded transition-colors border-l-2 ${getEventTypeColor(event.type)} block`}
-                title={`${event.title} - ${event.time} - ${event.location}`}
-              >
-                <div className="font-medium truncate">{event.title}</div>
-                <div className="text-xs opacity-80">{event.time}</div>
-                <div className="text-xs truncate font-semibold">{event.type}</div>
+              <div key={event.id} className="relative group">
+                <Link 
+                  href={`/event?id=${event.id}`}
+                  className={`text-xs p-1 rounded transition-colors border-l-2 ${getEventTypeColor(event.type)} block`}
+                  title={`${event.title} - ${event.time} - ${event.location}`}
+                >
+                  <div className="font-medium truncate">{event.title}</div>
+                  <div className="text-xs opacity-80">{event.time}</div>
+                  <div className="text-xs truncate font-semibold">{event.type}</div>
+                </Link>
+                <div className="absolute right-1 bottom-1 hidden group-hover:block group-focus-within:block">
+                  {event.rsvpURL ? (
+                    <a href={event.rsvpURL} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline text-[11px]">RSVP</a>
+                  ) : (
+                    <Link href={`/event?id=${event.id}`} className="text-blue-700 underline text-[11px]">RSVP</Link>
+                  )}
+                </div>
               </div>
             ))}
             {dayEvents.length === 0 && (
@@ -513,6 +381,34 @@ const Events = () => {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            {/* Event Listings */}
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-blue-900 mb-6">Event Listings</h3>
+              <div className="space-y-4">
+                {filteredEvents.map((ev) => (
+                  <Card key={ev.id} className="p-4">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-lg font-semibold text-blue-900">{ev.title}</h4>
+                        <Badge>{ev.type}</Badge>
+                      </div>
+                      <div className="text-gray-600 text-sm">{ev.date} • {ev.time} • {ev.location}</div>
+                      <div className="text-gray-700">{ev.description}</div>
+                      <div>
+                        {ev.rsvpURL ? (
+                          <a href={ev.rsvpURL} target="_blank" rel="noopener noreferrer">
+                            <Button>RSVP</Button>
+                          </a>
+                        ) : (
+                          <Button disabled>RSVP Coming Soon</Button>
+                        )}
+                      </div>
+                    </div>
+                  </Card>
+                ))}
               </div>
             </div>
           </ScrollAnimation>

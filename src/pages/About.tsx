@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ScrollAnimation from '@/components/ScrollAnimation';
+import { listTeamMembers, type TeamDoc } from '@/lib/team-data';
 import { 
   Heart, 
   Users, 
   Target, 
   Eye,
-  Mail,
   Linkedin,
   GraduationCap,
   Stethoscope,
@@ -25,74 +25,7 @@ import {
   MapPin
 } from 'lucide-react';
 
-const leadership = [
-  {
-    name: "Sarah Ahmed",
-    position: "President",
-    major: "Biology",
-    year: "Senior",
-    bio: "Passionate about community health and pre-med student mentorship. Leading IHSAN's vision for inclusive healthcare education.",
-    contact: {
-      email: "president@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Michael Rodriguez",
-    position: "Vice President",
-    major: "Biochemistry",
-    year: "Junior",
-    bio: "Focused on organizing educational workshops and building partnerships with healthcare professionals.",
-    contact: {
-      email: "vp@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Jennifer Park",
-    position: "Secretary",
-    major: "Neuroscience",
-    year: "Sophomore",
-    bio: "Dedicated to maintaining strong communication within our community and documenting our impact.",
-    contact: {
-      email: "secretary@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "David Chen",
-    position: "Treasurer",
-    major: "Public Health",
-    year: "Junior",
-    bio: "Managing our finances to ensure sustainable programming and maximum community impact.",
-    contact: {
-      email: "treasurer@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Aisha Patel",
-    position: "Events Coordinator",
-    major: "Psychology",
-    year: "Senior",
-    bio: "Organizing engaging events that bring together students, professionals, and community members.",
-    contact: {
-      email: "events@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Omar Hassan",
-    position: "Community Outreach Chair",
-    major: "Health Studies",
-    year: "Junior",
-    bio: "Building bridges between IHSAN and the broader Dallas healthcare community through service.",
-    contact: {
-      email: "outreach@ihsan-utd.com",
-      linkedin: "#"
-    }
-  }
-];
+// Fetch leadership from Firestore
 
 const milestones = [
   {
@@ -137,11 +70,25 @@ const stats = [
 const About = () => {
   const [activeTab, setActiveTab] = useState("mission");
   const [isFirefox, setIsFirefox] = useState(false);
+  const [leadership, setLeadership] = useState<TeamDoc[]>([]);
+  const [teamLoading, setTeamLoading] = useState<boolean>(true);
+  const [teamError, setTeamError] = useState<string | null>(null);
 
   useEffect(() => {
     // Detect Firefox
     const isFirefoxBrowser = /Firefox/.test(navigator.userAgent);
     setIsFirefox(isFirefoxBrowser);
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    setTeamLoading(true);
+    setTeamError(null);
+    listTeamMembers()
+      .then((items) => { if (mounted) setLeadership(items); })
+      .catch((e) => { if (mounted) setTeamError(''); console.error(e); })
+      .finally(() => { if (mounted) setTeamLoading(false); });
+    return () => { mounted = false };
   }, []);
 
   return (
@@ -420,6 +367,9 @@ const About = () => {
                         className="card-gradient p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl group"
                       >
                         <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                          {leader.photoURL ? (
+                            <AvatarImage src={leader.photoURL} alt={leader.alt || `Portrait of ${leader.name}`} />
+                          ) : null}
                           <AvatarFallback className="text-xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white font-bold">
                             {leader.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
@@ -429,10 +379,10 @@ const About = () => {
                           {leader.name}
                         </h3>
                         <Badge className="mb-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">
-                          {leader.position}
+                          {leader.title}
                         </Badge>
                         <p className="text-gray-600 font-medium mb-3">
-                          {leader.major} • {leader.year}
+                          {leader.major} • {leader.classYear}
                         </p>
                         
                         <p className="text-gray-600 mb-6 leading-relaxed">
@@ -440,14 +390,33 @@ const About = () => {
                         </p>
                         
                         <div className="flex justify-center space-x-3">
-                          <Button size="sm" variant="outline" className="hover:bg-blue-50 hover:border-blue-300">
-                            <Mail className="w-4 h-4 mr-2" />
-                            Email
-                          </Button>
-                          <Button size="sm" variant="outline" className="hover:bg-blue-50 hover:border-blue-300">
-                            <Linkedin className="w-4 h-4 mr-2" />
-                            LinkedIn
-                          </Button>
+                          {(() => {
+                            const raw = leader.linkedin || "";
+                            const trimmed = String(raw).trim();
+                            const hasProtocol = /^https?:\/\//i.test(trimmed);
+                            const url = trimmed && !hasProtocol ? `https://${trimmed}` : trimmed;
+                            const valid = /^https?:\/\//i.test(url);
+                            if (valid) {
+                              return (
+                                <a
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`Open LinkedIn profile for ${leader.name}`}
+                                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
+                                >
+                                  <Linkedin className="w-4 h-4" />
+                                  LinkedIn
+                                </a>
+                              );
+                            }
+                            return (
+                              <Button size="sm" variant="outline" className="hover:bg-blue-50 hover:border-blue-300" disabled>
+                                <Linkedin className="w-4 h-4 mr-2" />
+                                LinkedIn
+                              </Button>
+                            );
+                          })()}
                         </div>
                       </Card>
                     </ScrollAnimation>

@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /rsvps/{rsvpId} {
+      allow read: if true;
+      allow delete: if false;
+      allow create, update: if isValidRsvp(request.resource.data) && idMatches(request.resource.data, rsvpId);
+
+      function isValidRsvp(data) {
+        return data.keys().hasOnly(['eventId', 'name', 'email', 'phone', 'notes', 'createdAt'])
+          && data.eventId is string
+          && data.name is string
+          && data.email is string
+          && data.createdAt is timestamp
+          && (!('phone' in data) || data.phone is string || data.phone == null)
+          && (!('notes' in data) || data.notes is string || data.notes == null)
+          ;
+      }
+
+      function idMatches(data, id) {
+        // Enforce deterministic pattern: <eventId>_<12 hex chars>
+        // (Rules cannot recompute sha256; enforce structure and length/charset.)
+        return id.matches('^' + data.eventId + '_[a-f0-9]{12}$');
+      }
+    }
+
+    match /team/{memberId} {
+      allow read: if true;
+      allow write, delete: if false;
+    }
+  }
+}
+
+
