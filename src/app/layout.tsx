@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
         <meta name="format-detection" content="telephone=no" />
@@ -65,7 +65,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e40af" />
         <meta name="msapplication-TileColor" content="#1e40af" />
       </head>
-      <body className={`${inter.className} browser-compat min-h-full antialiased`}>
+      {/* <body className={`${inter.className} browser-compat min-h-full antialiased`}> */}
+      <body className={`${inter.className} browser-compat antialiased`}>
         <MobileViewportFix />
         <MobileOptimizer />
         <Providers>

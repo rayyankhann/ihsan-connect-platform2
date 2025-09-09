@@ -53,14 +53,14 @@ const contactMethods = [
     href: "#",
     color: "from-green-500 to-emerald-500"
   },
-  {
-    icon: Clock,
-    title: "Office Hours",
-    description: "When our leadership is available",
-    contact: "Mon-Fri: 2:00 PM - 5:00 PM",
-    href: "#",
-    color: "from-orange-500 to-red-500"
-  }
+  // {
+  //   icon: Clock,
+  //   title: "Office Hours",
+  //   description: "When our leadership is available",
+  //   contact: "Mon-Fri: 2:00 PM - 5:00 PM",
+  //   href: "#",
+  //   color: "from-orange-500 to-red-500"
+  // }
 ];
 
 const inquiryTypes = [
@@ -177,9 +177,9 @@ const Contact = () => {
           </div>
           
           <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+            {/* <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               📞 Get In Touch
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Contact Us
             </h1>
@@ -228,11 +228,11 @@ const Contact = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 items-stretch">
             {contactMethods.map((method, index) => (
               <ScrollAnimation key={method.title} delay={index * 0.1}>
                 <Card 
-                  className="card-gradient p-8 text-center cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group"
+                  className="h-full card-gradient p-8 text-center cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group"
                   onClick={() => method.href !== "#" && window.open(method.href, '_blank')}
                 >
                   <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${method.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -244,7 +244,7 @@ const Contact = () => {
                   <p className="text-gray-600 mb-4 leading-relaxed">
                     {method.description}
                   </p>
-                  <p className="text-blue-600 font-semibold text-lg">
+                  <p className="text-blue-600 font-semibold text-base xl:text-lg">
                     {method.contact}
                   </p>
                 </Card>
@@ -365,7 +365,7 @@ const Contact = () => {
             <div className="space-y-8">
               {/* Quick Actions */}
               <ScrollAnimation delay={0.2}>
-                <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Card className="card-gradient p-6 lg:p-4 xl:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-blue-900 mb-6">
                     Quick Actions
                   </h3>
@@ -391,7 +391,7 @@ const Contact = () => {
 
               {/* Social Media */}
               <ScrollAnimation delay={0.3}>
-                <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Card className="card-gradient p-6 lg:p-4 xl:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-blue-900 mb-6">
                     Follow Us
                   </h3>
@@ -402,9 +402,9 @@ const Contact = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 group"
+                        className="flex items-center py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 group"
                       >
-                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${social.color} flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`min-w-10 min-h-10 w-10 h-10 rounded-xl bg-gradient-to-br ${social.color} flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300`}>
                           <social.icon className="w-5 h-5 text-white" />
                         </div>
                         <span className="text-sm font-semibold text-blue-900">{social.name}</span>
@@ -415,7 +415,7 @@ const Contact = () => {
               </ScrollAnimation>
 
               {/* Response Time */}
-              <ScrollAnimation delay={0.4}>
+              {/* <ScrollAnimation delay={0.4}>
                 <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mr-4">
@@ -449,7 +449,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </Card>
-              </ScrollAnimation>
+              </ScrollAnimation> */}
             </div>
           </div>
         </div>

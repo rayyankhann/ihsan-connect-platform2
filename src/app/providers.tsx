@@ -21,7 +21,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <div className="min-h-screen bg-background browser-compat firefox-fix">
+        {/* <div className="min-h-screen bg-background browser-compat firefox-fix"> */}
+        <div className="bg-background browser-compat firefox-fix">
           <Navigation />
           {children}
         </div>

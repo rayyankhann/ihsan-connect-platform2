@@ -156,9 +156,9 @@ const About = () => {
           </div>
           
           <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+            {/* <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               🏥 About IHSAN
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Our Story & Mission
             </h1>
@@ -246,18 +246,18 @@ const About = () => {
               </div>
             ) : (
               // Normal tabs for other browsers
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg mb-16">
-                  <TabsTrigger value="mission" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full lg:w-9/12 xl:w-1/2 mx-auto overflow-x-auto bg-white shadow-lg rounded-lg mb-16">
+                <TabsList className="grid min-w-max sm:w-full grid-cols-4 h-auto bg-white">
+                  <TabsTrigger value="mission" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white min-w-max sm:w-full">
                     Mission & Vision
                   </TabsTrigger>
-                  <TabsTrigger value="leadership" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <TabsTrigger value="leadership" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white min-w-max sm:w-full">
                     Leadership
                   </TabsTrigger>
-                  <TabsTrigger value="journey" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <TabsTrigger value="journey" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white min-w-max sm:w-full">
                     Our Journey
                   </TabsTrigger>
-                  <TabsTrigger value="values" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <TabsTrigger value="values" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white min-w-max sm:w-full">
                     Core Values
                   </TabsTrigger>
                 </TabsList>
@@ -476,17 +476,17 @@ const About = () => {
                     {milestones.map((milestone, index) => (
                       <ScrollAnimation key={milestone.year} delay={index * 0.1}>
                         <div 
-                          className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                          className={`flex items-center relative ${index % 2 === 0 ? 'flex-col-reverse sm:flex-row' : 'flex-col-reverse sm:flex-row-reverse'}`}
                         >
-                          <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12 text-right' : 'pl-12 text-left'}`}>
-                            <Card className="card-gradient p-8 hover:scale-105 transition-transform duration-300 shadow-lg">
+                          <div className={`w-11/12 sm:w-1/2 ${index % 2 === 0 ? 'pr-0 sm:pr-6 lg:pr-12 text-left sm:text-right' : 'pl-0 sm:pl-6 lg:pl-12 text-left'}`}>
+                            <Card className="card-gradient p-4 sm:p-5 md:p-8 hover:scale-105 transition-transform duration-300 shadow-lg">
                               <Badge className="mb-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">
                                 {milestone.year}
                               </Badge>
                               <h3 className="text-xl font-bold text-blue-900 mb-3">
                                 {milestone.title}
                               </h3>
-                              <p className="text-gray-600 leading-relaxed">
+                              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                                 {milestone.description}
                               </p>
                             </Card>

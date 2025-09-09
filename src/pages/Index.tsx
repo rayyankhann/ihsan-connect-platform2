@@ -110,11 +110,11 @@ const Index = () => {
             <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
           </div>
           
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               🏥 Healthcare Excellence
             </span>
-          </div>
+          </div> */}
           
           {/* Title with decorative underline */}
           <div className="mb-4 sm:mb-8">
@@ -161,13 +161,13 @@ const Index = () => {
             {/* Next Event Banner */}
             {nextEvent && (
               <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
-                <Card className="flex flex-col sm:inline-flex sm:items-center sm:space-x-6 p-4 sm:p-6 bg-white/10 backdrop-blur-md border-white/20 text-white shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl max-w-sm sm:max-w-none mx-auto">
+                <Card className="flex flex-col sm:inline-flex sm:items-center sm:space-y-2 p-4 sm:p-6 bg-white/10 backdrop-blur-md border-white/20 text-white shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-sm mx-auto">
                   <div className="flex items-center space-x-3 mb-3 sm:mb-0">
                     <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
                     <span className="text-sm sm:text-base font-medium">Next Event</span>
                   </div>
                   <div className="h-px sm:h-6 w-full sm:w-px bg-white/30 mb-3 sm:mb-0"></div>
-                  <div className="text-center sm:text-left mb-3 sm:mb-0">
+                  <div className="text-center mb-3 sm:mb-0">
                     <p className="font-medium text-sm sm:text-base">{nextEvent.title}</p>
                     <p className="text-xs sm:text-sm opacity-90">
                       {new Date(nextEvent.date).toLocaleDateString()} at {nextEvent.time}

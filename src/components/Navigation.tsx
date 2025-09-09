@@ -44,23 +44,23 @@ export function Navigation() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix nav-mobile",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 browser-compat firefox-fix nav-mobile !p-0",
       "pt-[env(safe-area-inset-top)]",
       isScrolled
         ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-300"
         : "bg-white/90 backdrop-blur-sm"
     )}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center space-x-4 group"
+            className="flex items-center space-x-2 xl:space-x-4 group"
             aria-label="IHSAN Healthcare Association Home"
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center transition-transform group-hover:scale-105 overflow-hidden">
               <Image 
-                src="/ihsan-logo.png" 
+                src="/ihsan-logo-sm.png" 
                 alt="IHSAN Logo" 
                 width={48} 
                 height={48} 
@@ -69,19 +69,19 @@ export function Navigation() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg sm:text-xl text-gray-900 leading-none">IHSAN</span>
-              <span className="text-xs sm:text-sm text-gray-600 leading-none">Healthcare Association</span>
+              <span className="font-bold text-lg xl:text-xl text-gray-900 leading-none">IHSAN</span>
+              <span className="text-xs xl:text-sm text-gray-600 leading-none">Healthcare Association</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-base font-medium transition-colors hover:text-blue-600 relative group",
+                  "text-sm xl:text-base font-medium transition-colors hover:text-blue-600 relative group",
                   isActive(item.href)
                     ? "text-blue-600"
                     : "text-gray-700"
@@ -97,15 +97,15 @@ export function Navigation() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             <Button 
               asChild 
               variant="outline" 
-              size="lg"
-              className="hover:bg-blue-600 hover:text-white transition-colors border-gray-300 text-gray-700 px-6 py-2"
+              size="sm"
+              className="hover:bg-blue-600 hover:text-white transition-colors border-gray-300 text-gray-700 px-3 xl:px-6 py-2"
             >
               <Link href="/donate">
-                <Heart className="w-5 h-5 mr-2" />
+                <Heart className="w-5 h-5 " />
                 Donate
               </Link>
             </Button>
@@ -122,7 +122,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="sm"
@@ -136,7 +136,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40"
+          <div className="lg:hidden absolute top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg z-40"
                style={{ top: `calc(4rem + env(safe-area-inset-top))` }}>
             <div className="px-4 py-4 space-y-3">
               {navigationItems.map((item) => (

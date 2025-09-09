@@ -104,9 +104,9 @@ const Membership = () => {
           </div>
           
           <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+            {/* <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               💝 Charity-Focused Membership
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Join Our Community
             </h1>
@@ -158,7 +158,7 @@ const Membership = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <ScrollAnimation key={benefit.title} delay={index * 0.1}>
-                <Card className="card-gradient p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl cursor-pointer group">
+                <Card className="card-gradient h-full p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl cursor-pointer group">
                   <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <benefit.icon className="w-10 h-10 text-white" />
                   </div>
@@ -190,8 +190,8 @@ const Membership = () => {
           </ScrollAnimation>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="card-gradient p-12 relative ring-2 ring-blue-500 shadow-2xl hover:scale-105 transition-transform duration-300">
-              <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-6 py-2 text-base">
+            <Card className="card-gradient py-12 px-6 md:p-12 relative ring-2 ring-blue-500 shadow-2xl hover:scale-105 transition-transform duration-300">
+              <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-4 md:px-6 py-2 w-max text-sm md:text-base">
                 <Star className="w-5 h-5 mr-2" />
                 Supporting Charity Initiatives
               </Badge>
@@ -222,7 +222,7 @@ const Membership = () => {
                 ))}
               </div>
 
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xl py-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-base md:text-xl py-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
                 <UserPlus className="mr-3 h-6 w-6" />
                 Join IHSAN Today!
               </Button>
@@ -245,7 +245,7 @@ const Membership = () => {
             </div>
           </ScrollAnimation>
 
-          <Card className="card-gradient p-10 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <Card className="card-gradient p-6 md:p-10 shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <form className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -317,8 +317,8 @@ const Membership = () => {
                 />
               </div>
 
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xl py-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
-                <UserPlus className="mr-3 h-6 w-6" />
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-base md:text-xl py-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
+                <UserPlus className="mr-1 md:mr-3 h-6 w-6" />
                 Join IHSAN - Support Charity
               </Button>
             </form>

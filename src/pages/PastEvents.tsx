@@ -162,9 +162,9 @@ const PastEvents = () => {
           </div>
           
           <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+            {/* <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               📅 Past Events
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Our Event History
             </h1>
@@ -204,9 +204,9 @@ const PastEvents = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <Tabs value={selectedSemester} onValueChange={setSelectedSemester} className="w-full mb-8">
-              <TabsList className="grid grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg">
+              <TabsList className="grid grid-cols-4 lg:w-1/2 mx-auto bg-white shadow-lg h-auto">
                 {semesters.map((semester) => (
-                  <TabsTrigger key={semester} value={semester} className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <TabsTrigger key={semester} value={semester} className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-xs md:text-sm font-bold md:font-semibold px-2 md:px-4">
                     {semester}
                   </TabsTrigger>
                 ))}

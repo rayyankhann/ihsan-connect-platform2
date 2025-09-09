@@ -92,9 +92,9 @@ const Testimonials = () => {
           </div>
           
           <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
+            {/* <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
               💬 Member Stories
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               IHSAN Testimonials
             </h1>
