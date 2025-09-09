@@ -1,4 +1,4 @@
-// File: /Volumes/storage/Projects/Nextjs/ihsan-connect-platform2/src/app/page.tsx
+// File: D:\projects\Ihsan\ihsan-connect-platform2\src\app\page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

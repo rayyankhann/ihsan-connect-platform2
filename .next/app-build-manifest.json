@@ -12,11 +12,6 @@
       "static/css/css-src_app_globals_css.css",
       "static/chunks/app/layout.js"
     ],
-    "/events/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/events/page.js"
-    ],
     "/membership/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -27,25 +22,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/blog/page.js"
     ],
+    "/events/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/events/page.js"
+    ],
     "/past-events/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/past-events/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
-    ],
-    "/donate/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/donate/page.js"
     ]
   }
 }
