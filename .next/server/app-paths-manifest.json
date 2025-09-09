@@ -1,9 +1,1 @@
-{
-  "/blog/page": "app/blog/page.js",
-  "/events/page": "app/events/page.js",
-  "/about/page": "app/about/page.js",
-  "/past-events/page": "app/past-events/page.js",
-  "/membership/page": "app/membership/page.js",
-  "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js"
-}
+{}
