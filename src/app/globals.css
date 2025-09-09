@@ -48,7 +48,7 @@ html {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* Ensure consistent rendering across browsers */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -67,7 +67,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     width: 100%;
     max-width: 100vw;
     /* Prevent horizontal scroll on all browsers */
@@ -793,8 +793,8 @@ All colors MUST be HSL.
 @media screen and (max-width: 768px) {
   /* Ensure proper scrolling on mobile */
   html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-x: hidden;  */
+    /* overflow-y: auto; */
     -webkit-overflow-scrolling: touch;
   }
   

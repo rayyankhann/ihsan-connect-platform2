@@ -371,7 +371,7 @@ const Index = () => {
                   size="lg" 
                   variant="outline" 
                   asChild
-                  className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-xl border-white/30 text-white hover:bg-white/10 bg-black/20 transition-all duration-300 hover:scale-105 hover:shadow-lg btn-mobile-lg touch-friendly"
+                  className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-xl border-white/30 text-blue-700 hover:bg-white/10 bg-black/20 transition-all duration-300 hover:scale-105 hover:shadow-lg btn-mobile-lg touch-friendly"
                 >
                   <Link href="/contact">
                     <Handshake className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />

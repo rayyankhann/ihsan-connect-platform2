@@ -586,10 +586,10 @@ const Events = () => {
       {/* Enhanced CTA Section */}
       <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
         {/* Background decorative elements */}
-        <div className="absolute inset-0">
+        {/* <div className="absolute inset-0">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-        </div>
+        </div> */}
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
@@ -611,7 +611,7 @@ const Events = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-10 py-5 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold hover:scale-105 transition-all duration-300"
+                className="text-lg px-10 py-5 rounded-xl border-2 border-white text-blue-700 hover:bg-white hover:text-blue-700 font-semibold hover:scale-105 transition-all duration-300"
               >
                 <Calendar className="mr-3 h-6 w-6" />
                 View Past Events
