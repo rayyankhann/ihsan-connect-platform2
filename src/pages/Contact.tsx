@@ -45,14 +45,14 @@ const contactMethods = [
     href: "https://www.instagram.com/ihsanhealthcareutd/",
     color: "from-pink-500 to-purple-500"
   },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    description: "Find us on campus",
-    contact: "UT Dallas Campus",
-    href: "#",
-    color: "from-green-500 to-emerald-500"
-  },
+  // {
+  //   icon: MapPin,
+  //   title: "Visit Us",
+  //   description: "Find us on campus",
+  //   contact: "UT Dallas Campus",
+  //   href: "#",
+  //   color: "from-green-500 to-emerald-500"
+  // },
   // {
   //   icon: Clock,
   //   title: "Office Hours",
@@ -123,12 +123,7 @@ const quickActions = [
   }
 ];
 
-const stats = [
-  { number: "24-48h", label: "Response Time", icon: Clock },
-  { number: "300+", label: "Active Members", icon: Users },
-  { number: "50+", label: "Events This Year", icon: Calendar },
-  { number: "100%", label: "Free Support", icon: Heart }
-];
+
 
 const Contact = () => {
   const { toast } = useToast();
@@ -191,29 +186,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <ScrollAnimation key={stat.label} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
-
+  
       {/* Enhanced Contact Methods */}
       <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -228,7 +201,7 @@ const Contact = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 xl:gap-8 items-stretch">
             {contactMethods.map((method, index) => (
               <ScrollAnimation key={method.title} delay={index * 0.1}>
                 <Card 
@@ -255,6 +228,7 @@ const Contact = () => {
       </section>
 
       {/* Enhanced Contact Form & Quick Actions */}
+      
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -363,7 +337,9 @@ const Contact = () => {
 
             {/* Enhanced Sidebar */}
             <div className="space-y-8">
+
               {/* Quick Actions */}
+              
               <ScrollAnimation delay={0.2}>
                 <Card className="card-gradient p-6 lg:p-4 xl:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-blue-900 mb-6">
@@ -449,7 +425,8 @@ const Contact = () => {
                     </div>
                   </div>
                 </Card>
-              </ScrollAnimation> */}
+              </ScrollAnimation>
+               */}
             </div>
           </div>
         </div>
@@ -477,15 +454,15 @@ const Contact = () => {
               },
               {
                 question: "Are there membership fees?",
-                answer: "We offer both free Student Membership and Active Membership ($25/semester) with additional benefits. Choose what works best for you."
+                answer: "Yes. Membership is $15 per year, which helps support events, workshops, and community service projects."
               },
               {
                 question: "Can non-pre-health students join?",
-                answer: "While our focus is on pre-health students, we welcome anyone interested in healthcare, community service, and professional development."
+                answer: "Absolutely! While our focus is on pre-health students, we welcome anyone interested in healthcare, community service, and professional development."
               },
               {
                 question: "How often do you meet?",
-                answer: "We have general meetings twice a month, plus various workshops, volunteering opportunities, and social events throughout the semester."
+                answer: "We hold general meetings twice a month, along with workshops, volunteering opportunities, and social events throughout the semester."
               }
             ].map((faq, index) => (
               <ScrollAnimation key={faq.question} delay={index * 0.1}>
@@ -504,7 +481,7 @@ const Contact = () => {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+      <section className="py-24 hero-gradient relative overflow-hidden">
         {/* Background decorative elements */}
         {/* <div className="absolute inset-0">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>

@@ -26,6 +26,7 @@ import {
   ChevronRight,
   Plus,
 } from "lucide-react";
+import Link from "next/link";
 
 // Sample events data with dates
 const events = [
@@ -263,7 +264,125 @@ const events = [
     spots: 300,
     description:
       "Celebrate our achievements and raise funds for next year's programs.",
+    },
+    
+    // Sep 25 Events
+    {
+      id: 22,
+      title: "First General Body Meeting",
+      date: "2025-09-15",
+      time: "7:00 PM",
+      type: "Social",
+      description:
+        "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved.",
   },
+    {
+      id: 23,
+      title: "Workshop Suturing",
+      date: "2025-09-24",
+      time: "7:00 PM",
+      type: "Workshop",
+      description:
+        "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom."
+  },
+
+  // Oct 25 Events
+    {
+      id: 24,
+      title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
+      date: "2025-10-1",
+      time: "7:00 PM",
+      type: "career/research",
+      description:
+        "A collaborative event focusing on cancer awareness, education, and community support. Learn about prevention, treatment, and how we can play a role in supporting those affected."
+  },
+    {
+      id: 25,
+      title: "Speaker Event",
+      date: "2025-10-14",
+      time: "7:00 PM",
+      type: "Guest Speaker",
+      description:
+        "Engage with a guest speaker from the health or medical field who will share their personal journey, insights, and advice for aspiring healthcare professionals. A great way to gain inspiration and ask questions directly."
+  },
+    {
+      id: 26,
+      title: "Texas Food Bank Volunteering",
+      date: "2025-10-18",
+      time: "7:00 PM",
+      type: "Service",
+      description:
+        "Give back to the community by volunteering at the North Texas Food Bank. Help pack, organize, and distribute meals for families in need while bonding with other members."
+  },
+    {
+      id: 27,
+      title: "Pre-Health Day",
+      date: "2025-10-29",
+      time: "7:00 PM",
+      type: "career/research",
+      description:
+        "A showcase day for all things pre-health! Explore different career paths, resources, and opportunities designed to help students succeed in healthcare fields. Network, learn, and get inspired for your journey."
+  },
+  
+  // Nov 25 Events
+  {
+    id: 28,
+    title: "Mock Interview",
+    date: "2025-11-05",
+    time: "7:00 PM",
+    type: "Workshop",
+    description:
+      "Prepare for professional school and job interviews in a safe and supportive environment. Practice answering common questions, receive feedback, and build confidence before the real thing."
+},
+  {
+    id: 29,
+    title: "MSA Banquet (Tentative)",
+    date: "2025-11-12",
+    time: "7:00 PM",
+    type: "Social",
+    description:
+      "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students."
+},
+  {
+    id: 30,
+    title: "NAY Collaboration (Tentative)",
+    date: "2025-11-13",
+    time: "7:00 PM",
+    type: "Service",
+    description:
+      "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth."
+},
+  {
+    id: 31,
+    title: "Texas Food Bank Volunteering",
+    date: "2025-11-15",
+    time: "7:00 PM",
+    type: "Service",
+    description:
+      "Another chance to serve! Join us again at the North Texas Food Bank to continue supporting families in need. A rewarding and humbling way to spend your afternoon."
+},
+  {
+    id: 32,
+    title: "Bonfire x Multicultural Socia",
+    date: "2025-11-17",
+    time: "7:00 PM",
+    type: "Social",
+    description:
+      "Warm up by the fire and celebrate diversity with a multicultural society! An evening filled with food, community, and cultural exchange—perfect for meeting new friends and celebrating our campus’s diversity."
+},
+
+// Des 25 Event
+  {
+    id: 33,
+    title: "Gala",
+    date: "2025-12-01",
+    time: "7:00 PM",
+    type: "Social",
+    description:
+      "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work"
+},
+
+
 ];
 
 const eventTypes = [
@@ -274,13 +393,7 @@ const eventTypes = [
   "Fundraising",
   "Research",
   "Career",
-];
-
-const stats = [
-  { number: "25+", label: "Events This Month", icon: Calendar },
-  { number: "300+", label: "Total RSVPs", icon: Users },
-  { number: "15+", label: "Workshop Sessions", icon: Award },
-  { number: "100%", label: "Free Events", icon: Heart },
+  "Social",
 ];
 
 const Events = () => {
@@ -308,6 +421,8 @@ const Events = () => {
         return "bg-indigo-100 text-indigo-800 border-indigo-500";
       case "Career":
         return "bg-teal-100 text-teal-800 border-teal-500";
+      case "Social":
+        return "bg-yellow-100 text-yellow-800 border-yellow-500";
       default:
         return "bg-blue-100 text-blue-800 border-blue-500";
     }
@@ -429,27 +544,6 @@ const Events = () => {
               Browse our interactive calendar to find workshops, guest speakers,
               and community service opportunities
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <ScrollAnimation key={stat.label} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </div>
-              </ScrollAnimation>
-            ))}
           </div>
         </div>
       </section>
@@ -583,44 +677,50 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
-        {/* Background decorative elements */}
-        {/* <div className="absolute inset-0">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-        </div> */}
+  <section className="py-10 bg-gradient-to-b from-blue-50 to-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-xl font-bold text-blue-900 mb-6">
+          Event Listings
+        </h2>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollAnimation>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Stay Updated
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-              Never miss an event! Join our community to get notified about
-              upcoming workshops and opportunities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                <Users className="mr-3 h-6 w-6" />
-                Join IHSAN
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-5 rounded-xl border-2 border-white text-blue-700 hover:bg-white hover:text-blue-700 font-semibold hover:scale-105 transition-all duration-300"
-              >
-                <Calendar className="mr-3 h-6 w-6" />
-                View Past Events
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
+        <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+          {events.splice(0,2).map((event) => (
+            <div
+              key={event.id}
+              className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 relative"
+            >
+              {/* Category Tag */}
+              <span className="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
+                {event.type}
+              </span>
+
+              {/* Title */}
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                {event.title}
+              </h3>
+
+              {/* Date */}
+              <p className="text-sm text-gray-500 mb-4">
+                {event.date}{"*"}{event.time}
+                </p>
+
+              {/* Description */}
+              <p className="text-gray-600 mb-6 line-clamp-4">
+                {event.description}
+              </p>
+
+            
+             <Link href={"https://forms.gle/27SPPfrLceQJLwc26"}>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md shadow transition">
+                RSVP
+              </button>
+             </Link>
             </div>
-          </ScrollAnimation>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
+     
     </div>
   );
 };

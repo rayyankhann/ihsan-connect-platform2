@@ -306,8 +306,7 @@ const Donate = () => {
                 Is my donation tax-deductible?
               </h3>
               <p className="text-muted-foreground">
-                Yes, IHSAN is a registered student organization under UT Dallas. 
-                Your donation may be tax-deductible. Please consult with your tax advisor.
+                Yes. IHSAN is a registered student organization under UT Dallas. Your donation may be tax-deductible  please consult with your tax advisor.
               </p>
             </Card>
 
@@ -316,18 +315,32 @@ const Donate = () => {
                 How are donations used?
               </h3>
               <p className="text-muted-foreground">
-                Donations support workshop materials, guest speaker fees, community outreach programs, 
-                and educational resources for our members. We provide annual impact reports to all donors.
+                Donations primarily support charitable causes and community outreach projects. 100% of general donations go toward aiding healthcare initiatives and providing resources to those in need.
               </p>
             </Card>
 
             <Card className="card-gradient p-6">
               <h3 className="text-lg font-semibold text-foreground mb-3">
-                Can I make a recurring donation?
+               Can I donate directly to IHSAN’s operations?
               </h3>
               <p className="text-muted-foreground">
-                Yes! We offer monthly and semester-based recurring donation options. 
-                Contact us at ihsanhealthcareutd@gmail.com to set up a recurring gift.
+                Yes! On our donation page, you’ll find a separate option to contribute directly to IHSAN. These funds help us cover student programming, workshops, guest speakers, and other activities that support our members.
+              </p>
+            </Card>
+            <Card className="card-gradient p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+               What do membership fees cover?
+              </h3>
+              <p className="text-muted-foreground">
+                 Membership fees are separate from donations and are used exclusively to fund IHSAN’s student events, educational workshops, and on-campus activities.
+              </p>
+            </Card>
+            <Card className="card-gradient p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+               Can I make a recurring donation?
+              </h3>
+              <p className="text-muted-foreground">
+                 Yes! We offer monthly and semester-based recurring donation options. Contact us at ihsanhealthcareutd@gmail.com
               </p>
             </Card>
           </div>

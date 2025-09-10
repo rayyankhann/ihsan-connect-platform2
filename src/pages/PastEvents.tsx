@@ -334,7 +334,7 @@ const PastEvents = () => {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+      <section className="py-24 hero-gradient relative overflow-hidden">
         {/* Background decorative elements */}
         {/* <div className="absolute inset-0">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
