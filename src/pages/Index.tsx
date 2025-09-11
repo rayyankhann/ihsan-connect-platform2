@@ -106,8 +106,8 @@ const coreObjectives = [
 const logos = [
   { src: "/brandLogo/FajrScientific.png", alt: "FajrScientific" },
   { src: "/brandLogo/SyrianAmericanMedicalSociety.png", alt: "Syrian American Medical Society" },
-  { src: "/brandLogo/SudaneseAmericanPhysiciansAssociation.jpeg", alt: "Sudanese American Physicians Association.jpeg" },
-  { src: "/brandLogo/ProjectSadaqa.avif", alt: "Project Sadaqa" },
+  { src: "/brandLogo/SudaneseAmericanPhysiciansAssociation.webp", alt: "Sudanese American Physicians Association.jpeg" },
+  { src: "/brandLogo/SadaqahProject.jpg", alt: "Project Sadaqa" },
 
 ];
 
@@ -330,8 +330,8 @@ const Index = () => {
           </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 grid-mobile">
-            <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
               <Link href="/membership" className="block">
+            <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <UserPlus className="w-6 h-6 sm:w-8 sm:h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
@@ -341,8 +341,8 @@ const Index = () => {
                 <p className="text-muted-foreground text-xs sm:text-sm">
                   $15 membership - supports charity initiatives
                 </p>
-              </Link>
             </Card>
+              </Link>
 
             <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
               <Link href="/events" className="block">

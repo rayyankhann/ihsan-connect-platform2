@@ -229,10 +229,9 @@ const Contact = () => {
 
       {/* Enhanced Contact Form & Quick Actions */}
       
-      <section className="py-24 bg-white">
+      {/* <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Form */}
             <div className="lg:col-span-2">
               <ScrollAnimation>
                 <Card className="card-gradient p-10 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -335,10 +334,8 @@ const Contact = () => {
               </ScrollAnimation>
             </div>
 
-            {/* Enhanced Sidebar */}
             <div className="space-y-8">
 
-              {/* Quick Actions */}
               
               <ScrollAnimation delay={0.2}>
                 <Card className="card-gradient p-6 lg:p-4 xl:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -365,7 +362,6 @@ const Contact = () => {
                 </Card>
               </ScrollAnimation>
 
-              {/* Social Media */}
               <ScrollAnimation delay={0.3}>
                 <Card className="card-gradient p-6 lg:p-4 xl:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-blue-900 mb-6">
@@ -390,8 +386,7 @@ const Contact = () => {
                 </Card>
               </ScrollAnimation>
 
-              {/* Response Time */}
-              {/* <ScrollAnimation delay={0.4}>
+              <ScrollAnimation delay={0.4}>
                 <Card className="card-gradient p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mr-4">
@@ -426,11 +421,10 @@ const Contact = () => {
                   </div>
                 </Card>
               </ScrollAnimation>
-               */}
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Enhanced FAQ Section */}
       <section className="py-24 bg-gradient-to-br from-blue-50 to-white">

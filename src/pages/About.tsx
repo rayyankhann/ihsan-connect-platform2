@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import {
@@ -27,72 +27,126 @@ import {
 import Link from "next/link";
 
 const leadership = [
+{
+  name: "Omar Dibou",
+  position: "President",
+  major: "Pending",
+  year: " ",
+  bio: "Pending",
+  image: "/teamPic/Omar.jpg", 
+  contact: {
+    email: "example@ihsan.com",
+    linkedin: "#",
+  },
+},
+{
+  name: " Murtaza Alvi",
+  position: "External Vice President",
+  major: "Pending",
+  year: " ",
+  bio: "Pending",
+  image: "/teamPic/Murtaza.jpg", 
+  contact: {
+    email: "example@ihsan.com",
+    linkedin: "#",
+  },
+},
   {
-    name: "Sarah Ahmed",
-    position: "President",
-    major: "Biology",
+    name: "Faatin Faisal",
+    position: "Internal Vice President",
+    major: " Biology major, Child Development minor",
     year: "Senior",
-    bio: "Passionate about community health and pre-med student mentorship. Leading IHSAN's vision for inclusive healthcare education.",
+    bio: " Registered Dental Assistant passionate about general dentistry and helping patients gain confidence in their smiles. Excited to welcome new members and foster meaningful involvement through IHSAN.",
+    image: "/teamPic/Faatin.jpg",
     contact: {
-      email: "president@ihsan-utd.com",
-      linkedin: "#"
-    }
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
   },
   {
-    name: "Michael Rodriguez",
-    position: "Vice President",
-    major: "Biochemistry",
-    year: "Junior",
-    bio: "Focused on organizing educational workshops and building partnerships with healthcare professionals.",
-    contact: {
-      email: "vp@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Jennifer Park",
+    name: "Ayah Hamdan",
     position: "Secretary",
-    major: "Neuroscience",
-    year: "Sophomore",
-    bio: "Dedicated to maintaining strong communication within our community and documenting our impact.",
-    contact: {
-      email: "secretary@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "David Chen",
-    position: "Treasurer",
-    major: "Public Health",
-    year: "Junior",
-    bio: "Managing our finances to ensure sustainable programming and maximum community impact.",
-    contact: {
-      email: "treasurer@ihsan-utd.com",
-      linkedin: "#"
-    }
-  },
-  {
-    name: "Aisha Patel",
-    position: "Events Coordinator",
-    major: "Psychology",
+    major: "Healthcare Studies major, Biology minor",
     year: "Senior",
-    bio: "Organizing engaging events that bring together students, professionals, and community members.",
+    bio: "On the pre-dental track and working as an RDA in pediatrics and orthodontics. Dedicated to building a supportive and collaborative space for pre-health students.",
+    image: "/teamPic/Ayah.jpg",
     contact: {
-      email: "events@ihsan-utd.com",
-      linkedin: "#"
-    }
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
   },
   {
-    name: "Omar Hassan",
-    position: "Community Outreach Chair",
-    major: "Health Studies",
-    year: "Junior",
-    bio: "Building bridges between IHSAN and the broader Dallas healthcare community through service.",
+    name: "Ismaham Mohamed",
+    position: "Treasurer",
+    major: "Pending",
+    year: " ",
+    bio: "pending",
+    image: "/teamPic/Ismahan.jpg",
     contact: {
-      email: "outreach@ihsan-utd.com",
-      linkedin: "#"
-    }
-  }
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
+  {
+    name: " Aleena Aziz",
+    position: "Media Director",
+    major: " Psychology major",
+    year: " Senior, Pre-Med",
+    bio: " Experienced as a scribe and medical receptionist, now leading IHSAN’s media presence. Loves volunteering at health fairs and engaging with the community.",
+    image: "/teamPic/Aleena.jpg",
+    contact: {
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Hiba Riazuddin",
+    position: "Fundraising Director",
+    major: "pending",
+    year: " ",
+    bio: "pending",
+    image: "/teamPic/Hiba.jpg",
+    contact: {
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Zubab Syed",
+    position: "Fundraising Director",
+    major: "pending",
+    year: " ",
+    bio: "pending",
+    image: "/teamPic/Zubab.jpg",
+    contact: {
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Saraa Alameri",
+    position: "Events Director",
+    major: "Healthcare Studies major, Biology minor",
+    year: "Senior, Pre-Dental",
+    bio: " RDA and hospital volunteer who enjoys music and art. Looking forward to hosting events that connect and inspire the healthcare community.",
+    image: "/teamPic/Saraa.jpg",
+    contact: {
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
+  {
+    name: "Warda Jamil",
+    position: "Service Director",
+    major: "Neuroscience major",
+    year: "Senior, Pre-Med",
+    bio: "Committed to giving back through service since joining IHA in 2023. Passionate about community health, and enjoys volleyball and reading in her free time.",
+    image: "/teamPic/Warda.jpg",
+    contact: {
+      email: "example@ihsan.com",
+      linkedin: "#",
+    },
+  },
 ];
 
 const milestones = [
@@ -100,19 +154,19 @@ const milestones = [
     year: "2019",
     title: "IHSAN Founded",
     description:
-      "Established by a group of pre-health students with a vision for community-centered healthcare education."
+      "Established by a group of pre-health students with a vision for community-centered healthcare education.",
   },
   {
     year: "2020",
     title: "First Virtual Workshop Series",
     description:
-      "Adapted to remote learning with successful virtual medical skills workshops during the pandemic."
+      "Adapted to remote learning with successful virtual medical skills workshops during the pandemic.",
   },
   {
     year: "2021",
     title: "Community Partnership Program",
     description:
-      "Launched partnerships with local healthcare providers for enhanced volunteering opportunities."
+      "Launched partnerships with local healthcare providers for enhanced volunteering opportunities.",
   },
   {
     year: "2022",
@@ -461,13 +515,16 @@ const About = () => {
                   {leadership.map((leader, index) => (
                     <ScrollAnimation key={leader.name} delay={index * 0.1}>
                       <Card className="card-gradient p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl group">
-                        <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        {/* <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                           <AvatarFallback className="text-xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white font-bold">
                             {leader.name
                               .split(" ")
                               .map((n) => n[0])
                               .join("")}
                           </AvatarFallback>
+                        </Avatar> */}
+                        <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <AvatarImage src={leader.image} alt="Leader" />
                         </Avatar>
 
                         <h3 className="text-2xl font-bold text-blue-900 mb-2">
@@ -587,16 +644,15 @@ const About = () => {
               Become part of a community that's shaping the future of healthcare
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-             <Link href={"/membership"}>
-              <Button
-                size="lg"
-                className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                <Users className="mr-3 h-6 w-6" />
-                Join IHSAN
-              </Button>
-             </Link>
-             
+              <Link href={"/membership"}>
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-10 py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  <Users className="mr-3 h-6 w-6" />
+                  Join IHSAN
+                </Button>
+              </Link>
             </div>
           </ScrollAnimation>
         </div>
