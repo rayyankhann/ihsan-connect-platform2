@@ -30,9 +30,9 @@ const leadership = [
 {
   name: "Omar Dibou",
   position: "President",
-  major: "Pending",
-  year: " ",
-  bio: "Pending",
+  major: "Biology (Pre-Med)",
+  year: "Senior ",
+  bio: "Excited to welcome new members and host many new events. Volunteers at UTSW, enjoys family time, exploring Middle Eastern cafés, and has 7 siblings.",
   image: "/teamPic/Omar.jpg", 
   contact: {
     email: "example@ihsan.com",
@@ -42,9 +42,9 @@ const leadership = [
 {
   name: " Murtaza Alvi",
   position: "External Vice President",
-  major: "Pending",
-  year: " ",
-  bio: "Pending",
+  major: "Healthcare Studies (Pre-Med)",
+  year: "Senior",
+  bio: "Medical Assistant in pain management & Certified Pharmacy Technician. Passionate about mentorship and hosting clinical events. Volunteers at Allen Psychiatry and the Islamic Center of Frisco. Enjoys basketball and car photography.",
   image: "/teamPic/Murtaza.jpg", 
   contact: {
     email: "example@ihsan.com",
@@ -78,9 +78,9 @@ const leadership = [
   {
     name: "Ismaham Mohamed",
     position: "Treasurer",
-    major: "Pending",
-    year: " ",
-    bio: "pending",
+    major: "Healthcare Studies (Pre-Med)",
+    year: "Senior",
+    bio: "Work as a Medical Assistant in dermatology and volunteer at Children’s Health Hospital and Allen Psychiatry. I am excited to serve as Treasurer, meet new members, and help IHSAN grow. In my free time, I enjoy baking, exploring coffee shops, and spending time with family and friends.",
     image: "/teamPic/Ismahan.jpg",
     contact: {
       email: "example@ihsan.com",
@@ -91,7 +91,7 @@ const leadership = [
     name: " Aleena Aziz",
     position: "Media Director",
     major: " Psychology major",
-    year: " Senior, Pre-Med",
+    year: " Senior, (Pre-Med)",
     bio: " Experienced as a scribe and medical receptionist, now leading IHSAN’s media presence. Loves volunteering at health fairs and engaging with the community.",
     image: "/teamPic/Aleena.jpg",
     contact: {
@@ -102,9 +102,9 @@ const leadership = [
   {
     name: "Hiba Riazuddin",
     position: "Fundraising Director",
-    major: "pending",
-    year: " ",
-    bio: "pending",
+    major: "Healthcare Studies (Pre-Med)",
+    year: "Senior",
+    bio: " I am a Healthcare Studies major on the Pre-Med track, graduating in 2026. I look forward to connecting with fellow Muslims in healthcare and meeting new people through IHSAN. In my free time, I enjoy spending time with family and friends.",
     image: "/teamPic/Hiba.jpg",
     contact: {
       email: "example@ihsan.com",
@@ -114,9 +114,9 @@ const leadership = [
   {
     name: "Zubab Syed",
     position: "Fundraising Director",
-    major: "pending",
-    year: " ",
-    bio: "pending",
+    major: "Neuroscience (Pre-Med)",
+    year: "Senior",
+    bio: "I am an undergraduate research assistant at the Kolber Pain and Stress Lab at UTD and a member of the ALM fraternity. I look forward to building connections, supporting others on the path to medicine, and enjoy playing basketball and golf in my free time.",
     image: "/teamPic/Zubab.jpg",
     contact: {
       email: "example@ihsan.com",
@@ -127,7 +127,7 @@ const leadership = [
     name: "Saraa Alameri",
     position: "Events Director",
     major: "Healthcare Studies major, Biology minor",
-    year: "Senior, Pre-Dental",
+    year: "Senior, (Pre-Dental)",
     bio: " RDA and hospital volunteer who enjoys music and art. Looking forward to hosting events that connect and inspire the healthcare community.",
     image: "/teamPic/Saraa.jpg",
     contact: {
@@ -139,7 +139,7 @@ const leadership = [
     name: "Warda Jamil",
     position: "Service Director",
     major: "Neuroscience major",
-    year: "Senior, Pre-Med",
+    year: "Senior, (Pre-Med)",
     bio: "Committed to giving back through service since joining IHA in 2023. Passionate about community health, and enjoys volleyball and reading in her free time.",
     image: "/teamPic/Warda.jpg",
     contact: {
