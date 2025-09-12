@@ -523,8 +523,8 @@ const About = () => {
                               .join("")}
                           </AvatarFallback>
                         </Avatar> */}
-                        <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                          <AvatarImage src={leader.image} alt="Leader" />
+                        <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ">
+                          <AvatarImage src={leader.image} alt="Leader" className="object-cover object-center" />
                         </Avatar>
 
                         <h3 className="text-2xl font-bold text-blue-900 mb-2">

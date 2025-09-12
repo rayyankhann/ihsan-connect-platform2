@@ -264,66 +264,67 @@ const events = [
     spots: 300,
     description:
       "Celebrate our achievements and raise funds for next year's programs.",
-    },
-    
-    // Sep 25 Events
-    {
-      id: 22,
-      title: "First General Body Meeting",
-      date: "2025-09-15",
-      time: "7:00 PM",
-      type: "Social",
-      description:
-        "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved.",
   },
-    {
-      id: 23,
-      title: "Workshop Suturing",
-      date: "2025-09-24",
-      time: "7:00 PM",
-      type: "Workshop",
-      description:
-        "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom."
+
+  // Sep 25 Events
+  {
+    id: 22,
+    title: "First General Body Meeting",
+    date: "2025-09-15",
+    time: "7:00 PM",
+    type: "Social",
+    description:
+      "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved.",
+    formLink: "https://forms.gle/27SPPfrLceQJLwc26"
+  },
+  {
+    id: 23,
+    title: "Workshop Suturing",
+    date: "2025-09-24",
+    time: "7:00 PM",
+    type: "Workshop",
+    description:
+      "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
   },
 
   // Oct 25 Events
-    {
-      id: 24,
-      title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
-      date: "2025-10-1",
-      time: "7:00 PM",
-      type: "career/research",
-      description:
-        "A collaborative event focusing on cancer awareness, education, and community support. Learn about prevention, treatment, and how we can play a role in supporting those affected."
+  {
+    id: 24,
+    title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
+    date: "2025-10-01",
+    time: "7:00 PM",
+    type: "career/research",
+    description:
+      "A collaborative event focusing on cancer awareness, education, and community support. Learn about prevention, treatment, and how we can play a role in supporting those affected.",
   },
-    {
-      id: 25,
-      title: "Speaker Event",
-      date: "2025-10-14",
-      time: "7:00 PM",
-      type: "Guest Speaker",
-      description:
-        "Engage with a guest speaker from the health or medical field who will share their personal journey, insights, and advice for aspiring healthcare professionals. A great way to gain inspiration and ask questions directly."
+  {
+    id: 25,
+    title: "Speaker Event",
+    date: "2025-10-14",
+    time: "7:00 PM",
+    type: "Guest Speaker",
+    description:
+      "Engage with a guest speaker from the health or medical field who will share their personal journey, insights, and advice for aspiring healthcare professionals. A great way to gain inspiration and ask questions directly.",
   },
-    {
-      id: 26,
-      title: "Texas Food Bank Volunteering",
-      date: "2025-10-18",
-      time: "7:00 PM",
-      type: "Service",
-      description:
-        "Give back to the community by volunteering at the North Texas Food Bank. Help pack, organize, and distribute meals for families in need while bonding with other members."
+  {
+    id: 26,
+    title: "Texas Food Bank Volunteering",
+    date: "2025-10-18",
+    time: "7:00 PM",
+    type: "Service",
+    description:
+      "Give back to the community by volunteering at the North Texas Food Bank. Help pack, organize, and distribute meals for families in need while bonding with other members.",
   },
-    {
-      id: 27,
-      title: "Pre-Health Day",
-      date: "2025-10-29",
-      time: "7:00 PM",
-      type: "career/research",
-      description:
-        "A showcase day for all things pre-health! Explore different career paths, resources, and opportunities designed to help students succeed in healthcare fields. Network, learn, and get inspired for your journey."
+  {
+    id: 27,
+    title: "Pre-Health Day",
+    date: "2025-10-29",
+    time: "7:00 PM",
+    type: "career/research",
+    description:
+      "A showcase day for all things pre-health! Explore different career paths, resources, and opportunities designed to help students succeed in healthcare fields. Network, learn, and get inspired for your journey.",
   },
-  
+
   // Nov 25 Events
   {
     id: 28,
@@ -332,8 +333,8 @@ const events = [
     time: "7:00 PM",
     type: "Workshop",
     description:
-      "Prepare for professional school and job interviews in a safe and supportive environment. Practice answering common questions, receive feedback, and build confidence before the real thing."
-},
+      "Prepare for professional school and job interviews in a safe and supportive environment. Practice answering common questions, receive feedback, and build confidence before the real thing.",
+  },
   {
     id: 29,
     title: "MSA Banquet (Tentative)",
@@ -341,8 +342,8 @@ const events = [
     time: "7:00 PM",
     type: "Social",
     description:
-      "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students."
-},
+      "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students.",
+  },
   {
     id: 30,
     title: "NAY Collaboration (Tentative)",
@@ -350,8 +351,8 @@ const events = [
     time: "7:00 PM",
     type: "Service",
     description:
-      "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth."
-},
+      "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth.",
+  },
   {
     id: 31,
     title: "Texas Food Bank Volunteering",
@@ -359,8 +360,8 @@ const events = [
     time: "7:00 PM",
     type: "Service",
     description:
-      "Another chance to serve! Join us again at the North Texas Food Bank to continue supporting families in need. A rewarding and humbling way to spend your afternoon."
-},
+      "Another chance to serve! Join us again at the North Texas Food Bank to continue supporting families in need. A rewarding and humbling way to spend your afternoon.",
+  },
   {
     id: 32,
     title: "Bonfire x Multicultural Socia",
@@ -368,10 +369,10 @@ const events = [
     time: "7:00 PM",
     type: "Social",
     description:
-      "Warm up by the fire and celebrate diversity with a multicultural society! An evening filled with food, community, and cultural exchange—perfect for meeting new friends and celebrating our campus’s diversity."
-},
+      "Warm up by the fire and celebrate diversity with a multicultural society! An evening filled with food, community, and cultural exchange—perfect for meeting new friends and celebrating our campus’s diversity.",
+  },
 
-// Des 25 Event
+  // Des 25 Event
   {
     id: 33,
     title: "Gala",
@@ -379,10 +380,8 @@ const events = [
     time: "7:00 PM",
     type: "Social",
     description:
-      "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work"
-},
-
-
+      "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work",
+  },
 ];
 
 const eventTypes = [
@@ -398,7 +397,7 @@ const eventTypes = [
 
 const Events = () => {
   const [selectedType, setSelectedType] = useState("All Events");
-  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 0, 1)); // Start with January 2025
+  const [currentMonth, setCurrentMonth] = useState(new Date()); // Start with Current Month
 
   // Get events for the selected type
   const filteredEvents =
@@ -548,7 +547,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Interactive Calendar Section */}
+      {/* Interactive Calendar Section */}   
       <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
@@ -604,7 +603,7 @@ const Events = () => {
                 <Button
                   variant="outline"
                   onClick={prevMonth}
-                  className="flex items-center gap-2 border-blue-200 text-blue-700 hover:bg-blue-50"
+                  className="flex items-center gap-2 border-blue-200 text-blue-700 hover:hero-gradient"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span className="hidden sm:inline">Previous</span>
@@ -617,7 +616,7 @@ const Events = () => {
                 <Button
                   variant="outline"
                   onClick={nextMonth}
-                  className="flex items-center gap-2 border-blue-200 text-blue-700 hover:bg-blue-50"
+                  className="flex items-center gap-2 border-blue-200 text-blue-700 hover:hero-gradient"
                 >
                   <span className="hidden sm:inline"> Next </span>
                   <ChevronRight className="w-4 h-4" />
@@ -676,51 +675,47 @@ const Events = () => {
           </ScrollAnimation>
         </div>
       </section>
+ {/* Event Listings Section */}
+      <section className="py-10 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-xl font-bold text-blue-900 mb-6">
+            Event Listings
+          </h2>
 
-  <section className="py-10 bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-xl font-bold text-blue-900 mb-6">
-          Event Listings
-        </h2>
+          <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+            {filteredEvents?.map((event) => (
+              <div
+                key={event.id}
+                className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 relative"
+              >
+                <span className="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
+                  {event.type}
+                </span>
 
-        <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-          {events.splice(0,2).map((event) => (
-            <div
-              key={event.id}
-              className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 relative"
-            >
-              {/* Category Tag */}
-              <span className="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
-                {event.type}
-              </span>
+                <h3 className="text-lg font-bold text-blue-900 mb-2">
+                  {event.title}
+                </h3>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                {event.title}
-              </h3>
-
-              {/* Date */}
-              <p className="text-sm text-gray-500 mb-4">
-                {event.date}{"*"}{event.time}
+                <p className="text-sm text-gray-500 mb-4">
+                  {event.date}
+                  {" • "}
+                  {event.time}
                 </p>
 
-              {/* Description */}
-              <p className="text-gray-600 mb-6 line-clamp-4">
-                {event.description}
-              </p>
+                <p className="text-gray-600 mb-6 line-clamp-4">
+                  {event.description}
+                </p>
 
-            
-             <Link href={"https://forms.gle/27SPPfrLceQJLwc26"}>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md shadow transition">
-                RSVP
-              </button>
-             </Link>
-            </div>
-          ))}
+                <Link href={event.formLink || "#"} >
+                  <Button  variant="default" className=" transition ">
+                    RSVP
+                  </Button>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-     
+      </section>
     </div>
   );
 };
