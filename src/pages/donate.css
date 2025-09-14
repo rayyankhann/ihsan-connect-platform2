@@ -1,0 +1,6 @@
+.charity_background {
+  background-image: url('/charity_background.png');
+  background-size: cover;
+  background-position: center;
+  background-color: red;
+}

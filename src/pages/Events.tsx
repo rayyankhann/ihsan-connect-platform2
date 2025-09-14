@@ -29,276 +29,392 @@ import {
 import Link from "next/link";
 
 // Sample events data with dates
+// const events = [
+//   // January 2025 Events
+//   {
+//     id: 1,
+//     title: "Medical Skills Workshop",
+//     date: "2025-01-15",
+//     time: "6:00 PM",
+//     location: "Student Union Building, Room 2.304",
+//     type: "Workshop",
+//     spots: 25,
+//     description:
+//       "Learn essential medical skills including vital signs, basic suturing, and patient communication.",
+//   },
+//   {
+//     id: 2,
+//     title: "Healthcare Career Fair",
+//     date: "2025-01-22",
+//     time: "10:00 AM",
+//     location: "Activities Center",
+//     type: "Career",
+//     spots: 100,
+//     description:
+//       "Meet with healthcare professionals and learn about different career paths in medicine.",
+//   },
+//   {
+//     id: 3,
+//     title: "Community Health Screening",
+//     date: "2025-01-29",
+//     time: "9:00 AM",
+//     location: "Dallas Community Center",
+//     type: "Service",
+//     spots: 15,
+//     description:
+//       "Volunteer at a community health screening event serving underserved populations.",
+//   },
+
+//   // February 2025 Events
+//   {
+//     id: 4,
+//     title: "Guest Speaker: Dr. Sarah Johnson",
+//     date: "2025-02-05",
+//     time: "7:00 PM",
+//     location: "Science Building Auditorium",
+//     type: "Guest Speaker",
+//     spots: 50,
+//     description:
+//       "Join us for an inspiring talk on pediatric medicine and career development.",
+//   },
+//   {
+//     id: 5,
+//     title: "Research Symposium",
+//     date: "2025-02-12",
+//     time: "2:00 PM",
+//     location: "Research Center",
+//     type: "Research",
+//     spots: 30,
+//     description:
+//       "Present and discuss healthcare research projects with peers and faculty.",
+//   },
+//   {
+//     id: 6,
+//     title: "Fundraising Gala",
+//     date: "2025-02-20",
+//     time: "6:30 PM",
+//     location: "UT Dallas Ballroom",
+//     type: "Fundraising",
+//     spots: 200,
+//     description:
+//       "Annual fundraising event supporting our healthcare initiatives and scholarships.",
+//   },
+//   {
+//     id: 7,
+//     title: "CPR Certification Workshop",
+//     date: "2025-02-25",
+//     time: "5:00 PM",
+//     location: "Health Sciences Building",
+//     type: "Workshop",
+//     spots: 20,
+//     description: "Get certified in CPR and basic life support techniques.",
+//   },
+
+//   // March 2025 Events
+//   {
+//     id: 8,
+//     title: "Medical Ethics Seminar",
+//     date: "2025-03-03",
+//     time: "6:30 PM",
+//     location: "Philosophy Department",
+//     type: "Workshop",
+//     spots: 40,
+//     description:
+//       "Explore ethical dilemmas in healthcare and medical decision-making.",
+//   },
+//   {
+//     id: 9,
+//     title: "Guest Speaker: Dr. Michael Chen",
+//     date: "2025-03-10",
+//     time: "7:00 PM",
+//     location: "Engineering Building",
+//     type: "Guest Speaker",
+//     spots: 75,
+//     description: "Innovations in medical technology and future of healthcare.",
+//   },
+//   {
+//     id: 10,
+//     title: "Blood Drive",
+//     date: "2025-03-15",
+//     time: "10:00 AM",
+//     location: "Student Union Plaza",
+//     type: "Service",
+//     spots: 50,
+//     description: "Donate blood and help save lives in our community.",
+//   },
+//   {
+//     id: 11,
+//     title: "Healthcare Innovation Hackathon",
+//     date: "2025-03-22",
+//     time: "9:00 AM",
+//     location: "Computer Science Building",
+//     type: "Workshop",
+//     spots: 60,
+//     description:
+//       "Collaborate on innovative healthcare solutions and technology.",
+//   },
+//   {
+//     id: 12,
+//     title: "Spring Fundraising Walk",
+//     date: "2025-03-29",
+//     time: "8:00 AM",
+//     location: "UT Dallas Campus",
+//     type: "Fundraising",
+//     spots: 150,
+//     description:
+//       "Join our annual walkathon to raise funds for healthcare scholarships.",
+//   },
+
+//   // April 2025 Events
+//   {
+//     id: 13,
+//     title: "Medical School Application Workshop",
+//     date: "2025-04-05",
+//     time: "2:00 PM",
+//     location: "Career Center",
+//     type: "Career",
+//     spots: 35,
+//     description:
+//       "Learn about medical school applications, interviews, and requirements.",
+//   },
+//   {
+//     id: 14,
+//     title: "Guest Speaker: Dr. Emily Rodriguez",
+//     date: "2025-04-12",
+//     time: "6:00 PM",
+//     location: "Natural Science Building",
+//     type: "Guest Speaker",
+//     spots: 80,
+//     description:
+//       "Global health initiatives and international medical missions.",
+//   },
+//   {
+//     id: 15,
+//     title: "Community Garden Volunteering",
+//     date: "2025-04-19",
+//     time: "9:00 AM",
+//     location: "Community Garden",
+//     type: "Service",
+//     spots: 25,
+//     description:
+//       "Help maintain our community garden and learn about nutrition.",
+//   },
+//   {
+//     id: 16,
+//     title: "Healthcare Policy Research Forum",
+//     date: "2025-04-26",
+//     time: "3:00 PM",
+//     location: "Political Science Building",
+//     type: "Research",
+//     spots: 45,
+//     description:
+//       "Discuss current healthcare policies and their impact on communities.",
+//   },
+
+//   // May 2025 Events
+//   {
+//     id: 17,
+//     title: "Pre-Med Student Networking",
+//     date: "2025-05-03",
+//     time: "5:30 PM",
+//     location: "Business School",
+//     type: "Career",
+//     spots: 100,
+//     description:
+//       "Network with current medical students and healthcare professionals.",
+//   },
+//   {
+//     id: 18,
+//     title: "Guest Speaker: Dr. James Wilson",
+//     date: "2025-05-10",
+//     time: "7:00 PM",
+//     location: "Auditorium",
+//     type: "Guest Speaker",
+//     spots: 120,
+//     description: "Emergency medicine and trauma care in urban settings.",
+//   },
+//   {
+//     id: 19,
+//     title: "Mental Health Awareness Workshop",
+//     date: "2025-05-17",
+//     time: "4:00 PM",
+//     location: "Psychology Building",
+//     type: "Workshop",
+//     spots: 30,
+//     description: "Learn about mental health first aid and supporting others.",
+//   },
+//   {
+//     id: 20,
+//     title: "Healthcare Technology Research",
+//     date: "2025-05-24",
+//     time: "1:00 PM",
+//     location: "Engineering Research Center",
+//     type: "Research",
+//     spots: 40,
+//     description:
+//       "Present research on healthcare technology and digital health solutions.",
+//   },
+//   {
+//     id: 21,
+//     title: "End of Year Fundraising Dinner",
+//     date: "2025-05-31",
+//     time: "6:30 PM",
+//     location: "Dallas Convention Center",
+//     type: "Fundraising",
+//     spots: 300,
+//     description:
+//       "Celebrate our achievements and raise funds for next year's programs.",
+//   },
+
+//   // Sep 25 Events
+//   {
+//     id: 22,
+//     title: "First General Body Meeting",
+//     date: "2025-09-15",
+//     time: "7:00 PM",
+//     type: "Social",
+//     description:
+//       "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved.",
+//     formLink: "https://forms.gle/27SPPfrLceQJLwc26"
+//   },
+//   {
+//     id: 23,
+//     title: "Workshop Suturing",
+//     date: "2025-09-24",
+//     time: "7:00 PM",
+//     type: "Workshop",
+//     description:
+//       "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
+//   },
+
+//   // Oct 25 Events
+//   {
+//     id: 24,
+//     title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
+//     date: "2025-10-01",
+//     time: "7:00 PM",
+//     type: "career/research",
+//     description:
+//       "A collaborative event focusing on cancer awareness, education, and community support. Learn about prevention, treatment, and how we can play a role in supporting those affected.",
+//   },
+//   {
+//     id: 25,
+//     title: "Speaker Event",
+//     date: "2025-10-14",
+//     time: "7:00 PM",
+//     type: "Guest Speaker",
+//     description:
+//       "Engage with a guest speaker from the health or medical field who will share their personal journey, insights, and advice for aspiring healthcare professionals. A great way to gain inspiration and ask questions directly.",
+//   },
+//   {
+//     id: 26,
+//     title: "Texas Food Bank Volunteering",
+//     date: "2025-10-18",
+//     time: "7:00 PM",
+//     type: "Service",
+//     description:
+//       "Give back to the community by volunteering at the North Texas Food Bank. Help pack, organize, and distribute meals for families in need while bonding with other members.",
+//   },
+//   {
+//     id: 27,
+//     title: "Pre-Health Day",
+//     date: "2025-10-29",
+//     time: "7:00 PM",
+//     type: "career/research",
+//     description:
+//       "A showcase day for all things pre-health! Explore different career paths, resources, and opportunities designed to help students succeed in healthcare fields. Network, learn, and get inspired for your journey.",
+//   },
+
+//   // Nov 25 Events
+//   {
+//     id: 28,
+//     title: "Mock Interview",
+//     date: "2025-11-05",
+//     time: "7:00 PM",
+//     type: "Workshop",
+//     description:
+//       "Prepare for professional school and job interviews in a safe and supportive environment. Practice answering common questions, receive feedback, and build confidence before the real thing.",
+//   },
+//   {
+//     id: 29,
+//     title: "MSA Banquet (Tentative)",
+//     date: "2025-11-12",
+//     time: "7:00 PM",
+//     type: "Social",
+//     description:
+//       "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students.",
+//   },
+//   {
+//     id: 30,
+//     title: "NAY Collaboration (Tentative)",
+//     date: "2025-11-13",
+//     time: "7:00 PM",
+//     type: "Service",
+//     description:
+//       "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth.",
+//   },
+//   {
+//     id: 31,
+//     title: "Texas Food Bank Volunteering",
+//     date: "2025-11-15",
+//     time: "7:00 PM",
+//     type: "Service",
+//     description:
+//       "Another chance to serve! Join us again at the North Texas Food Bank to continue supporting families in need. A rewarding and humbling way to spend your afternoon.",
+//   },
+//   {
+//     id: 32,
+//     title: "Bonfire x Multicultural Socia",
+//     date: "2025-11-17",
+//     time: "7:00 PM",
+//     type: "Social",
+//     description:
+//       "Warm up by the fire and celebrate diversity with a multicultural society! An evening filled with food, community, and cultural exchange—perfect for meeting new friends and celebrating our campus’s diversity.",
+//   },
+
+//   // Des 25 Event
+//   {
+//     id: 33,
+//     title: "Gala",
+//     date: "2025-12-01",
+//     time: "7:00 PM",
+//     type: "Social",
+//     description:
+//       "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work",
+//   },
+// ];
+
 const events = [
-  // January 2025 Events
   {
     id: 1,
-    title: "Medical Skills Workshop",
-    date: "2025-01-15",
-    time: "6:00 PM",
-    location: "Student Union Building, Room 2.304",
-    type: "Workshop",
-    spots: 25,
+    title: "GBM 1 – First General Body Meeting",
+    date: "2025-09-15",
+    time: "7:00 PM",
+    type: "Social Event",
+    url:"https://forms.gle/27SPPfrLceQJLwc26",
     description:
-      "Learn essential medical skills including vital signs, basic suturing, and patient communication.",
+      "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved. Sign-up: https://forms.gle/27SPPfrLceQJLwc26",
   },
   {
     id: 2,
-    title: "Healthcare Career Fair",
-    date: "2025-01-22",
-    time: "10:00 AM",
-    location: "Activities Center",
-    type: "Career",
-    spots: 100,
-    description:
-      "Meet with healthcare professionals and learn about different career paths in medicine.",
-  },
-  {
-    id: 3,
-    title: "Community Health Screening",
-    date: "2025-01-29",
-    time: "9:00 AM",
-    location: "Dallas Community Center",
-    type: "Service",
-    spots: 15,
-    description:
-      "Volunteer at a community health screening event serving underserved populations.",
-  },
-
-  // February 2025 Events
-  {
-    id: 4,
-    title: "Guest Speaker: Dr. Sarah Johnson",
-    date: "2025-02-05",
-    time: "7:00 PM",
-    location: "Science Building Auditorium",
-    type: "Guest Speaker",
-    spots: 50,
-    description:
-      "Join us for an inspiring talk on pediatric medicine and career development.",
-  },
-  {
-    id: 5,
-    title: "Research Symposium",
-    date: "2025-02-12",
-    time: "2:00 PM",
-    location: "Research Center",
-    type: "Research",
-    spots: 30,
-    description:
-      "Present and discuss healthcare research projects with peers and faculty.",
-  },
-  {
-    id: 6,
-    title: "Fundraising Gala",
-    date: "2025-02-20",
-    time: "6:30 PM",
-    location: "UT Dallas Ballroom",
-    type: "Fundraising",
-    spots: 200,
-    description:
-      "Annual fundraising event supporting our healthcare initiatives and scholarships.",
-  },
-  {
-    id: 7,
-    title: "CPR Certification Workshop",
-    date: "2025-02-25",
-    time: "5:00 PM",
-    location: "Health Sciences Building",
-    type: "Workshop",
-    spots: 20,
-    description: "Get certified in CPR and basic life support techniques.",
-  },
-
-  // March 2025 Events
-  {
-    id: 8,
-    title: "Medical Ethics Seminar",
-    date: "2025-03-03",
-    time: "6:30 PM",
-    location: "Philosophy Department",
-    type: "Workshop",
-    spots: 40,
-    description:
-      "Explore ethical dilemmas in healthcare and medical decision-making.",
-  },
-  {
-    id: 9,
-    title: "Guest Speaker: Dr. Michael Chen",
-    date: "2025-03-10",
-    time: "7:00 PM",
-    location: "Engineering Building",
-    type: "Guest Speaker",
-    spots: 75,
-    description: "Innovations in medical technology and future of healthcare.",
-  },
-  {
-    id: 10,
-    title: "Blood Drive",
-    date: "2025-03-15",
-    time: "10:00 AM",
-    location: "Student Union Plaza",
-    type: "Service",
-    spots: 50,
-    description: "Donate blood and help save lives in our community.",
-  },
-  {
-    id: 11,
-    title: "Healthcare Innovation Hackathon",
-    date: "2025-03-22",
-    time: "9:00 AM",
-    location: "Computer Science Building",
-    type: "Workshop",
-    spots: 60,
-    description:
-      "Collaborate on innovative healthcare solutions and technology.",
-  },
-  {
-    id: 12,
-    title: "Spring Fundraising Walk",
-    date: "2025-03-29",
-    time: "8:00 AM",
-    location: "UT Dallas Campus",
-    type: "Fundraising",
-    spots: 150,
-    description:
-      "Join our annual walkathon to raise funds for healthcare scholarships.",
-  },
-
-  // April 2025 Events
-  {
-    id: 13,
-    title: "Medical School Application Workshop",
-    date: "2025-04-05",
-    time: "2:00 PM",
-    location: "Career Center",
-    type: "Career",
-    spots: 35,
-    description:
-      "Learn about medical school applications, interviews, and requirements.",
-  },
-  {
-    id: 14,
-    title: "Guest Speaker: Dr. Emily Rodriguez",
-    date: "2025-04-12",
-    time: "6:00 PM",
-    location: "Natural Science Building",
-    type: "Guest Speaker",
-    spots: 80,
-    description:
-      "Global health initiatives and international medical missions.",
-  },
-  {
-    id: 15,
-    title: "Community Garden Volunteering",
-    date: "2025-04-19",
-    time: "9:00 AM",
-    location: "Community Garden",
-    type: "Service",
-    spots: 25,
-    description:
-      "Help maintain our community garden and learn about nutrition.",
-  },
-  {
-    id: 16,
-    title: "Healthcare Policy Research Forum",
-    date: "2025-04-26",
-    time: "3:00 PM",
-    location: "Political Science Building",
-    type: "Research",
-    spots: 45,
-    description:
-      "Discuss current healthcare policies and their impact on communities.",
-  },
-
-  // May 2025 Events
-  {
-    id: 17,
-    title: "Pre-Med Student Networking",
-    date: "2025-05-03",
-    time: "5:30 PM",
-    location: "Business School",
-    type: "Career",
-    spots: 100,
-    description:
-      "Network with current medical students and healthcare professionals.",
-  },
-  {
-    id: 18,
-    title: "Guest Speaker: Dr. James Wilson",
-    date: "2025-05-10",
-    time: "7:00 PM",
-    location: "Auditorium",
-    type: "Guest Speaker",
-    spots: 120,
-    description: "Emergency medicine and trauma care in urban settings.",
-  },
-  {
-    id: 19,
-    title: "Mental Health Awareness Workshop",
-    date: "2025-05-17",
-    time: "4:00 PM",
-    location: "Psychology Building",
-    type: "Workshop",
-    spots: 30,
-    description: "Learn about mental health first aid and supporting others.",
-  },
-  {
-    id: 20,
-    title: "Healthcare Technology Research",
-    date: "2025-05-24",
-    time: "1:00 PM",
-    location: "Engineering Research Center",
-    type: "Research",
-    spots: 40,
-    description:
-      "Present research on healthcare technology and digital health solutions.",
-  },
-  {
-    id: 21,
-    title: "End of Year Fundraising Dinner",
-    date: "2025-05-31",
-    time: "6:30 PM",
-    location: "Dallas Convention Center",
-    type: "Fundraising",
-    spots: 300,
-    description:
-      "Celebrate our achievements and raise funds for next year's programs.",
-  },
-
-  // Sep 25 Events
-  {
-    id: 22,
-    title: "First General Body Meeting",
-    date: "2025-09-15",
-    time: "7:00 PM",
-    type: "Social",
-    description:
-      "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved.",
-    formLink: "https://forms.gle/27SPPfrLceQJLwc26"
-  },
-  {
-    id: 23,
-    title: "Workshop Suturing",
+    title: "Suturing Workshop",
     date: "2025-09-24",
     time: "7:00 PM",
     type: "Workshop",
     description:
       "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
   },
-
-  // Oct 25 Events
   {
-    id: 24,
+    id: 3,
     title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
     date: "2025-10-01",
     time: "7:00 PM",
-    type: "career/research",
+    type: "Career/Research",
     description:
       "A collaborative event focusing on cancer awareness, education, and community support. Learn about prevention, treatment, and how we can play a role in supporting those affected.",
   },
   {
-    id: 25,
+    id: 4,
     title: "Speaker Event",
     date: "2025-10-14",
     time: "7:00 PM",
@@ -307,27 +423,25 @@ const events = [
       "Engage with a guest speaker from the health or medical field who will share their personal journey, insights, and advice for aspiring healthcare professionals. A great way to gain inspiration and ask questions directly.",
   },
   {
-    id: 26,
+    id: 5,
     title: "Texas Food Bank Volunteering",
     date: "2025-10-18",
     time: "7:00 PM",
-    type: "Service",
+    type: "Service Event",
     description:
       "Give back to the community by volunteering at the North Texas Food Bank. Help pack, organize, and distribute meals for families in need while bonding with other members.",
   },
   {
-    id: 27,
+    id: 6,
     title: "Pre-Health Day",
     date: "2025-10-29",
     time: "7:00 PM",
-    type: "career/research",
+    type: "Career/Research",
     description:
       "A showcase day for all things pre-health! Explore different career paths, resources, and opportunities designed to help students succeed in healthcare fields. Network, learn, and get inspired for your journey.",
   },
-
-  // Nov 25 Events
   {
-    id: 28,
+    id: 7,
     title: "Mock Interview",
     date: "2025-11-05",
     time: "7:00 PM",
@@ -336,53 +450,52 @@ const events = [
       "Prepare for professional school and job interviews in a safe and supportive environment. Practice answering common questions, receive feedback, and build confidence before the real thing.",
   },
   {
-    id: 29,
+    id: 8,
     title: "MSA Banquet (Tentative)",
     date: "2025-11-12",
     time: "7:00 PM",
-    type: "Social",
+    type: "Social Event",
     description:
-      "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students.",
+      "Celebrate with the Muslim Student Association at their annual banquet! A night of food, community, and culture—perfect for networking and enjoying time with fellow students. (Tentative)",
   },
   {
-    id: 30,
+    id: 9,
     title: "NAY Collaboration (Tentative)",
     date: "2025-11-13",
     time: "7:00 PM",
-    type: "Service",
+    type: "Service Event",
     description:
-      "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth.",
+      "Collaborative event with NAY (North American Youth / Neighborhood Association of Youth – depending on group). Expect engaging activities, discussions, or service opportunities focused on youth empowerment and community growth. (Tentative)",
   },
   {
-    id: 31,
+    id: 10,
     title: "Texas Food Bank Volunteering",
     date: "2025-11-15",
     time: "7:00 PM",
-    type: "Service",
+    type: "Service Event",
     description:
       "Another chance to serve! Join us again at the North Texas Food Bank to continue supporting families in need. A rewarding and humbling way to spend your afternoon.",
   },
   {
-    id: 32,
-    title: "Bonfire x Multicultural Socia",
+    id: 11,
+    title: "Bonfire x Multicultural Social",
     date: "2025-11-17",
     time: "7:00 PM",
-    type: "Social",
+    type: "Social Event",
     description:
       "Warm up by the fire and celebrate diversity with a multicultural society! An evening filled with food, community, and cultural exchange—perfect for meeting new friends and celebrating our campus’s diversity.",
   },
-
-  // Des 25 Event
   {
-    id: 33,
+    id: 12,
     title: "Gala",
     date: "2025-12-01",
     time: "7:00 PM",
-    type: "Social",
+    type: "Social Event",
     description:
-      "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work",
+      "End the semester in style at our Gala! Dress up, enjoy a night of food, celebration, and community with friends. A perfect way to wrap up the semester and honor everyone’s hard work.",
   },
 ];
+
 
 const eventTypes = [
   "All Events",
@@ -399,11 +512,22 @@ const Events = () => {
   const [selectedType, setSelectedType] = useState("All Events");
   const [currentMonth, setCurrentMonth] = useState(new Date()); // Start with Current Month
 
-  // Get events for the selected type
+  // Get events for the selected type with flexible matching
   const filteredEvents =
     selectedType === "All Events"
       ? events
-      : events.filter((event) => event.type === selectedType);
+      : events.filter((event) => {
+          // Handle exact matches
+          if (event.type === selectedType) return true;
+          
+          // Handle partial matches for current event types
+          if (selectedType === "Service" && event.type === "Service Event") return true;
+          if (selectedType === "Social" && event.type === "Social Event") return true;
+          if (selectedType === "Career" && event.type === "Career/Research") return true;
+          if (selectedType === "Research" && event.type === "Career/Research") return true;
+          
+          return false;
+        });
 
   // Event type colors
   const getEventTypeColor = (type: string) => {
@@ -413,14 +537,16 @@ const Events = () => {
       case "Guest Speaker":
         return "bg-purple-100 text-purple-800 border-purple-500";
       case "Service":
+      case "Service Event":
         return "bg-orange-100 text-orange-800 border-orange-500";
       case "Fundraising":
         return "bg-red-100 text-red-800 border-red-500";
       case "Research":
-        return "bg-indigo-100 text-indigo-800 border-indigo-500";
       case "Career":
-        return "bg-teal-100 text-teal-800 border-teal-500";
+      case "Career/Research":
+        return "bg-indigo-100 text-indigo-800 border-indigo-500";
       case "Social":
+      case "Social Event":
         return "bg-yellow-100 text-yellow-800 border-yellow-500";
       default:
         return "bg-blue-100 text-blue-800 border-blue-500";
@@ -499,7 +625,7 @@ const Events = () => {
                 className={`text-xs p-1 rounded transition-colors border-l-2 ${getEventTypeColor(
                   event.type
                 )} block`}
-                title={`${event.title} - ${event.time} - ${event.location}`}
+                title={`${event.title} - ${event.time} `}
               >
                 <div className="font-medium truncate">{event.title}</div>
                 <div className="text-xs opacity-80">{event.time}</div>
@@ -651,7 +777,7 @@ const Events = () => {
               <h3 className="text-xl font-bold text-blue-900 mb-6">
                 Event Types
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
                 {eventTypes.slice(1).map((type) => {
                   const colorClasses = getEventTypeColor(type);
                   const bgColor = colorClasses.split(" ")[0];
@@ -706,8 +832,8 @@ const Events = () => {
                   {event.description}
                 </p>
 
-                <Link href={event.formLink || "#"} >
-                  <Button  variant="default" className=" transition ">
+                <Link href={event.url || "#"}   className={` ${!event.url ? "cursor-not-allowed opacity-50" : ""}`}>
+                  <Button  variant="default" className="transition " disabled={!event.url}>
                     RSVP
                   </Button>
                 </Link>

@@ -7,16 +7,19 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import FundraisingProgress from '@/components/FundraisingProgress';
-import { 
-  Heart, 
-  Users, 
-  GraduationCap, 
+import {
+  Heart,
+  Users,
+  GraduationCap,
   Stethoscope,
   Check,
   Star,
   DollarSign,
   CreditCard
 } from 'lucide-react';
+import Image from 'next/image';
+import charity_image from '/public/Charity.jpg';
+
 
 const donationTiers = [
   {
@@ -84,11 +87,18 @@ const impactStats = [
     description: "Invested directly into student and community programs"
   }
 ];
+const logos = [
+  { src: "/brandLogo/FajrScientific.png", alt: "FajrScientific" },
+  { src: "/brandLogo/SyrianAmericanMedicalSociety.png", alt: "Syrian American Medical Society" },
+  { src: "/brandLogo/SudaneseAmericanPhysiciansAssociation.webp", alt: "Sudanese American Physicians Association.jpeg" },
+  { src: "/brandLogo/SadaqahProject.jpg", alt: "Project Sadaqa" },
+
+];
 
 const Donate = () => {
   const [customAmount, setCustomAmount] = React.useState("");
   const [selectedTier, setSelectedTier] = React.useState<number | null>(null);
-
+const bg = typeof charity_image === 'string' ? charity_image : charity_image.src;
   return (
     <div className="min-h-screen pt-16">
       {/* Header */}
@@ -100,19 +110,19 @@ const Donate = () => {
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Help us continue building the next generation of healthcare professionals
           </p>
-          
+
           {/* Fundraising Progress Bar */}
           <div className="max-w-2xl mx-auto">
-            <FundraisingProgress 
-              currentAmount={35000} 
-              goalAmount={50000} 
+            <FundraisingProgress
+              currentAmount={35000}
+              goalAmount={50000}
             />
           </div>
         </div>
       </section>
 
       {/* Impact Section */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">
@@ -146,20 +156,8 @@ const Donate = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Donation Tiers */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
-              Ways to Give
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose a giving level that works for you
-            </p>
-          </div>
-
+      </section> */}
+      {/* 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {donationTiers.map((tier, index) => (
               <Card 
@@ -208,10 +206,33 @@ const Donate = () => {
                 </Button>
               </Card>
             ))}
+          </div> */}
+
+
+      {/* Donation Tiers */}
+    <section
+      className="py-20 bg-cover bg-center text-center "
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Donate us
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Help us continue building the next generation of healthcare professionals
+            </p>
           </div>
+ <Button 
+                className="w-50 h-16 text-lg bg-gradient-to-r from-primary to-accent"
+                onClick={() => window.open('https://www.zeffy.com/en-US/donation-form/donate-to-ihsan-healthcare', '_blank')}
+              >
+                <CreditCard className="mr-2 !h-5 !w-5" />
+                Donate Now
+              </Button>
 
           {/* Custom Amount */}
-          <Card className="card-gradient p-8 max-w-md mx-auto">
+          {/* <Card className="card-gradient p-8 max-w-md mx-auto">
             <div className="text-center mb-6">
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 Custom Amount
@@ -242,7 +263,29 @@ const Donate = () => {
                 Donate Now
               </Button>
             </div>
-          </Card>
+          </Card> */}
+
+          {/* Donation Section */}
+          <section className="pt-12 sm:pt-20 section-mobile">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center bg-gradient-to-br from-blue-50 to-white rounded-2xl p-4 sm:p-8 shadow-lg border border-blue-100">
+                {logos.map((logo, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-center items-center w-24 h-24 mx-auto"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={96}
+                      height={96}
+                      className="object-contain w-full h-full mix-blend-darken hover:grayscale-0 transition duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -321,7 +364,7 @@ const Donate = () => {
 
             <Card className="card-gradient p-6">
               <h3 className="text-lg font-semibold text-foreground mb-3">
-               Can I donate directly to IHSAN’s operations?
+                Can I donate directly to IHSAN’s operations?
               </h3>
               <p className="text-muted-foreground">
                 Yes! On our donation page, you’ll find a separate option to contribute directly to IHSAN. These funds help us cover student programming, workshops, guest speakers, and other activities that support our members.
@@ -329,18 +372,18 @@ const Donate = () => {
             </Card>
             <Card className="card-gradient p-6">
               <h3 className="text-lg font-semibold text-foreground mb-3">
-               What do membership fees cover?
+                What do membership fees cover?
               </h3>
               <p className="text-muted-foreground">
-                 Membership fees are separate from donations and are used exclusively to fund IHSAN’s student events, educational workshops, and on-campus activities.
+                Membership fees are separate from donations and are used exclusively to fund IHSAN’s student events, educational workshops, and on-campus activities.
               </p>
             </Card>
             <Card className="card-gradient p-6">
               <h3 className="text-lg font-semibold text-foreground mb-3">
-               Can I make a recurring donation?
+                Can I make a recurring donation?
               </h3>
               <p className="text-muted-foreground">
-                 Yes! We offer monthly and semester-based recurring donation options. Contact us at ihsanhealthcareutd@gmail.com
+                Yes! We offer monthly and semester-based recurring donation options. Contact us at ihsanhealthcareutd@gmail.com
               </p>
             </Card>
           </div>
@@ -357,16 +400,16 @@ const Donate = () => {
             Your support helps us continue our mission of developing the next generation of healthcare leaders
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 rounded-xl"
             >
               <Heart className="mr-2 h-5 w-5" />
               Donate Now
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="text-lg px-8 py-4 rounded-xl border-white/30 text-white hover:bg-white/10 bg-black/20"
             >
               Learn More About Impact

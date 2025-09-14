@@ -180,14 +180,15 @@ const Index = () => {
           {/* Next Event Banner */}
           {nextEvent && (
             <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
-              <Card className="flex flex-col sm:inline-flex sm:items-center sm:space-y-2 p-4 sm:p-6 bg-white/10 backdrop-blur-md border-white/20 text-white shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-sm mx-auto">
+              <Card className="flex flex-col sm:inline-flex sm:items-center sm:space-y-2 p-4  bg-white/10 backdrop-blur-md border-white/20 text-white shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-sm mx-auto">
                 <div className="flex items-center space-x-3 mb-3 sm:mb-0">
                   <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="text-sm sm:text-base font-medium">
                     Next Event
                   </span>
                 </div>
-                <div className="h-px sm:h-6 w-full sm:w-px bg-white/30 mb-3 sm:mb-0"></div>
+                <hr className="border-white/30 mb-3 w-full"/>
+                {/* <div className="h-px sm:h-6 w-full sm:w-px bg-white/30 mb-3 sm:mb-0"></div> */}
                 <div className="text-center mb-3 sm:mb-0">
                   <p className="font-medium text-sm sm:text-base">
                     {nextEvent.title}
@@ -224,10 +225,10 @@ const Index = () => {
                 &#40;highlight club name blue&#41; was created to uplift students with plans to pursue healthcare post-graduation. Our primary purpose is to provide students with job, volunteering, and leadership opportunities meant to educate them in their field, increase their involvement, and promote their applications.
               </p>
               <p className="text-base sm:text-xl text-gray-600 leading-relaxed mobile-p">
-              Our secondary purpose is to aid the healthcare system in third-world countries by raising awareness and fundraising money to provide them with necessary supplies and aid as needed.
+                Our secondary purpose is to aid the healthcare system in third-world countries by raising awareness and fundraising money to provide them with necessary supplies and aid as needed.
               </p>
             </div>
-           
+
           </ScrollAnimation>
         </div>
       </section>
@@ -295,27 +296,28 @@ const Index = () => {
           </ScrollAnimation>
         </div>
       </section>
-
-      <section className="py-12 sm:py-20 bg-white section-mobile">
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center bg-gradient-to-br from-blue-50 to-white rounded-2xl p-4 sm:p-8 shadow-lg border border-blue-100">
-      {logos.map((logo, index) => (
-        <div
-          key={index}
-          className="flex justify-center items-center w-24 h-24 mx-auto"
-        >
-          <Image
-            src={logo.src}
-            alt={logo.alt}
-            width={96}
-            height={96}
-            className="object-contain w-full h-full mix-blend-darken hover:grayscale-0 transition duration-300"
-          />
+   
+      {/* Donation Section */}
+      <section className="pb-12 sm:pb-20 bg-white section-mobile">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center bg-gradient-to-br from-blue-50 to-white rounded-2xl p-4 sm:p-8 shadow-lg border border-blue-100">
+            {logos.map((logo, index) => (
+              <div
+                key={index}
+                className="flex justify-center items-center w-24 h-24 mx-auto"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={96}
+                  height={96}
+                  className="object-contain w-full h-full mix-blend-darken hover:grayscale-0 transition duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Get Involved Section */}
       <section className="py-8 sm:py-12 bg-muted/30 section-mobile">
@@ -332,8 +334,8 @@ const Index = () => {
           </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 grid-mobile">
-              <Link href="/membership" className="block">
-            <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
+            <Link href="/membership" className="block">
+              <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <UserPlus className="w-6 h-6 sm:w-8 sm:h-8 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
@@ -343,8 +345,8 @@ const Index = () => {
                 <p className="text-muted-foreground text-xs sm:text-sm">
                   $15 membership - supports charity initiatives
                 </p>
-            </Card>
-              </Link>
+              </Card>
+            </Link>
 
             <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
               <Link href="/events" className="block">
