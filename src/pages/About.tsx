@@ -44,7 +44,7 @@ const leadership = [
   position: "External Vice President",
   major: "Healthcare Studies (Pre-Med)",
   year: "Senior",
-  bio: "Medical Assistant in pain management & Certified Pharmacy Technician. Passionate about mentorship and hosting clinical events. Volunteers at Allen Psychiatry and the Islamic Center of Frisco. Enjoys basketball and car photography.",
+  bio: " I look forward to helping everyone become a part of our community to excel in their career. I work as a Medical Assistant at an allergy clinic, volunteer at the Islamic Center of Frisco and with Noorishment, and enjoy basketball and car photography in my free time.",
   image: "/teamPic/Murtaza.jpg", 
   contact: {
     email: "example@ihsan.com",
@@ -514,7 +514,7 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {leadership.map((leader, index) => (
                     <ScrollAnimation key={leader.name} delay={index * 0.1}>
-                      <Card className="card-gradient p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl group">
+                      <Card className="card-gradient p-8 text-center hover:scale-105 transition-all duration-300 hover:shadow-xl group h-full">
                         {/* <Avatar className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                           <AvatarFallback className="text-xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white font-bold">
                             {leader.name
