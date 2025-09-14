@@ -296,24 +296,26 @@ const Index = () => {
         </div>
       </section>
 
-        <section className="py-8 sm:py-12 bg-muted/30 section-mobile">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
-          {logos.map((logo, index) => (
-            <div key={index} className="flex justify-center">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={150}
-                height={80}
-                className="object-contain  hover:grayscale-0 transition duration-300"
-              />
-            </div>
-          ))}
+      <section className="py-12 sm:py-20 bg-white section-mobile">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center bg-gradient-to-br from-blue-50 to-white rounded-2xl p-4 sm:p-8 shadow-lg border border-blue-100">
+      {logos.map((logo, index) => (
+        <div
+          key={index}
+          className="flex justify-center items-center w-24 h-24 mx-auto"
+        >
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={96}
+            height={96}
+            className="object-contain w-full h-full mix-blend-darken hover:grayscale-0 transition duration-300"
+          />
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Get Involved Section */}
       <section className="py-8 sm:py-12 bg-muted/30 section-mobile">
