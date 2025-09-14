@@ -260,8 +260,8 @@ const About = () => {
           <ScrollAnimation>
             {isFirefox ? (
               // Firefox fallback - simple button navigation
-              <div className="w-full">
-                <div className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 lg:w-1/2 mx-auto bg-white shadow-lg mb-16 p-1 rounded-lg">
+              <div className="w-full lg:w-9/12 xl:w-1/2 mx-auto">
+                <div className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 bg-white shadow-lg mb-16 p-1 rounded-lg">
                   <button
                     onClick={() => setActiveTab("mission")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -282,16 +282,6 @@ const About = () => {
                   >
                     Leadership
                   </button>
-                  {/* <button 
-                    onClick={() => setActiveTab("journey")}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                      activeTab === "journey" 
-                        ? "bg-blue-600 text-white" 
-                        : "text-gray-600 hover:text-blue-600"
-                    }`}
-                  >
-                    Our Journey
-                  </button> */}
                   <button
                     onClick={() => setActiveTab("values")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -350,9 +340,8 @@ const About = () => {
                         Our Mission
                       </h2>
                     </div>
-                    <p className="text-xl text-gray-700 leading-relaxed">
-                      <strong> IHSAN Healthcare Association</strong>{" "}
-                      &#40;highlight club text blue&#41; was created to uplift
+                    <p className="text-xl text-gray-700 leading-relaxed text-center">
+                      <strong className="text-blue-900"> IHSAN Healthcare Association</strong>{" "} was created to uplift
                       students with plans to pursue healthcare post-graduation.
                       Our primary purpose is to provide students with job,
                       volunteering, and leadership opportunities meant to
@@ -403,10 +392,9 @@ const About = () => {
                         Our Vision
                       </h2>
                     </div>
-                    <p className="text-xl text-gray-700 leading-relaxed">
+                    <p className="text-xl text-gray-700 leading-relaxed text-center">
                       Through our core principles,{" "}
-                      <strong> IHSAN Healthcare Association</strong>
-                      &#40;highlight club text blue&#41; strives to create a
+                      <strong className="text-blue-900"> IHSAN Healthcare Association</strong> strives to create a
                       nurturing and empowering environment where pre-health
                       students can grow academically, spiritually, and
                       personally. We aim to prepare future healthcare

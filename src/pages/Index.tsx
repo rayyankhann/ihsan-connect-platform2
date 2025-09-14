@@ -221,8 +221,7 @@ const Index = () => {
             </h2>
             <div className="max-w-5xl mx-auto space-y-4 sm:space-y-8">
               <p className="text-lg sm:text-2xl text-gray-700 leading-relaxed mobile-p">
-                <strong className="text-blue-900">IHSAN Healthcare Association</strong>{" "}
-                &#40;highlight club name blue&#41; was created to uplift students with plans to pursue healthcare post-graduation. Our primary purpose is to provide students with job, volunteering, and leadership opportunities meant to educate them in their field, increase their involvement, and promote their applications.
+                <strong className="text-blue-900">IHSAN Healthcare Association</strong>{" "} was created to uplift students with plans to pursue healthcare post-graduation. Our primary purpose is to provide students with job, volunteering, and leadership opportunities meant to educate them in their field, increase their involvement, and promote their applications.
               </p>
               <p className="text-base sm:text-xl text-gray-600 leading-relaxed mobile-p">
                 Our secondary purpose is to aid the healthcare system in third-world countries by raising awareness and fundraising money to provide them with necessary supplies and aid as needed.
@@ -333,7 +332,7 @@ const Index = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 grid-mobile">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 grid-mobile ">
             <Link href="/membership" className="block">
               <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
@@ -362,7 +361,7 @@ const Index = () => {
               </Link>
             </Card>
 
-            <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
+            {/* <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
               <Link href="/blog" className="block">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-white transition-all duration-300 group-hover:scale-110" />
@@ -374,7 +373,7 @@ const Index = () => {
                   Member success stories & experiences
                 </p>
               </Link>
-            </Card>
+            </Card> */}
 
             <Card className="card-gradient p-4 sm:p-6 text-center group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 card-mobile touch-friendly">
               <Link href="/donate" className="block">

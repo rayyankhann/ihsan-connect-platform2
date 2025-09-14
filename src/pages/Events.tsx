@@ -818,7 +818,7 @@ const Events = () => {
                   {event.type}
                 </span>
 
-                <h3 className="text-lg font-bold text-blue-900 mb-2">
+                <h3 className="text-lg font-bold text-blue-900 mb-2 w-3/4">
                   {event.title}
                 </h3>
 
