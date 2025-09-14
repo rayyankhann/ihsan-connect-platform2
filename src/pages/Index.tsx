@@ -123,9 +123,9 @@ const Index = () => {
       <section className="py-20 hero-gradient relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           {/* Decorative Elements */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+          {/* <div className="absolute inset-0 flex items-center justify-center opacity-10">
             <div className="w-96 h-96 rounded-full bg-[#2563eb] blur-3xl"></div>
-          </div>
+          </div> */}
 
           {/* <div className="mb-8">
             <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-base font-medium border border-white/20 mb-6">
