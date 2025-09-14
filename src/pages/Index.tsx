@@ -26,36 +26,17 @@ import networkingImage from "@/assets/networking-event.jpg";
 import Image from "next/image";
 
 const upcomingEvents = [
-  {
+
+    {
     id: 1,
-    title: "MCAT Prep Workshop",
-    date: "2025-01-15",
-    time: "6:00 PM",
-    location: "Student Union Building, Room 2.304",
+    title: "Suturing Workshop",
+    date: "2025-09-24",
+    time: "7:00 PM",
     type: "Workshop",
-    image: volunteeringImage,
-    spots: "Open to All",
+    description:
+      "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
   },
-  {
-    id: 2,
-    title: "Healthcare Career Fair & Networking",
-    date: "2025-01-22",
-    time: "10:00 AM",
-    location: "Activities Center",
-    type: "Career",
-    image: networkingImage,
-    spots: "Open to All",
-  },
-  {
-    id: 3,
-    title: "Community Health Screening Volunteer",
-    date: "2025-01-29",
-    time: "9:00 AM",
-    location: "Dallas Community Center",
-    type: "Volunteering",
-    image: volunteeringImage,
-    spots: "Open to All",
-  },
+ 
 ];
 
 const coreObjectives = [
@@ -191,11 +172,11 @@ const Index = () => {
                 {/* <div className="h-px sm:h-6 w-full sm:w-px bg-white/30 mb-3 sm:mb-0"></div> */}
                 <div className="text-center mb-3 sm:mb-0">
                   <p className="font-medium text-sm sm:text-base">
-                    {nextEvent.title}
+                Suturing Workshop
                   </p>
                   <p className="text-xs sm:text-sm opacity-90">
-                    {new Date(nextEvent.date).toLocaleDateString()} at{" "}
-                    {nextEvent.time}
+                   2025-09-15 at{" "}
+                    7:00 PM
                   </p>
                 </div>
                 <Button
