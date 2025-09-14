@@ -12,7 +12,7 @@ const navigationItems = [
   { name: "Home", href: "/" },
   { name: "Events", href: "/events" },
   { name: "Membership", href: "/membership" },
-  { name: "Testimonials", href: "/blog" },
+  // { name: "Testimonials", href: "/blog" },
   // { name: 'Past Events', href: '/past-events' },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
