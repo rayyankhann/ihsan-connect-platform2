@@ -27,6 +27,7 @@ import {
   Plus,
 } from "lucide-react";
 import Link from "next/link";
+import { getYear } from "date-fns";
 
 // Sample events data with dates
 // const events = [
@@ -688,10 +689,10 @@ const Events = () => {
                     {selectedType === "All Events"
                       ? "events"
                       : selectedType.toLowerCase() + " events"}{" "}
-                    in {getMonthName(currentMonth)}
+                    in {getYear(currentMonth)}
                   </p>
                   {/* Debug info - remove this later */}
-                  <div className="text-xs text-gray-500 mt-1">
+                  {/* <div className="text-xs text-gray-500 mt-1">
                     Debug: Current month events:{" "}
                     {
                       filteredEvents.filter((e) => e.date.startsWith("2025-01"))
@@ -703,7 +704,7 @@ const Events = () => {
                         .length
                     }{" "}
                     in Feb
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Event Type Filter */}

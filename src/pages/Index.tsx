@@ -175,7 +175,7 @@ const Index = () => {
                 Suturing Workshop
                   </p>
                   <p className="text-xs sm:text-sm opacity-90">
-                   2025-09-15 at{" "}
+                   2025-09-24 at{" "}
                     7:00 PM
                   </p>
                 </div>
