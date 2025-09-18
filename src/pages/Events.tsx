@@ -392,7 +392,7 @@ const events = [
     date: "2025-09-15",
     time: "7:00 PM",
     type: "Social Event",
-    url:"https://forms.gle/27SPPfrLceQJLwc26",
+    url: "https://forms.gle/27SPPfrLceQJLwc26",
     description:
       "Kick off the school year with our very first GBM! Come meet the executive board, connect with fellow students, and participate in a fun interactive activity to get to know each other. Perfect chance to learn more about our club and how to get involved. Sign-up: https://forms.gle/27SPPfrLceQJLwc26",
   },
@@ -400,8 +400,10 @@ const events = [
     id: 2,
     title: "Suturing Workshop",
     date: "2025-09-24",
-    time: "7:00 PM",
+    time: "5:30 PM - 08:00 PM",
     type: "Workshop",
+    url: "https://forms.gle/s6pWc7xPVoPKza5E7",
+    small_text: "25 Student Limit for RSVP",
     description:
       "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
   },
@@ -518,17 +520,17 @@ const Events = () => {
     selectedType === "All Events"
       ? events
       : events.filter((event) => {
-          // Handle exact matches
-          if (event.type === selectedType) return true;
-          
-          // Handle partial matches for current event types
-          if (selectedType === "Service" && event.type === "Service Event") return true;
-          if (selectedType === "Social" && event.type === "Social Event") return true;
-          if (selectedType === "Career" && event.type === "Career/Research") return true;
-          if (selectedType === "Research" && event.type === "Career/Research") return true;
-          
-          return false;
-        });
+        // Handle exact matches
+        if (event.type === selectedType) return true;
+
+        // Handle partial matches for current event types
+        if (selectedType === "Service" && event.type === "Service Event") return true;
+        if (selectedType === "Social" && event.type === "Social Event") return true;
+        if (selectedType === "Career" && event.type === "Career/Research") return true;
+        if (selectedType === "Research" && event.type === "Career/Research") return true;
+
+        return false;
+      });
 
   // Event type colors
   const getEventTypeColor = (type: string) => {
@@ -674,7 +676,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Interactive Calendar Section */}   
+      {/* Interactive Calendar Section */}
       <section className="py-24 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
@@ -802,7 +804,7 @@ const Events = () => {
           </ScrollAnimation>
         </div>
       </section>
- {/* Event Listings Section */}
+      {/* Event Listings Section */}
       <section className="py-10 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-xl font-bold text-blue-900 mb-6">
@@ -833,11 +835,17 @@ const Events = () => {
                   {event.description}
                 </p>
 
-                <Link href={event.url || "#"}   className={` ${!event.url ? "cursor-not-allowed opacity-50" : ""}`}>
-                  <Button  variant="default" className="transition " disabled={!event.url}>
-                    RSVP
-                  </Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+
+                  <Link href={event.url || "#"} className={` ${!event.url ? "cursor-not-allowed opacity-50" : ""}`}>
+                    <Button variant="default" className="transition " disabled={!event.url}>
+                      RSVP
+                    </Button>
+                  </Link>
+                  {event.small_text && (
+                    <p className="text-xs text-red-600 mt-2">{event.small_text}</p>
+                  )}
+                </div>
               </div>
             ))}
           </div>

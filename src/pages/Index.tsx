@@ -24,19 +24,20 @@ import {
 import volunteeringImage from "@/assets/volunteering-event.jpg";
 import networkingImage from "@/assets/networking-event.jpg";
 import Image from "next/image";
+import next from "next";
 
 const upcomingEvents = [
 
-    {
+  {
     id: 1,
-    title: "Suturing Workshop",
-    date: "2025-09-24",
+    title: "Collaboration with Islamic Relief (Cancer Awareness Event)",
+    date: "2025-10-01",
     time: "7:00 PM",
-    type: "Workshop",
-    description:
-      "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
+    type: "Career/Research",
+    // description:
+    //   "Get hands-on experience in a medical skill every healthcare provider needs! Practice suturing on dummies with step-by-step guidance. Great opportunity for pre-health students to build confidence and learn outside the classroom.",
   },
- 
+
 ];
 
 const coreObjectives = [
@@ -168,15 +169,15 @@ const Index = () => {
                     Next Event
                   </span>
                 </div>
-                <hr className="border-white/30 mb-3 w-full"/>
+                <hr className="border-white/30 mb-3 w-full" />
                 {/* <div className="h-px sm:h-6 w-full sm:w-px bg-white/30 mb-3 sm:mb-0"></div> */}
                 <div className="text-center mb-3 sm:mb-0">
                   <p className="font-medium text-sm sm:text-base">
-                Suturing Workshop
+                    {nextEvent.title}
                   </p>
                   <p className="text-xs sm:text-sm opacity-90">
-                   2025-09-24 at{" "}
-                    7:00 PM
+                   {nextEvent.date} at{" "}
+                    {nextEvent.time} 
                   </p>
                 </div>
                 <Button
@@ -276,7 +277,7 @@ const Index = () => {
           </ScrollAnimation>
         </div>
       </section>
-   
+
       {/* Donation Section */}
       <section className="pb-12 sm:pb-20 bg-white section-mobile">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
